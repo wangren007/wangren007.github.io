@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API 测试工具 - 明润智讯</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .test-section {
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .test-section h2 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .config-info {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            color: #1e40af;
+        }
+
+        .config-info p {
+            margin: 5px 0;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #3498db;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s;
+            border: none;
+            font-size: 14px;
+        }
+
+        .btn:hover {
+            background: #2980b9;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .result-box {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .result-box.success {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+        }
+
+        .result-box.error {
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+        }
+
+        .loading {
+            color: #666;
+            font-style: italic;
+        }
+
+        .env-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+
+        .env-badge.local {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .env-badge.production {
+            background: #10b981;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>API 测试工具</h1>
+
+        <div class="test-section">
+            <h2>当前环境配置</h2>
+            <div class="config-info" id="configInfo">
+                <p>加载中...</p>
+            </div>
+
+            <div class="btn-group">
+                <button class="btn" onclick="testLocal()">测试本地环境</button>
+                <button class="btn" onclick="testProduction()">测试生产环境</button>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h2>API 接口测试</h2>
+            <div class="btn-group">
+                <button class="btn" onclick="testGetProducts()">测试获取产品列表</button>
+                <button class="btn" onclick="testGetProduct()">测试获取单个产品</button>
+            </div>
+            <div id="result" class="result-box">
+                点击上方按钮开始测试
+            </div>
+        </div>
+    </div>
+
+    <script src="js/env-config.js"></script>
+    <script>
+        function updateConfigInfo() {
+            var env = EnvConfig.getCurrentEnv();
+            var config = EnvConfig.getConfig();
+            var envName = EnvConfig.getEnvName();
+            var envClass = env === 'local' ? 'local' : 'production';
+
+            document.getElementById('configInfo').innerHTML = 
+                '<p><strong>环境：</strong><span class="env-badge ' + envClass + '">' + envName + '</span></p>' +
+                '<p><strong>API 基础 URL：</strong>' + config.baseUrl + '</p>' +
+                '<p><strong>登录 URL：</strong>' + config.loginUrl + '</p>' +
+                '<p><strong>产品 API：</strong>' + config.baseUrl + '/api/products</p>';
+        }
+
+        function showResult(message, type) {
+            var resultEl = document.getElementById('result');
+            resultEl.textContent = message;
+            resultEl.className = 'result-box ' + type;
+        }
+
+        function showLoading() {
+            showResult('测试中...', '');
+            document.getElementById('result').classList.add('loading');
+        }
+
+        function testLocal() {
+            EnvConfig.setEnvironment('local');
+            updateConfigInfo();
+            showResult('已切换到本地环境', 'success');
+        }
+
+        function testProduction() {
+            EnvConfig.setEnvironment('production');
+            updateConfigInfo();
+            showResult('已切换到生产环境', 'success');
+        }
+
+        function testGetProducts() {
+            showLoading();
+            
+            var url = EnvConfig.getBaseUrl() + '/api/products';
+            
+            fetch(url)
+                .then(function(response) {
+                    if (!response.ok) {
+                        throw new Error('HTTP ' + response.status);
+                    }
+                    return response.json();
+                })
+                .then(function(data) {
+                    var result = '✅ 成功！\n\n';
+                    result += 'URL: ' + url + '\n\n';
+                    result += '响应数据：\n';
+                    result += JSON.stringify(data, null, 2);
+                    showResult(result, 'success');
+                })
+                .catch(function(error) {
+                    var result = '❌ 失败！\n\n';
+                    result += 'URL: ' + url + '\n\n';
+                    result += '错误信息：' + error.message + '\n\n';
+                    result += '可能的原因：\n';
+                    result += '1. API 接口不存在\n';
+                    result += '2. CORS 跨域问题\n';
+                    result += '3. 数据库中没有产品数据\n';
+                    result += '4. 服务器配置问题\n\n';
+                    result += '建议：\n';
+                    result += '- 检查后端日志\n';
+                    result += '- 确认数据库中有产品数据\n';
+                    result += '- 检查 CORS 配置\n';
+                    showResult(result, 'error');
+                });
+        }
+
+        function testGetProduct() {
+            var productId = prompt('请输入产品ID：', '1');
+            if (!productId) return;
+
+            showLoading();
+            
+            var url = EnvConfig.getBaseUrl() + '/api/product?id=' + encodeURIComponent(productId);
+            
+            fetch(url)
+                .then(function(response) {
+                    if (!response.ok) {
+                        throw new Error('HTTP ' + response.status);
+                    }
+                    return response.json();
+                })
+                .then(function(data) {
+                    var result = '✅ 成功！\n\n';
+                    result += 'URL: ' + url + '\n\n';
+                    result += '响应数据：\n';
+                    result += JSON.stringify(data, null, 2);
+                    showResult(result, 'success');
+                })
+                .catch(function(error) {
+                    var result = '❌ 失败！\n\n';
+                    result += 'URL: ' + url + '\n\n';
+                    result += '错误信息：' + error.message + '\n\n';
+                    result += '可能的原因：\n';
+                    result += '1. 产品不存在\n';
+                    result += '2. API 接口不存在\n';
+                    result += '3. CORS 跨域问题\n';
+                    showResult(result, 'error');
+                });
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            updateConfigInfo();
+        });
+    </script>
+</body>
+</html>
