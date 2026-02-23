@@ -2,7 +2,7 @@
     'use strict';
 
     var API_CONFIG = {
-        baseUrl: 'http://121.5.177.201/',
+        baseUrl: 'http://121.5.177.201',
         endpoints: {
             products: '/api/products',
             product: '/api/product',

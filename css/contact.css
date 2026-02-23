@@ -105,6 +105,45 @@
     border: 1px solid #bee5eb;
 }
 
+.admin-link {
+    background: #e74c3c;
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 4px;
+    transition: background 0.3s;
+}
+
+.admin-link:hover {
+    background: #c0392b;
+}
+
+.admin-link-box {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.admin-btn {
+    display: inline-block;
+    width: 100%;
+    padding: 12px 24px;
+    background: #e74c3c;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: background 0.3s;
+}
+
+.admin-btn:hover {
+    background: #c0392b;
+}
+
+.admin-btn span {
+    font-weight: 500;
+}
+
 @media (max-width: 768px) {
     .contact-wrapper {
         grid-template-columns: 1fr;
