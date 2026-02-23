@@ -14,7 +14,7 @@
         }
     };
 
-    var currentEnv = 'production';
+    var currentEnv = 'local';
 
     function setEnvironment(env) {
         if (ENV_CONFIG[env]) {
