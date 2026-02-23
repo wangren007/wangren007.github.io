@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>环境切换 - 明润智讯</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .env-card {
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 3px solid transparent;
+        }
+
+        .env-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        .env-card.active {
+            border-color: #3498db;
+            background: #f0f8ff;
+        }
+
+        .env-card h2 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .env-card p {
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .env-card .url {
+            color: #3498db;
+            font-weight: 500;
+            word-break: break-all;
+        }
+
+        .current-env {
+            text-align: center;
+            padding: 20px;
+            background: #d4edda;
+            color: #155724;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            font-size: 18px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #3498db;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-top: 15px;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: #2980b9;
+        }
+
+        .info {
+            background: #fff3cd;
+            color: #856404;
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 20px;
+            border-left: 4px solid #ffc107;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>环境切换配置</h1>
+
+        <div id="currentEnv" class="current-env">
+            当前环境：加载中...
+        </div>
+
+        <div class="env-card" onclick="selectEnv('local')" id="localCard">
+            <h2>本地环境</h2>
+            <p>用于开发和测试</p>
+            <p class="url">http://52order.com</p>
+            <a href="http://52order.com/login" target="_blank" class="btn">访问后台</a>
+        </div>
+
+        <div class="env-card" onclick="selectEnv('production')" id="productionCard">
+            <h2>生产环境</h2>
+            <p>用于正式上线</p>
+            <p class="url">http://121.5.177.201</p>
+            <a href="http://121.5.177.201/login" target="_blank" class="btn">访问后台</a>
+        </div>
+
+        <div class="info">
+            <strong>说明：</strong>点击上方卡片切换环境，切换后所有页面将自动使用选中的环境配置。
+        </div>
+    </div>
+
+    <script src="js/env-config.js"></script>
+    <script>
+        function updateCurrentEnv() {
+            var envName = EnvConfig.getEnvName();
+            var env = EnvConfig.getCurrentEnv();
+            document.getElementById('currentEnv').textContent = '当前环境：' + envName;
+
+            document.querySelectorAll('.env-card').forEach(function(card) {
+                card.classList.remove('active');
+            });
+
+            if (env === 'local') {
+                document.getElementById('localCard').classList.add('active');
+            } else if (env === 'production') {
+                document.getElementById('productionCard').classList.add('active');
+            }
+        }
+
+        function selectEnv(env) {
+            if (EnvConfig.setEnvironment(env)) {
+                updateCurrentEnv();
+                alert('已切换到：' + EnvConfig.getEnvName());
+            } else {
+                alert('切换失败：环境不存在');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            updateCurrentEnv();
+        });
+    </script>
+</body>
+</html>

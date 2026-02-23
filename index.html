@@ -19,7 +19,7 @@
                 <li><a href="products.html">产品展示</a></li>
                 <li><a href="about.html">关于我们</a></li>
                 <li><a href="contact.html">联系我们</a></li>
-                <li><a href="http://121.5.177.201/" target="_blank" class="admin-link">管理后台</a></li>
+                <li><a href="http://121.5.177.201/login" target="_blank" class="admin-link">管理后台</a></li>
             </ul>
         </div>
     </nav>
@@ -77,6 +77,15 @@
         </div>
     </footer>
 
+    <script src="js/env-config.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var adminLinks = document.querySelectorAll('.admin-link');
+            adminLinks.forEach(function(link) {
+                link.href = EnvConfig.getLoginUrl();
+            });
+        });
+    </script>
     <script src="js/main.js"></script>
 </body>
 </html>

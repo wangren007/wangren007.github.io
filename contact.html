@@ -93,9 +93,15 @@
         </div>
     </footer>
 
+    <script src="js/env-config.js"></script>
     <script src="js/api.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            var adminLinks = document.querySelectorAll('.admin-link, .admin-btn');
+            adminLinks.forEach(function(link) {
+                link.href = EnvConfig.getLoginUrl();
+            });
+
             var form = document.getElementById('contactForm');
             var messageEl = document.getElementById('form-message');
 

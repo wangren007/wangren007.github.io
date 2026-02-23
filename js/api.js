@@ -2,7 +2,7 @@
     'use strict';
 
     var API_CONFIG = {
-        baseUrl: 'http://121.5.177.201',
+        baseUrl: '',
         endpoints: {
             products: '/api/products',
             product: '/api/product',
@@ -11,7 +11,7 @@
     };
 
     function getApiUrl(endpoint) {
-        return API_CONFIG.baseUrl + endpoint;
+        return EnvConfig.getBaseUrl() + endpoint;
     }
 
     function handleResponse(response) {
@@ -71,10 +71,6 @@
                 }
             })
             .catch(handleError);
-        },
-
-        setBaseUrl: function(baseUrl) {
-            API_CONFIG.baseUrl = baseUrl;
         }
     };
 })();
