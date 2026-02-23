@@ -4,108 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>智能跳转</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Microsoft YaHei', Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .container {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(10px);
-            text-align: center;
-            max-width: 300px;
-            width: 80%;
-        }
-
-        .loading {
-            font-size: 16px;
-            color: #333;
-        }
-
-        .spinner {
-            border: 3px solid rgba(0, 0, 0, 0.1);
-            border-radius: 50%;
-            border-top: 3px solid #3498db;
-            width: 30px;
-            height: 30px;
-            animation: spin 1s linear infinite;
-            margin: 15px auto;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <div class="loading">
-            <div class="spinner"></div>
-            <p>正在跳转...</p>
-        </div>
-    </div>
-
     <script>
-        // 环境配置
-        const ENV_CONFIG = {
-            local: {
-                name: '本地环境',
-                url: 'http://52order.com/'
-            },
-            production: {
-                name: '生产环境',
-                url: 'http://121.5.177.201/'
-            }
-        };
-
-        // 检测环境
-        function detectEnvironment() {
+        // 立即执行跳转，不需要等待页面加载
+        (function() {
             const hostname = window.location.hostname;
             const port = window.location.port;
 
             // 本地环境检测规则
             if (hostname === 'localhost' || hostname === '127.0.0.1' || hostname === '[::1]' || port === '8000' || port === '8080') {
-                return 'local';
+                window.location.href = 'http://52order.com/';
+            } else {
+                window.location.href = 'http://121.5.177.201/';
             }
-            
-            // 默认生产环境
-            return 'production';
-        }
-
-        // 跳转到指定环境
-        function redirectTo(env) {
-            const config = ENV_CONFIG[env];
-            if (config) {
-                // 立即跳转，无延迟
-                window.location.href = config.url;
-            }
-        }
-
-        // 初始化 - 页面加载后立即跳转
-        function init() {
-            const env = detectEnvironment();
-            redirectTo(env);
-        }
-
-        // 页面加载完成后立即初始化
-        document.addEventListener('DOMContentLoaded', init);
+        })();
     </script>
+    <style>
+        /* 极简样式，只在跳转失败时显示 */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            background: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <h1>跳转中...</h1>
 </body>
 </html>
