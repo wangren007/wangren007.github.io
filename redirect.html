@@ -24,124 +24,41 @@
 
         .container {
             background: rgba(255, 255, 255, 0.95);
-            padding: 40px;
+            padding: 30px;
             border-radius: 12px;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
             backdrop-filter: blur(10px);
             text-align: center;
-            max-width: 500px;
-            width: 90%;
+            max-width: 300px;
+            width: 80%;
         }
 
-        h1 {
-            font-size: 28px;
-            margin-bottom: 20px;
+        .loading {
+            font-size: 16px;
             color: #333;
         }
 
-        .status {
-            font-size: 18px;
-            margin: 20px 0;
-            padding: 15px;
-            background: #f8f9fa;
-            border-radius: 8px;
-            border-left: 4px solid #3498db;
+        .spinner {
+            border: 3px solid rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            border-top: 3px solid #3498db;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 15px auto;
         }
 
-        .url {
-            font-family: 'Courier New', monospace;
-            background: #f0f0f0;
-            padding: 10px;
-            border-radius: 4px;
-            margin: 10px 0;
-            word-break: break-all;
-            font-weight: 500;
-        }
-
-        .buttons {
-            margin: 30px 0;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 12px 24px;
-            margin: 0 10px;
-            background: #3498db;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 6px;
-            font-size: 16px;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn:hover {
-            background: #2980b9;
-            transform: translateY(-2px);
-        }
-
-        .btn-secondary {
-            background: #95a5a6;
-        }
-
-        .btn-secondary:hover {
-            background: #7f8c8d;
-        }
-
-        .info {
-            margin-top: 20px;
-            padding: 15px;
-            background: #e8f4f8;
-            border-radius: 8px;
-            font-size: 14px;
-            color: #2c3e50;
-        }
-
-        .countdown {
-            font-size: 20px;
-            font-weight: bold;
-            color: #e74c3c;
-            margin: 15px 0;
-        }
-
-        @media (max-width: 480px) {
-            .container {
-                padding: 30px 20px;
-            }
-
-            h1 {
-                font-size: 24px;
-            }
-
-            .btn {
-                display: block;
-                margin: 10px 0;
-            }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>🔄 智能跳转</h1>
-        
-        <div class="status">
-            <p>检测环境中...</p>
-            <div id="envStatus" class="url">正在检测...</div>
-        </div>
-
-        <div class="countdown" id="countdown">1秒后自动跳转...</div>
-
-        <div class="buttons">
-            <button class="btn" onclick="goToLocal()">本地环境</button>
-            <button class="btn btn-secondary" onclick="goToProduction()">生产环境</button>
-        </div>
-
-        <div class="info">
-            <strong>说明：</strong>
-            <p>系统会自动检测环境并跳转到相应的URL。</p>
-            <p>本地环境：<span class="url">http://52order.com/index.php</span></p>
-            <p>生产环境：<span class="url">http://121.5.177.201/index.php</span></p>
+        <div class="loading">
+            <div class="spinner"></div>
+            <p>正在跳转...</p>
         </div>
     </div>
 
@@ -176,49 +93,18 @@
         function redirectTo(env) {
             const config = ENV_CONFIG[env];
             if (config) {
-                document.getElementById('envStatus').innerHTML = `检测到：${config.name}<br>跳转到：<span class="url">${config.url}</span>`;
-                setTimeout(() => {
-                    window.location.href = config.url;
-                }, 1000);
+                // 立即跳转，无延迟
+                window.location.href = config.url;
             }
         }
 
-        // 跳转到本地环境
-        function goToLocal() {
-            window.location.href = ENV_CONFIG.local.url;
-        }
-
-        // 跳转到生产环境
-        function goToProduction() {
-            window.location.href = ENV_CONFIG.production.url;
-        }
-
-        // 倒计时
-        let seconds = 1;
-        function updateCountdown() {
-            const countdownEl = document.getElementById('countdown');
-            seconds--;
-            if (seconds > 0) {
-                countdownEl.textContent = `${seconds}秒后自动跳转...`;
-                setTimeout(updateCountdown, 1000);
-            } else {
-                countdownEl.textContent = '跳转中...';
-            }
-        }
-
-        // 初始化
+        // 初始化 - 页面加载后立即跳转
         function init() {
             const env = detectEnvironment();
-            document.getElementById('countdown').style.display = 'block';
-            updateCountdown();
-            
-            // 延迟跳转，让用户看到检测结果
-            setTimeout(() => {
-                redirectTo(env);
-            }, 1000);
+            redirectTo(env);
         }
 
-        // 页面加载完成后初始化
+        // 页面加载完成后立即初始化
         document.addEventListener('DOMContentLoaded', init);
     </script>
 </body>
