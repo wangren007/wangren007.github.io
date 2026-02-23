@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人年收入优化模型（2026版）</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Microsoft YaHei', 'PingFang SC', Arial, sans-serif;
+            background: #f0f4f8;
+            min-height: 100vh;
+            padding: 15px;
+            color: #1e293b;
+            line-height: 1.5;
+            font-size: 14px;
+        }
+        
+        .container {
+            max-width: 1800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .price {
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .price-desc {
+            font-size: 12px;
+            color: rgba(255,255,255,0.9);
+            margin-left: 4px;
+            font-weight: 500;
+        }
+        
+        .header-title-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 10px;
+            position: relative;
+            width: 100%;
+        }
+        
+        .header h1 {
+            color: white;
+            font-size: 26px;
+            font-weight: 800;
+            margin: 0;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 6px rgba(0,0,0,0.2);
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .price-tag {
+            margin: 0;
+            margin-left: auto;
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+            flex-shrink: 0;
+            background: rgba(255,255,255,0.15);
+            padding: 6px 16px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.25);
+        }
+        
+        .header p {
+            color: rgba(255,255,255,0.9);
+            font-size: 13px;
+            margin: 0 0 12px 0;
+            font-weight: 400;
+            text-align: center;
+        }
+        
+        .header-back {
+            margin-top: 10px;
+            text-align: center;
+        }
+        
+        .header-back a {
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .header-back a:hover {
+            color: #fff;
+            text-decoration: underline;
+        }
+        
+        .header-buttons {
+            margin-top: 15px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .header-button {
+            padding: 10px 28px;
+            background: rgba(255,255,255,0.15);
+            color: white;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+        
+        .header-button:hover {
+            background: rgba(255,255,255,0.25);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+        }
+        
+        .input-section {
+            padding: 18px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+        }
+        
+        .input-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        
+        .input-label {
+            width: 200px;
+            font-weight: 600;
+            color: #475569;
+            font-size: 13px;
+        }
+        
+        .input-field {
+            flex: 1;
+            padding: 10px 14px;
+            border: 2px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 14px;
+            background: white;
+            text-align: right;
+            transition: all 0.3s;
+        }
+        
+        .input-field:focus {
+            outline: none;
+            border-color: #4f46e5;
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+        }
+        
+        .contact-btn {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 18px;
+            background: linear-gradient(135deg, #07c160 0%, #06ad56 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 2px 8px rgba(7, 193, 96, 0.3);
+        }
+        
+        .contact-btn:hover {
+            background: linear-gradient(135deg, #06ad56 0%, #059e4c 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(7, 193, 96, 0.4);
+        }
+        
+        .contact-btn:active {
+            transform: translateY(0);
+        }
+        
+        .contact-icon {
+            font-size: 16px;
+        }
+        
+        .contact-text {
+            font-size: 13px;
+        }
+        
+        .verify-btn {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 18px;
+            background: linear-gradient(135deg, #1890ff 0%, #096dd9 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 2px 8px rgba(24, 144, 255, 0.3);
+            margin-left: 10px;
+        }
+        
+        .verify-btn:hover {
+            background: linear-gradient(135deg, #096dd9 0%, #0050b3 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(24, 144, 255, 0.4);
+        }
+        
+        .verify-btn:active {
+            transform: translateY(0);
+        }
+        
+        .verify-text {
+            font-size: 13px;
+        }
+        
+        .verify-result {
+            margin-left: 15px;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 13px;
+            min-width: 200px;
+            display: none;
+        }
+        
+        .verify-result.success {
+            display: block !important;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border: 1px solid #0ea5e9;
+            color: #0369a1;
+        }
+        
+        .verify-result.error {
+            display: block !important;
+            background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+            border: 1px solid #ef4444;
+            color: #dc2626;
+        }
+        
+        .result-section {
+            padding: 15px;
+        }
+        
+        .result-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+        
+        .result-item {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        
+        .result-label {
+            font-weight: bold;
+            color: #555;
+            font-size: 12px;
+            margin-bottom: 5px;
+        }
+        
+        .result-value {
+            font-weight: bold;
+            color: #667eea;
+            font-size: 18px;
+        }
+        
+        .tax-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            font-size: 11px;
+        }
+        
+        .tax-table th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 8px 4px;
+            text-align: center;
+            font-weight: bold;
+            border: 1px solid #5568d3;
+            font-size: 11px;
+        }
+        
+        .tax-table td {
+            padding: 6px 4px;
+            text-align: center;
+            border: 1px solid #e0e0e0;
+            color: #333;
+            font-size: 11px;
+        }
+        
+        .tax-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+        
+        .monthly-row {
+            background: #f8f9fa;
+        }
+        
+        .bonus-row {
+            background: linear-gradient(135deg, #e8f4f8 0%, #d6eaf8 100%);
+            font-weight: bold;
+        }
+        
+        .total-row {
+            background: linear-gradient(135deg, #fef9e7 0%, #fdebd0 100%);
+            font-weight: bold;
+        }
+        
+        .note {
+            background: linear-gradient(135deg, #fff9c4 0%, #ffeb3b 100%);
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 10px;
+            margin-top: 12px;
+            font-size: 12px;
+            color: #f57f17;
+            text-align: center;
+        }
+        
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+        
+        .loading-spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @media (max-width: 1024px) {
+            .result-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .input-row {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+            
+            .input-label {
+                width: 100%;
+            }
+            
+            .input-field {
+                width: 100%;
+                text-align: left;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .header {
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 24px;
+            }
+            
+            .input-section,
+            .result-section {
+                padding: 20px;
+            }
+            
+            .header-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .header-button {
+                width: 200px;
+                text-align: center;
+            }
+            
+            .tax-table {
+                font-size: 11px;
+            }
+            
+            .tax-table th,
+            .tax-table td {
+                padding: 8px;
+            }
+        }
+    </style>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://www.layuicdn.com/layui-v2.5.6/layui.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-title-row">
+                <h1>个人年收入优化模型（2026版）</h1>
+                <div class="price-tag">
+                    <span class="price">¥99.00</span>
+                    <span class="price-desc">/次</span>
+                </div>
+            </div>
+            <p>智能优化您的工资和年终奖分配，实现税负最小化</p>
+            <div class="header-back">
+                <a href="index.html">← 返回首页</a>
+            </div>
+            <div class="header-buttons">
+                <button class="header-button" id="calculateBtn">计算最优方案</button>
+                <button class="header-button" id="clearBtn">数据重置</button>
+            </div>
+        </div>
+        
+        <div class="input-section">
+            <div class="input-row">
+                <div class="input-label">输入年收入（含奖金）：</div>
+                <input type="number" class="input-field" id="annualIncome" placeholder="请输入年收入（含奖金）" value="1000000">
+            </div>
+            <div class="input-row">
+                <div class="input-label">输入实际申报专项扣除及专项附加扣除总额(元/月)：</div>
+                <input type="number" class="input-field" id="monthlyDeduction" placeholder="请输入月专项扣除" value="0">
+            </div>
+            <div class="input-row">
+                <div class="input-label">验证码：</div>
+                <button class="contact-btn" id="contactBtn" onclick="showContactInfo()">
+                    <span class="contact-icon">📱</span>
+                    <span class="contact-text">联系方式</span>
+                </button>
+                <input type="text" class="input-field" id="verifyCode" placeholder="请联系获取验证码" style="flex: 0 150px;">
+                <button class="verify-btn" id="verifyBtn" onclick="window.verifyCodeOnly()">
+                    <span class="verify-text">验证</span>
+                </button>
+                <div class="verify-result" id="verifyResult"></div>
+            </div>
+        </div>
+        
+        <div class="result-section" id="resultSection">
+            <div class="result-grid">
+                <div class="result-item">
+                    <div class="result-label">最优化月工资发放金额</div>
+                    <div class="result-value" id="optimalMonthlySalary">0.00</div>
+                </div>
+                <div class="result-item">
+                    <div class="result-label">最优化年终奖发放金额</div>
+                    <div class="result-value" id="optimalBonus">0.00</div>
+                </div>
+                <div class="result-item">
+                    <div class="result-label">实际到手工资金额</div>
+                    <div class="result-value" id="netIncome">0.00</div>
+                </div>
+                <div class="result-item">
+                    <div class="result-label">最优化税负率</div>
+                    <div class="result-value" id="optimalTaxRate">0.00%</div>
+                </div>
+            </div>
+            
+            <table class="tax-table">
+                <thead>
+                    <tr>
+                        <th>月份</th>
+                        <th>每月应发工资</th>
+                        <th>应发奖金</th>
+                        <th>扣除数</th>
+                        <th>速算扣除数</th>
+                        <th>税额</th>
+                        <th>税率</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="monthly-row">
+                        <td>1月份</td>
+                        <td id="month1Salary">0.00</td>
+                        <td id="month1Bonus">0.00</td>
+                        <td id="month1Deduction">0.00</td>
+                        <td id="month1QuickDeduction">0.00</td>
+                        <td id="month1Tax">0.00</td>
+                        <td id="month1Rate">0.00%</td>
+                    </tr>
+                    <tr class="monthly-row">
+                        <td>2月份</td>
+                        <td id="month2Salary">0.00</td>
+                        <td id="month2Bonus">0.00</td>
+                        <td id="month2Deduction">0.00</td>
+                        <td id="month2QuickDeduction">0.00</td>
+                        <td id="month2Tax">0.00</td>
+                        <td id="month2Rate">0.00%</td>
+                    </tr>
+                    <tr class="monthly-row">
+                        <td>3月份</td>
+                        <td id="month3Salary">0.00</td>
+                        <td id="month3Bonus">0.00</td>
+                        <td id="month3Deduction">0.00</td>
+                        <td id="month3QuickDeduction">0.00</td>
+                        <td id="month3Tax">0.00</td>
+                        <td id="month3Rate">0.00%</td>
+                    </tr>
+                    <tr class="monthly-row">
+                        <td>4月份</td>
+                        <td id="month4Salary">0.00</td>
+                        <td id="month4Bonus">0.00</td>
+                        <td id="month4Deduction">0.00</td>
+                        <td id="month4QuickDeduction">0.00</td>
+                        <td id="month4Tax">0.00</td>
+                        <td id="month4Rate">0.00%</td>
+                    </tr>
+                    <tr class="monthly-row">
+                        <td>5月份</td>
+                        <td id="month5Salary">0.00</td>
+                        <td id="month5Bonus">0.00</td>
+                        <td id="month5Deduction">0.00</td>
+                        <td id="month5QuickDeduction">0.00</td>
+                        <td id="month5Tax">0.00</td>
+                        <td id="month5Rate">0.00%</td>
+                    </tr>
+                    <tr class="monthly-row">
+                        <td>6月份</td>
+                        <td id="month6Salary">0.00</td>
+                        <td id="month6Bonus">0.00</td>
+                        <td id="month6Deduction">0.00</td>
+                        <td id="month6QuickDeduction">0.00</td>
+                        <td id="month6Tax">0.00</td>
+                        <td id="month6Rate">0.00%</td>
+                    </tr>
+                    <tr class="monthly-row">
+                        <td>7月份</td>
+                        <td id="month7Salary">0.00</td>
+                        <td id="month7Bonus">0.00</td>
+                        <td id="month7Deduction">0.00</td>
+                        <td id="month7QuickDeduction">0.00</td>
+                        <td id="month7Tax">0.00</td>
+                        <td id="month7Rate">0.00%</td>
+                    </tr>
+                    <tr class="monthly-row">
+                        <td>8月份</td>
+                        <td id="month8Salary">0.00</td>
+                        <td id="month8Bonus">0.00</td>
+                        <td id="month8Deduction">0.00</td>
+                        <td id="month8QuickDeduction">0.00</td>
+                        <td id="month8Tax">0.00</td>
+                        <td id="month8Rate">0.00%</td>
+                    </tr>
+                    <tr class="monthly-row">
+                        <td>9月份</td>
+                        <td id="month9Salary">0.00</td>
+                        <td id="month9Bonus">0.00</td>
+                        <td id="month9Deduction">0.00</td>
+                        <td id="month9QuickDeduction">0.00</td>
+                        <td id="month9Tax">0.00</td>
+                        <td id="month9Rate">0.00%</td>
+                    </tr>
+                    <tr class="monthly-row">
+                        <td>10月份</td>
+                        <td id="month10Salary">0.00</td>
+                        <td id="month10Bonus">0.00</td>
+                        <td id="month10Deduction">0.00</td>
+                        <td id="month10QuickDeduction">0.00</td>
+                        <td id="month10Tax">0.00</td>
+                        <td id="month10Rate">0.00%</td>
+                    </tr>
+                    <tr class="monthly-row">
+                        <td>11月份</td>
+                        <td id="month11Salary">0.00</td>
+                        <td id="month11Bonus">0.00</td>
+                        <td id="month11Deduction">0.00</td>
+                        <td id="month11QuickDeduction">0.00</td>
+                        <td id="month11Tax">0.00</td>
+                        <td id="month11Rate">0.00%</td>
+                    </tr>
+                    <tr class="monthly-row">
+                        <td>12月份</td>
+                        <td id="month12Salary">0.00</td>
+                        <td id="month12Bonus">0.00</td>
+                        <td id="month12Deduction">0.00</td>
+                        <td id="month12QuickDeduction">0.00</td>
+                        <td id="month12Tax">0.00</td>
+                        <td id="month12Rate">0.00%</td>
+                    </tr>
+                    <tr class="bonus-row">
+                        <td>全年一次性奖金</td>
+                        <td id="totalSalary">0.00</td>
+                        <td id="totalBonus">0.00</td>
+                        <td></td>
+                        <td></td>
+                        <td id="bonusTax">0.00</td>
+                        <td id="bonusRate">0.00%</td>
+                    </tr>
+                    <tr class="total-row">
+                        <td>全年纳税合计</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td id="totalTax">0.00</td>
+                        <td id="totalRate">0.00%</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="note">
+                备注：60000元以内不申报个人所得税，全年一次性奖金不计入工资总额分别申报
+            </div>
+        </div>
+    </div>
+
+    <script>
+        window.showContactInfo = function() {
+            layui.use('layer', function(){
+                var layer = layui.layer;
+                layer.open({
+                    type: 1,
+                    title: '扫码添加微信',
+                    area: ['420px', '550px'],
+                    content: '<div style="padding: 25px; text-align: center; overflow: hidden; -ms-overflow-style: none; scrollbar-width: none;">' +
+                             '<div style="background: white; padding: 15px; border: 1px solid #e5e5e5; border-radius: 8px; margin-bottom: 20px; display: inline-block;">' +
+                             '<img src="https://121.5.177.201/uploads/qrcode.jpg" alt="微信二维码" style="width: 300px; height: 300px; display: block; border-radius: 4px;">' +
+                             '</div>' +
+                             '<div style="font-size: 16px; color: #666; margin-bottom: 20px;">扫扫上面的二维码图案，加我为朋友</div>' +
+                             '<div style="font-size: 14px; color: #999; line-height: 1.6; margin-bottom: 20px;">' +
+                             '工作时间：周一至周五 9:00-18:00<br/>' +
+                             '响应时间：通常在1小时内回复' +
+                             '</div>' +
+                             '<style>/* 隐藏滚动条 */::-webkit-scrollbar {display: none;}</style>' +
+                             '</div>',
+                    btn: ['我知道了'],
+                    btnAlign: 'c',
+                    yes: function(index){
+                        layer.close(index);
+                    }
+                });
+            });
+        };
+        
+        window.verifyCodeOnly = function() {
+            console.log('verifyCodeOnly 函数被调用');
+            
+            var verifyCodeInput = $('#verifyCode').val().trim().toUpperCase();
+            var resultDiv = $('#verifyResult');
+            
+            console.log('验证码输入:', verifyCodeInput);
+            console.log('结果元素:', resultDiv.length);
+            
+            resultDiv.removeClass('success error').hide();
+            
+            if(verifyCodeInput === '') {
+                alert('请先输入验证码');
+                return;
+            }
+            
+            layui.use('layer', function(){
+                var layer = layui.layer;
+                layer.load();
+                
+                console.log('开始验证验证码:', verifyCodeInput);
+                
+                $.ajax({
+                    url: 'http://121.5.177.201/index.php?r=verify-code/verify',
+                    type: 'POST',
+                    data: {
+                        code: verifyCodeInput
+                    },
+                    dataType: 'json',
+                    beforeSend: function() {
+                        console.log('AJAX请求发送前');
+                    },
+                    success: function(response) {
+                        console.log('AJAX请求成功，验证结果:', response);
+                        layer.closeAll('loading');
+                        
+                        if(response.code === 0) {
+                            var remainingUsage = response.data.remaining_usage || 0;
+                            var remainingTime = response.data.remaining_time || 0;
+                            var verifiedAt = response.data.verified_at || '';
+                            
+                            var message = '验证码：' + response.data.verify_code + '，';
+                            message += '剩余 ' + remainingUsage + ' 次，' + remainingTime + ' 分钟';
+                            
+                            if(verifiedAt) {
+                                message += '，最后验证：' + verifiedAt;
+                            }
+                            
+                            console.log('设置成功消息:', message);
+                            resultDiv.html(message).addClass('success');
+                            console.log('成功消息已设置，元素内容:', resultDiv.html());
+                            
+                            if(remainingTime > 0) {
+                                startCountdown(remainingTime, resultDiv);
+                            }
+                        } else {
+                            var errorMsg = '无效';
+                            
+                            if(response.status === 'expired') {
+                                errorMsg = '已过期';
+                            } else if(response.status === 'used_up') {
+                                errorMsg = '已使用完毕';
+                            }
+                            
+                            if(response.data && response.data.remaining_time !== undefined) {
+                                errorMsg += '，剩余 ' + response.data.remaining_time + ' 分钟';
+                            }
+                            
+                            console.log('设置错误消息:', errorMsg);
+                            console.log('resultDiv元素:', resultDiv.length);
+                            resultDiv.html(errorMsg).addClass('error');
+                            console.log('错误消息已设置，元素内容:', resultDiv.html());
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.log('AJAX请求失败:', error);
+                        console.log('状态码:', xhr.status);
+                        console.log('响应文本:', xhr.responseText);
+                        layer.closeAll('loading');
+                        resultDiv.html('网络错误，请稍后重试').addClass('error');
+                    }
+                });
+            });
+        };
+        
+        var countdownTimer = null;
+        
+        function startCountdown(remainingMinutes, resultDiv) {
+            var totalSeconds = remainingMinutes * 60;
+            var remainingSeconds = totalSeconds;
+            
+            if(countdownTimer) {
+                clearInterval(countdownTimer);
+            }
+            
+            function updateCountdown() {
+                if(remainingSeconds <= 0) {
+                    clearInterval(countdownTimer);
+                    var currentText = resultDiv.text();
+                    var newText = currentText.replace(/\d+\s+分钟/, '0 分钟');
+                    resultDiv.text(newText);
+                    return;
+                }
+                
+                remainingSeconds--;
+                
+                var minutes = Math.floor(remainingSeconds / 60);
+                var seconds = remainingSeconds % 60;
+                
+                var timeStr = minutes + ' 分 ' + (seconds < 10 ? '0' : '') + seconds + ' 秒';
+                
+                var currentText = resultDiv.text();
+                var newText = currentText.replace(/\d+\s+分钟/, timeStr);
+                resultDiv.text(newText);
+            }
+            
+            updateCountdown();
+            countdownTimer = setInterval(updateCountdown, 1000);
+        }
+        
+        console.log('页面加载完成');
+        console.log('jQuery版本:', $.fn.jquery);
+        
+        // 缓存格式化函数，避免重复创建
+        const formatCurrency = (num) => num.toLocaleString('zh-CN', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+        const formatPercent = (num) => (num * 100).toFixed(2) + '%';
+        
+        // 综合所得税率表
+        function calculateComprehensiveTax(taxableIncome) {
+            if (taxableIncome <= 0) {
+                return 0;
+            }
+
+            const brackets = [
+                {limit: 36000, rate: 0.03, deduction: 0},
+                {limit: 144000, rate: 0.10, deduction: 2520},
+                {limit: 300000, rate: 0.20, deduction: 16920},
+                {limit: 420000, rate: 0.25, deduction: 31920},
+                {limit: 660000, rate: 0.30, deduction: 52920},
+                {limit: 960000, rate: 0.35, deduction: 85920},
+                {limit: Infinity, rate: 0.45, deduction: 181920},
+            ];
+
+            for (const bracket of brackets) {
+                if (taxableIncome <= bracket.limit) {
+                    return taxableIncome * bracket.rate - bracket.deduction;
+                }
+            }
+
+            return 0;
+        }
+        
+        // 计算月度税额详情
+        function calculateMonthlyTaxDetail(monthlySalary, monthlyDeduction) {
+            const monthlyResults = [];
+            let cumulativeIncome = 0;
+            let cumulativeTax = 0;
+
+            for (let month = 1; month <= 12; month++) {
+                cumulativeIncome += monthlySalary;
+                const cumulativeDeduction = (5000 + monthlyDeduction) * month;
+                const cumulativeTaxable = Math.max(0, cumulativeIncome - cumulativeDeduction);
+                const cumulativeTaxNew = calculateComprehensiveTax(cumulativeTaxable);
+
+                const currentTax = Math.max(0, cumulativeTaxNew - cumulativeTax);
+                cumulativeTax = cumulativeTaxNew;
+
+                let taxRate = 0;
+                let quickDeduction = 0;
+                const brackets = [
+                    {limit: 36000, rate: 0.03, quick_deduction: 0},
+                    {limit: 144000, rate: 0.10, quick_deduction: 2520},
+                    {limit: 300000, rate: 0.20, quick_deduction: 16920},
+                    {limit: 420000, rate: 0.25, quick_deduction: 31920},
+                    {limit: 660000, rate: 0.30, quick_deduction: 52920},
+                    {limit: 960000, rate: 0.35, quick_deduction: 85920},
+                    {limit: Infinity, rate: 0.45, quick_deduction: 181920}
+                ];
+
+                for (const bracket of brackets) {
+                    if (cumulativeTaxable <= bracket.limit) {
+                        taxRate = bracket.rate;
+                        quickDeduction = bracket.quick_deduction;
+                        break;
+                    }
+                }
+
+                monthlyResults.push({
+                    month: month,
+                    tax: currentTax,
+                    rate: taxRate,
+                    quick_deduction: quickDeduction
+                });
+            }
+
+            return monthlyResults;
+        }
+        
+        // 更新结果显示的函数
+        function updateResults(resultData, monthlyDeduction) {
+            // 更新结果
+            $('#optimalMonthlySalary').text(formatCurrency(resultData.monthly_salary));
+            $('#optimalBonus').text(formatCurrency(resultData.bonus));
+            $('#netIncome').text(formatCurrency(resultData.net_income));
+            $('#optimalTaxRate').text(resultData.tax_rate.toFixed(2) + '%');
+            
+            // 计算月度税额详情
+            var monthlyDetails = calculateMonthlyTaxDetail(resultData.monthly_salary, monthlyDeduction);
+            
+            // 缓存常用值
+            var monthlySalaryStr = formatCurrency(resultData.monthly_salary);
+            var bonusStr = formatCurrency(resultData.bonus);
+            var monthlyDeductionAmount = 5000 + monthlyDeduction;
+            var monthlyDeductionStr = formatCurrency(monthlyDeductionAmount);
+            
+            // 更新月度数据
+            for(var i = 1; i <= 12; i++){
+                var detail = monthlyDetails[i-1];
+                
+                // 更新每月应发工资
+                $('#month' + i + 'Salary').text(monthlySalaryStr);
+                
+                // 更新应发奖金（只在12月份显示全年一次性奖金）
+                var bonusAmount = (i === 12) ? resultData.bonus : 0;
+                $('#month' + i + 'Bonus').text(formatCurrency(bonusAmount));
+                
+                // 更新扣除数
+                $('#month' + i + 'Deduction').text(monthlyDeductionStr);
+                
+                // 更新速算扣除数
+                $('#month' + i + 'QuickDeduction').text(formatCurrency(detail.quick_deduction));
+                
+                // 更新月度税额
+                $('#month' + i + 'Tax').text(formatCurrency(detail.tax));
+                
+                // 更新税率
+                $('#month' + i + 'Rate').text(formatPercent(detail.rate));
+            }
+            
+            // 更新全年工资总额和奖金总额
+            var annualSalary = resultData.monthly_salary * 12;
+            $('#totalSalary').text(formatCurrency(annualSalary));
+            $('#totalBonus').text(bonusStr);
+            
+            // 更新奖金税额
+            $('#bonusTax').text(formatCurrency(resultData.bonus_tax));
+            $('#bonusRate').text('0.00%');
+            
+            // 更新总税额
+            $('#totalTax').text(formatCurrency(resultData.total_tax));
+            $('#totalRate').text('0.00%');
+            
+            // 显示结果
+            $('#resultSection').show();
+        }
+        
+        // 确保DOM加载完成
+        $(document).ready(function(){
+            console.log('DOM加载完成');
+            
+            // 检查按钮是否存在
+            console.log('计算按钮是否存在:', $('#calculateBtn').length);
+            console.log('清除按钮是否存在:', $('#clearBtn').length);
+            
+            // 年终奖税率表
+            function calculateBonusTax(bonusAmount) {
+                if (bonusAmount <= 0) {
+                    return 0;
+                }
+
+                const monthlyBonus = bonusAmount / 12;
+
+                const brackets = [
+                    {limit: 3000, rate: 0.03, deduction: 0},
+                    {limit: 12000, rate: 0.10, deduction: 210},
+                    {limit: 25000, rate: 0.20, deduction: 1410},
+                    {limit: 35000, rate: 0.25, deduction: 2660},
+                    {limit: 55000, rate: 0.30, deduction: 4410},
+                    {limit: 80000, rate: 0.35, deduction: 7160},
+                    {limit: Infinity, rate: 0.45, deduction: 15160},
+                ];
+
+                for (const bracket of brackets) {
+                    if (monthlyBonus <= bracket.limit) {
+                        return bonusAmount * bracket.rate - bracket.deduction;
+                    }
+                }
+
+                return 0;
+            }
+
+            // 计算最优分配
+            function calculateOptimalDistribution(annualIncome, monthlyDeduction) {
+                const yearlyDeduction = monthlyDeduction * 12;
+                const totalDeduction = 60000 + yearlyDeduction;
+
+                let bestResult = null;
+                let minTotalTax = Infinity;
+
+                // 优化步长策略，减少计算次数
+                const step = annualIncome > 1000000 ? 500 : (annualIncome > 500000 ? 100 : (annualIncome > 100000 ? 50 : (annualIncome > 50000 ? 10 : 1)));
+                
+                // 使用for循环代替while，性能更好
+                for (let bonus = 0; bonus <= annualIncome; bonus += step) {
+                    const salaryTotal = annualIncome - bonus;
+
+                    if (salaryTotal < 0) {
+                        continue;
+                    }
+
+                    const monthlySalary = salaryTotal / 12;
+                    const taxableIncome = Math.max(0, salaryTotal - totalDeduction);
+                    const salaryTax = calculateComprehensiveTax(taxableIncome);
+                    const bonusTax = calculateBonusTax(bonus);
+                    const totalTax = salaryTax + bonusTax;
+                    const totalTaxRounded = Math.round(totalTax * 100) / 100;
+
+                    if (totalTaxRounded < minTotalTax || (totalTaxRounded === minTotalTax && bestResult && bonus < bestResult.bonus)) {
+                        minTotalTax = totalTaxRounded;
+                        bestResult = {
+                            monthly_salary: monthlySalary,
+                            bonus: bonus,
+                            salary_tax: Math.round(salaryTax * 100) / 100,
+                            bonus_tax: Math.round(bonusTax * 100) / 100,
+                            total_tax: totalTaxRounded,
+                            net_income: Math.round((annualIncome - totalTaxRounded) * 100) / 100,
+                            tax_rate: annualIncome > 0 ? (totalTaxRounded / annualIncome) * 100 : 0
+                        };
+                    }
+                }
+
+                if (bestResult === null) {
+                    const monthlySalary = annualIncome / 12;
+                    const taxableIncome = Math.max(0, annualIncome - totalDeduction);
+                    const salaryTax = calculateComprehensiveTax(taxableIncome);
+                    bestResult = {
+                        monthly_salary: monthlySalary,
+                        bonus: 0,
+                        salary_tax: salaryTax,
+                        bonus_tax: 0,
+                        total_tax: salaryTax,
+                        net_income: annualIncome - salaryTax,
+                        tax_rate: annualIncome > 0 ? (salaryTax / annualIncome) * 100 : 0
+                    };
+                }
+
+                return bestResult;
+            }
+            
+            layui.use(['layer'], function(){
+                var layer = layui.layer;
+
+                $('#calculateBtn').click(function(){
+                    var annualIncome = parseFloat($('#annualIncome').val());
+                    var monthlyDeduction = parseFloat($('#monthlyDeduction').val()) || 0;
+                    var verifyCodeInput = $('#verifyCode').val().trim().toUpperCase();
+                    var resultDiv = $('#verifyResult');
+
+                    if(isNaN(annualIncome) || annualIncome <= 0){
+                        layer.msg('请输入有效的年收入', {icon: 2});
+                        return false;
+                    }
+                    
+                    // 检查验证码状态
+                    var resultText = resultDiv.text();
+                    var isUsedUp = resultText.indexOf('已使用完毕') !== -1;
+                    var isExpired = resultText.indexOf('已过期') !== -1;
+                    var isVerified = resultDiv.hasClass('success');
+                    var hasRemainingTime = false;
+                    
+                    // 无论验证码状态如何，都检查剩余时间
+                    var timeMatch = resultText.match(/剩余\s+(\d+)\s+分/);
+                    if(timeMatch) {
+                        var remainingMinutes = parseInt(timeMatch[1]);
+                        if(remainingMinutes > 0) {
+                            hasRemainingTime = true;
+                        }
+                    }
+                    
+                    if(isExpired) {
+                        layer.confirm('验证码已过期，请加好友获取验证码', {
+                            btn: ['加好友获取验证码', '取消'],
+                            title: '获取验证码'
+                        }, function(){
+                            $('#contactBtn').click();
+                        });
+                        return false;
+                    }
+                    
+                    if((isVerified || isUsedUp) && hasRemainingTime) {
+                        // 验证码已验证成功或已使用完毕，但有剩余时间，直接计算，不需要付费
+                        layer.load();
+
+                        requestAnimationFrame(function(){
+                            try {
+                                var annualIncome = parseFloat($('#annualIncome').val());
+                                var monthlyDeduction = parseFloat($('#monthlyDeduction').val()) || 0;
+                                
+                                resultData = calculateOptimalDistribution(annualIncome, monthlyDeduction);
+                                
+                                updateResults(resultData, monthlyDeduction);
+                                
+                                layer.msg('优化计算成功', {icon: 1});
+                            } catch (error) {
+                                layer.msg('计算错误: ' + error.message, {icon: 2});
+                            } finally {
+                                layer.closeAll('loading');
+                            }
+                        });
+                    } else {
+                        // 未验证、验证码错误或无剩余时间，显示付费提示，但本次只显示模拟数据
+                        layer.confirm('使用个人年收入优化模型（2026版）需要付费 ¥99.00/次，本次只显示模拟数据，是否继续？', {
+                            btn: ['继续查看模拟数据', '加我好友'],
+                            title: '收费提示'
+                        }, function(){
+                            layer.msg('正在显示模拟数据...', {icon: 1});
+                            
+                            layer.load();
+
+                            requestAnimationFrame(function(){
+                                try {
+                                    var annualIncome = parseFloat($('#annualIncome').val());
+                                    var monthlyDeduction = parseFloat($('#monthlyDeduction').val()) || 0;
+                                    
+                                    var resultData = {
+                                        monthly_salary: 83333,
+                                        bonus: 100000,
+                                        net_income: 850000,
+                                        tax_rate: 15.0,
+                                        total_tax: 150000,
+                                        bonus_tax: 30000
+                                    };
+                                    
+                                    updateResults(resultData, monthlyDeduction);
+                                    
+                                    layer.msg('模拟数据已显示，仅供参考', {icon: 0});
+                                } catch (error) {
+                                    layer.msg('计算错误: ' + error.message, {icon: 2});
+                                } finally {
+                                    layer.closeAll('loading');
+                                }
+                            });
+                        }, function(){
+                            $('#contactBtn').click();
+                        });
+                    }
+                });
+
+                $('#clearBtn').click(function(){
+                    $('#annualIncome').val('0');
+                    $('#monthlyDeduction').val('0');
+                    $('#resultSection').hide();
+                    layer.msg('数据已清除', {icon: 0});
+                });
+            });
+        });
+    </script>
+</body>
+</html>
