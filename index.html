@@ -19,7 +19,7 @@
                 <li><a href="products.html">产品展示</a></li>
                 <li><a href="about.html">关于我们</a></li>
                 <li><a href="contact.html">联系我们</a></li>
-                <li><a href="http://121.5.177.201/" target="_blank" class="admin-link">产品介绍</a></li>
+                <li><a href="redirect.html" class="admin-link">产品介绍</a></li>
             </ul>
         </div>
     </nav>
@@ -80,7 +80,8 @@
     <script src="js/env-config.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            var adminLinks = document.querySelectorAll('.admin-link');
+            // 只处理管理后台链接，不处理产品介绍链接
+            var adminLinks = document.querySelectorAll('.admin-link:not([href="redirect.html"])');
             adminLinks.forEach(function(link) {
                 link.href = EnvConfig.getLoginUrl();
             });
