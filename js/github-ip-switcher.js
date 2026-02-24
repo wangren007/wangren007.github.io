@@ -13,7 +13,7 @@
     ];
 
     // 检测阈值（毫秒）
-    const SLOW_THRESHOLD = 2000; // 超过2秒视为慢
+    const SLOW_THRESHOLD = 1000; // 超过1秒视为慢
 
     // 测试路径
     const TEST_PATH = '/favicon.ico'; // 测试用的小文件
