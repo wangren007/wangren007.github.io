@@ -688,6 +688,7 @@
             
             console.log('验证码输入:', verifyCodeInput);
             console.log('结果元素:', resultDiv.length);
+            console.log('EnvConfig是否存在:', typeof window.EnvConfig);
             
             resultDiv.removeClass('success error').hide();
             
@@ -705,19 +706,22 @@
                 var baseUrl = window.EnvConfig ? window.EnvConfig.getBaseUrl() : 'http://121.5.177.201';
                 console.log('当前环境:', window.EnvConfig ? window.EnvConfig.getEnvName() : '默认');
                 console.log('后端地址:', baseUrl);
+                console.log('完整请求URL:', baseUrl + '/index.php?r=verify-code/verify');
                 
                 $.ajax({
                     url: baseUrl + '/index.php?r=verify-code/verify',
                     type: 'POST',
-                    data: {
-                        code: verifyCodeInput
-                    },
+                    data: 'code=' + encodeURIComponent(verifyCodeInput),
                     dataType: 'json',
                     beforeSend: function() {
                         console.log('AJAX请求发送前');
+                        console.log('请求URL:', baseUrl + '/index.php?r=verify-code/verify');
+                        console.log('请求数据:', 'code=' + verifyCodeInput);
                     },
                     success: function(response) {
                         console.log('AJAX请求成功，验证结果:', response);
+                        console.log('响应code:', response.code);
+                        console.log('响应status:', response.status);
                         layer.closeAll('loading');
                         
                         if(response.code === 0) {
@@ -740,7 +744,9 @@
                                 startCountdown(remainingTime, resultDiv);
                             }
                         } else {
-                            var errorMsg = '无效';
+                            console.log('验证码验证失败，code:', response.code, 'msg:', response.msg, 'status:', response.status);
+                            
+                            var errorMsg = response.msg || '验证码无效';
                             
                             if(response.status === 'expired') {
                                 errorMsg = '已过期';
@@ -762,6 +768,7 @@
                         console.log('AJAX请求失败:', error);
                         console.log('状态码:', xhr.status);
                         console.log('响应文本:', xhr.responseText);
+                        console.log('完整错误对象:', xhr);
                         layer.closeAll('loading');
                         resultDiv.html('网络错误，请稍后重试').addClass('error');
                     }
@@ -1036,7 +1043,10 @@
             layui.use(['layer'], function(){
                 var layer = layui.layer;
 
-                $('#calculateBtn').click(function(){
+                // 避免重复绑定事件，先解绑
+                $('#calculateBtn').off('click');
+                
+                $('#calculateBtn').on('click', function(){
                     var annualIncome = parseFloat($('#annualIncome').val());
                     var monthlyDeduction = parseFloat($('#monthlyDeduction').val()) || 0;
                     var verifyCodeInput = $('#verifyCode').val().trim().toUpperCase();
@@ -1132,7 +1142,10 @@
                     }
                 });
 
-                $('#clearBtn').click(function(){
+                // 避免重复绑定事件，先解绑
+                $('#clearBtn').off('click');
+                
+                $('#clearBtn').on('click', function(){
                     $('#annualIncome').val('0');
                     $('#monthlyDeduction').val('0');
                     $('#resultSection').hide();
