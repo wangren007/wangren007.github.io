@@ -26,8 +26,7 @@
     }
 
     function getCurrentEnv() {
-        var savedEnv = localStorage.getItem('currentEnv');
-        return savedEnv && ENV_CONFIG[savedEnv] ? savedEnv : currentEnv;
+        return currentEnv;
     }
 
     function getConfig() {
