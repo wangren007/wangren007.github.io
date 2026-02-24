@@ -9,8 +9,8 @@
         },
         production: {
             name: '生产环境',
-            baseUrl: 'https://52order.com',
-            loginUrl: 'https://52order.com/login'
+            baseUrl: 'http://121.5.177.201',
+            loginUrl: 'http://121.5.177.201/login'
         }
     };
 
