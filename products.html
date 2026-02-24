@@ -8,6 +8,199 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/products.css">
     <link rel="stylesheet" href="css/responsive.css">
+    <style>
+        /* 财务工具专题样式 */
+        .finance-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 0;
+            margin-bottom: 40px;
+        }
+        
+        .finance-section .container {
+            text-align: center;
+        }
+        
+        .finance-section h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            font-weight: 800;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .finance-section p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .tool-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+        
+        .tool-header {
+            padding: 30px;
+            text-align: center;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+        }
+        
+        .tool-header h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .tool-header p {
+            font-size: 14px;
+            opacity: 0.9;
+            margin: 0;
+        }
+        
+        .tool-body {
+            padding: 30px;
+        }
+        
+        .tool-features {
+            margin-bottom: 25px;
+        }
+        
+        .tool-feature {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            font-size: 14px;
+            color: #333;
+        }
+        
+        .tool-feature::before {
+            content: '✓';
+            color: #28a745;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .tool-actions {
+            text-align: center;
+        }
+        
+        .tool-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        .tool-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .tool-btn.secondary {
+            background: #6c757d;
+            margin-left: 10px;
+        }
+        
+        .tool-btn.secondary:hover {
+            box-shadow: 0 5px 15px rgba(108, 117, 125, 0.4);
+        }
+        
+        /* 响应式调整 */
+        @media (max-width: 768px) {
+            .finance-section h2 {
+                font-size: 28px;
+            }
+            
+            .tools-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .tool-header {
+                padding: 20px;
+            }
+            
+            .tool-body {
+                padding: 20px;
+            }
+            
+            .tool-btn {
+                display: block;
+                width: 100%;
+                margin-bottom: 10px;
+                margin-left: 0;
+                text-align: center;
+            }
+        }
+        
+        /* 产品介绍样式 */
+        .product-intro {
+            background: #f8f9fa;
+            padding: 60px 0;
+            margin-top: 40px;
+        }
+        
+        .product-intro .container {
+            text-align: center;
+        }
+        
+        .product-intro h2 {
+            font-size: 30px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        .product-intro p {
+            font-size: 16px;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        
+        .admin-link-box {
+            margin-top: 30px;
+        }
+        
+        .admin-btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .admin-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(40, 167, 69, 0.4);
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar">
@@ -20,6 +213,8 @@
                 <li><a href="products.html" class="active">产品展示</a></li>
                 <li><a href="about.html">关于我们</a></li>
                 <li><a href="contact.html">联系我们</a></li>
+                <li><a href="tax-calculator.html">个税计算器</a></li>
+                <li><a href="tax-optimizer.html">个税优化</a></li>
             </ul>
         </div>
     </nav>
@@ -31,13 +226,68 @@
         </div>
     </section>
 
-    <section class="products-section">
+    <!-- 财务工具专题 -->
+    <section class="finance-section">
         <div class="container">
-            <div id="products-loading" class="loading">
-                <p>加载中...</p>
+            <h2>智能财务工具</h2>
+            <p>专业的个人所得税计算与优化解决方案</p>
+            
+            <div class="tools-grid">
+                <!-- 个税计算器 -->
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <h3>个税计算器</h3>
+                        <p>2026版 - 快速准确计算</p>
+                    </div>
+                    <div class="tool-body">
+                        <div class="tool-features">
+                            <div class="tool-feature">支持2026年最新个税政策</div>
+                            <div class="tool-feature">快速计算月度和年度税额</div>
+                            <div class="tool-feature">详细的税费构成分析</div>
+                            <div class="tool-feature">支持专项附加扣除</div>
+                            <div class="tool-feature">年终奖单独计税</div>
+                            <div class="tool-feature">直观的税负率展示</div>
+                        </div>
+                        <div class="tool-actions">
+                            <a href="tax-calculator.html" class="tool-btn">立即使用</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 个税优化 -->
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <h3>个税优化模型</h3>
+                        <p>专业版 - 智能筹划方案</p>
+                    </div>
+                    <div class="tool-body">
+                        <div class="tool-features">
+                            <div class="tool-feature">智能工资奖金分配方案</div>
+                            <div class="tool-feature">最大化税后收入</div>
+                            <div class="tool-feature">详细的优化分析报告</div>
+                            <div class="tool-feature">月度税额趋势图</div>
+                            <div class="tool-feature">专业税务筹划建议</div>
+                            <div class="tool-feature">实时政策更新</div>
+                        </div>
+                        <div class="tool-actions">
+                            <a href="tax-optimizer.html" class="tool-btn">立即使用</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div id="products-error" class="error-message" style="display: none;"></div>
-            <div id="products-container" class="products-grid"></div>
+        </div>
+    </section>
+
+    <!-- 产品介绍 -->
+    <section class="product-intro">
+        <div class="container">
+            <h2>更多企业级产品</h2>
+            <p>除了个人财务工具，我们还提供专业的企业级解决方案，帮助企业实现数字化转型，提升核心竞争力。</p>
+            <div class="admin-link-box">
+                <a href="redirect.html" class="admin-btn">
+                    <span>查看企业产品</span>
+                </a>
+            </div>
         </div>
     </section>
 
@@ -47,48 +297,18 @@
         </div>
     </footer>
 
-    <script src="js/api.js"></script>
+    <script src="js/env-config.js"></script>
+    <script src="js/github-ip-switcher.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            var loadingEl = document.getElementById('products-loading');
-            var errorEl = document.getElementById('products-error');
-            var containerEl = document.getElementById('products-container');
-
-            ApiService.getProducts()
-                .then(function(products) {
-                    loadingEl.style.display = 'none';
-                    
-                    if (products.length === 0) {
-                        errorEl.textContent = '暂无产品数据';
-                        errorEl.style.display = 'block';
-                        return;
-                    }
-
-                    var html = '';
-                    products.forEach(function(product) {
-                        html += '<div class="product-card">';
-                        html += '<div class="product-image">';
-                        html += '<img src="' + (product.image || 'images/default-product.jpg') + '" alt="' + product.name + '">';
-                        html += '</div>';
-                        html += '<div class="product-info">';
-                        html += '<h3>' + product.name + '</h3>';
-                        html += '<p class="product-desc">' + (product.description || '暂无描述') + '</p>';
-                        if (product.price) {
-                            html += '<p class="product-price">¥' + product.price + '</p>';
-                        }
-                        html += '</div>';
-                        html += '</div>';
-                    });
-
-                    containerEl.innerHTML = html;
-                })
-                .catch(function(error) {
-                    loadingEl.style.display = 'none';
-                    errorEl.textContent = '加载失败：' + error.message;
-                    errorEl.style.display = 'block';
-                });
+            // 导航菜单高亮
+            var navLinks = document.querySelectorAll('.nav-menu a');
+            navLinks.forEach(function(link) {
+                if (link.href === window.location.href) {
+                    link.classList.add('active');
+                }
+            });
         });
     </script>
-    <script src="js/github-ip-switcher.js"></script>
 </body>
 </html>
