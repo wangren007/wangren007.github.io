@@ -4,9 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>个税计算器 - 明润智讯</title>
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/responsive.css">
     <style>
         * {
             margin: 0;
@@ -15,8 +12,8 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Microsoft YaHei', 'PingFang SC', Arial, sans-serif;
+            background: #f0f4f8;
             min-height: 100vh;
             padding: 15px;
             color: #1e293b;
@@ -331,29 +328,18 @@
             }
         }
     </style>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://www.layuicdn.com/layui-v2.5.6/layui.js"></script>
+    <script src="js/env-config.js?v=2"></script>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="container">
-            <div class="logo">
-                <img src="images/logo.png" alt="公司Logo">
-            </div>
-            <ul class="nav-menu">
-                <li><a href="index.html">首页</a></li>
-                <li><a href="products.html">产品展示</a></li>
-                <li><a href="about.html">关于我们</a></li>
-                <li><a href="contact.html">联系我们</a></li>
-                <li><a href="tax-calculator.html" class="active">个税计算器</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <div class="container" style="margin-top: 40px;">
+    <div class="container">
         <div class="header">
-            <h1>个税计算器（2026版）</h1>
-            <p>快速计算您的个人所得税，了解收入详情</p>
-            <div class="header-back">
-                <a href="index.html">← 返回首页</a>
+            <div class="header-title-row"></div>
+                <h1>个税计算器（2026版）</h1>
+                <p>快速计算您的个人所得税，了解收入详情</p>
+                <div class="header-back">
+                    <a href="index.html">← 返回首页</a>
             </div>
             <p style="color: #fff; font-size: 14px; margin: 5px 0 15px; text-align: right; font-weight: 700;">
                 个税最优方案请点击: <a href="tax-optimizer.html" style="color: #fbbf24; text-decoration: underline; font-weight: 800; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);">个税优化</a>
@@ -363,6 +349,7 @@
                 <button type="button" class="header-button" id="resetBtn">清空重置</button>
             </div>
         </div>
+        
         <div class="content-wrapper">
             <div class="input-section">
                 <div class="section-title">您的收入</div>
