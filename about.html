@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关于我们 - 明润智讯</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <style>
+        /* 全局科技风样式 */
+        :root {
+            --primary-color: #00d4ff;
+            --secondary-color: #9d00ff;
+            --accent-color: #ff006e;
+            --bg-dark: #0a0a10;
+            --bg-darker: #050508;
+            --text-light: #e0e0e0;
+            --text-muted: #a0a0a0;
+            --card-bg: rgba(15, 15, 25, 0.8);
+            --glow-primary: 0 0 15px rgba(0, 212, 255, 0.5);
+            --glow-secondary: 0 0 15px rgba(157, 0, 255, 0.5);
+        }
+        
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            font-family: 'Arial', sans-serif;
+            overflow-x: hidden;
+        }
+        
+        .navbar {
+            background-color: rgba(10, 10, 16, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 212, 255, 0.1);
+        }
+        
+        .navbar a {
+            color: var(--text-light);
+            transition: all 0.3s ease;
+        }
+        
+        .navbar a:hover,
+        .navbar a.active {
+            color: var(--primary-color);
+            text-shadow: var(--glow-primary);
+        }
+        
+        /* 科技风背景 */
+        .tech-bg {
+            position: relative;
+            overflow: hidden;
+            background-color: var(--bg-dark);
+        }
+        
+        .tech-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                linear-gradient(45deg, transparent 49%, rgba(0, 212, 255, 0.03) 49%, rgba(0, 212, 255, 0.03) 51%, transparent 51%),
+                linear-gradient(-45deg, transparent 49%, rgba(157, 0, 255, 0.03) 49%, rgba(157, 0, 255, 0.03) 51%, transparent 51%);
+            background-size: 25px 25px;
+            animation: gridMove 25s linear infinite;
+            pointer-events: none;
+        }
+        
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(25px, 25px); }
+        }
+        
+        /* 粒子效果 */
+        .tech-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            animation: particleFloat 10s ease-in-out infinite;
+        }
+        
+        @keyframes particleFloat {
+            0%, 100% { opacity: 0; transform: translateY(0) translateX(0); }
+            50% { opacity: 1; transform: translateY(-60px) translateX(30px); }
+        }
+        
+        /* 科技风卡片 */
+        .tech-card {
+            position: relative;
+            overflow: hidden;
+            background-color: var(--card-bg);
+            border: 1px solid rgba(0, 212, 255, 0.1);
+            border-radius: 8px;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .tech-card::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: radial-gradient(circle, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
+            transition: all 0.6s ease;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+        }
+        
+        .tech-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--glow-primary);
+            border-color: var(--primary-color);
+        }
+        
+        .tech-card:hover::after {
+            width: 400px;
+            height: 400px;
+        }
+        
+        /* 科技风图标 */
+        .tech-icon {
+            position: relative;
+            transition: all 0.4s ease;
+        }
+        
+        .tech-icon::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 80%;
+            height: 80%;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            opacity: 0;
+            transition: all 0.4s ease;
+            filter: blur(10px);
+        }
+        
+        .tech-card:hover .tech-icon::before {
+            transform: translate(-50%, -50%) scale(1.2);
+            opacity: 0.3;
+        }
+        
+        /* 时间线样式 */
+        .timeline-line {
+            position: relative;
+        }
+        
+        .timeline-line::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary-color), var(--secondary-color));
+            transform: translateX(-50%);
+            animation: lineGlow 3s ease-in-out infinite;
+        }
+        
+        @keyframes lineGlow {
+            0%, 100% { box-shadow: 0 0 10px rgba(0, 212, 255, 0.5); }
+            50% { box-shadow: 0 0 20px rgba(157, 0, 255, 0.5); }
+        }
+        
+        /* 团队成员样式 */
+        .team-member {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+        
+        .team-member::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.1), transparent);
+            transition: all 0.6s ease;
+        }
+        
+        .team-member:hover::before {
+            left: 100%;
+        }
+        
+        .member-avatar {
+            position: relative;
+            overflow: hidden;
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+        }
+        
+        .member-avatar::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 48px;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .team-member:nth-child(1) .member-avatar::after {
+            content: '张';
+        }
+        
+        .team-member:nth-child(2) .member-avatar::after {
+            content: '李';
+        }
+        
+        .team-member:nth-child(3) .member-avatar::after {
+            content: '王';
+        }
+        
+        .team-member:nth-child(4) .member-avatar::after {
+            content: '赵';
+        }
+        
+        .member-avatar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            opacity: 0;
+            transition: all 0.4s ease;
+            mix-blend-mode: overlay;
+        }
+        
+        .team-member:hover .member-avatar::before {
+            opacity: 0.5;
+        }
+        
+        /* 按钮样式 */
+        .btn {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            border: 1px solid var(--primary-color);
+            background-color: transparent;
+            color: var(--primary-color);
+            padding: 10px 24px;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn:hover {
+            background-color: var(--primary-color);
+            color: var(--bg-dark);
+            box-shadow: var(--glow-primary);
+        }
+        
+        .btn-primary {
+            background-color: rgba(0, 212, 255, 0.1);
+        }
+        
+        .btn-secondary {
+            border-color: var(--secondary-color);
+            color: var(--secondary-color);
+        }
+        
+        .btn-secondary:hover {
+            background-color: var(--secondary-color);
+            box-shadow: var(--glow-secondary);
+        }
+        
+        /* 页面标题样式 */
+        .page-header {
+            position: relative;
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+        }
+        
+        .page-header p {
+            font-size: 20px;
+            color: var(--text-muted);
+        }
+        
+        /* 容器样式 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* 章节样式 */
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-header h2 {
+            font-size: 36px;
+            margin-bottom: 15px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .section-header p {
+            font-size: 18px;
+            color: var(--text-muted);
+        }
+        
+        /* 公司简介样式 */
+        .intro-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .intro-text {
+            flex: 1;
+            min-width: 300px;
+            padding: 40px;
+        }
+        
+        .intro-text h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+        
+        .intro-text p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            color: var(--text-light);
+        }
+        
+        .image-placeholder {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 60px;
+        }
+        
+        /* 优势列表样式 */
+        .advantage-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .advantage-item {
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .advantage-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .advantage-item h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+        
+        .advantage-item p {
+            font-size: 14px;
+            line-height: 1.5;
+            color: var(--text-muted);
+        }
+        
+        /* 时间线样式 */
+        .timeline {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .timeline-item {
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .timeline-content {
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .timeline-content h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        
+        .timeline-content p {
+            font-size: 14px;
+            line-height: 1.5;
+            color: var(--text-muted);
+        }
+        
+        /* 团队列表样式 */
+        .team-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .team-member {
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .team-member h3 {
+            font-size: 20px;
+            margin-bottom: 5px;
+            color: var(--primary-color);
+        }
+        
+        .team-member p {
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 10px;
+            color: var(--text-muted);
+        }
+        
+        /* CTA 样式 */
+        .cta {
+            text-align: center;
+            padding: 100px 0;
+        }
+        
+        .cta h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .cta p {
+            font-size: 18px;
+            margin-bottom: 40px;
+            color: var(--text-muted);
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        /* 页脚样式 */
+        .footer {
+            background-color: var(--bg-darker);
+            border-top: 1px solid rgba(0, 212, 255, 0.1);
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-section h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+        
+        .footer-section p {
+            font-size: 14px;
+            line-height: 1.5;
+            color: var(--text-muted);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .contact-info {
+            list-style: none;
+        }
+        
+        .contact-info li {
+            margin-bottom: 10px;
+            color: var(--text-muted);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(0, 212, 255, 0.1);
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .tech-bg::before {
+                background-size: 20px 20px;
+            }
+            
+            @keyframes gridMove {
+                0% { transform: translate(0, 0); }
+                100% { transform: translate(20px, 20px); }
+            }
+            
+            .page-header {
+                padding: 80px 0;
+            }
+            
+            .page-header h1 {
+                font-size: 36px;
+            }
+            
+            .section-header h2 {
+                font-size: 28px;
+            }
+            
+            .intro-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .intro-text,
+            .image-placeholder {
+                min-width: 100%;
+            }
+            
+            .timeline-line::after {
+                left: 20px;
+            }
+            
+            .timeline-content {
+                text-align: left;
+                padding-left: 60px;
+            }
+            
+            .advantage-list,
+            .team-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                text-align: center;
+            }
+        }
+        
+        /* 加载动画 */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+        
+        /* 发光边框效果 */
+        .glow-border {
+            position: relative;
+        }
+        
+        .glow-border::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color), var(--accent-color), var(--primary-color));
+            border-radius: 8px;
+            z-index: -1;
+            animation: glowBorder 3s linear infinite;
+            background-size: 400%;
+        }
+        
+        @keyframes glowBorder {
+            0% { background-position: 0 0; }
+            100% { background-position: 400% 0; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <img src="images/logo.png" alt="公司Logo">
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="products.html">产品展示</a></li>
+                <li><a href="about.html" class="active">关于我们</a></li>
+                <li><a href="tax-calculator.html">个税计算器</a></li>
+                <li><a href="tax-optimizer.html">个税优化</a></li>
+                <li><a href="redirect.html" class="admin-link">产品介绍</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="page-header tech-bg">
+        <div class="tech-particles" id="particles"></div>
+        <div class="container">
+            <h1>关于我们</h1>
+            <p>了解明润智讯的故事、使命和愿景</p>
+        </div>
+    </header>
+
+    <section class="company-intro tech-bg">
+        <div class="container">
+            <div class="intro-content">
+                <div class="intro-text tech-card glow-border">
+                    <h2>公司简介</h2>
+                    <p>明润智讯是一家专注于为企业提供全方位科技服务的公司。我们致力于通过技术创新和优质服务，帮助客户实现数字化转型，提升核心竞争力。</p>
+                    <p>我们的团队拥有丰富的行业经验和深厚的技术积累，能够为客户提供从需求分析、方案设计到系统开发、运维支持的全流程服务。</p>
+                    <p>我们秉承"客户至上，创新引领"的理念，不断提升服务质量和技术水平，为客户创造更大的价值。</p>
+                </div>
+                <div class="image-placeholder tech-card">
+                    <div class="tech-icon">
+                        <svg width="160" height="160" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="80" cy="80" r="70" stroke="var(--primary-color)" stroke-width="2" stroke-dasharray="8 8"/>
+                            <circle cx="80" cy="80" r="40" stroke="var(--primary-color)" stroke-width="2"/>
+                            <circle cx="80" cy="80" r="15" fill="var(--primary-color)"/>
+                            <path d="M80 20V35M80 125V140M20 80H35M125 80H140" stroke="var(--primary-color)" stroke-width="2"/>
+                            <path d="M35.36 35.36L49.5 49.5M110.5 110.5L124.64 124.64M35.36 124.64L49.5 110.5M110.5 49.5L124.64 35.36" stroke="var(--primary-color)" stroke-width="2"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="company-advantages tech-bg">
+        <div class="container">
+            <div class="section-header">
+                <h2>我们的优势</h2>
+                <p>为什么选择明润智讯</p>
+            </div>
+            <div class="advantage-list">
+                <div class="advantage-item tech-card">
+                    <div class="advantage-icon tech-icon">
+                        <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M40 10L60 20V60C60 65.5228 55.5228 70 50 70H30C24.4772 70 20 65.5228 20 60V20L40 10Z" stroke="var(--primary-color)" stroke-width="2" stroke-linejoin="round"/>
+                            <path d="M30 30H50" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M30 40H50" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M30 50H45" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3>专业技术</h3>
+                    <p>拥有深厚的技术积累和丰富的项目经验，能够为客户提供专业的技术解决方案。</p>
+                </div>
+                <div class="advantage-item tech-card">
+                    <div class="advantage-icon tech-icon">
+                        <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M40 10L60 20V60C60 65.5228 55.5228 70 50 70H30C24.4772 70 20 65.5228 20 60V20L40 10Z" stroke="var(--primary-color)" stroke-width="2" stroke-linejoin="round"/>
+                            <path d="M40 30V50" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M30 40L50 40" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3>优质服务</h3>
+                    <p>以客户为中心，提供全方位的服务保障，确保项目顺利交付。</p>
+                </div>
+                <div class="advantage-item tech-card">
+                    <div class="advantage-icon tech-icon">
+                        <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M40 10L60 20V60C60 65.5228 55.5228 70 50 70H30C24.4772 70 20 65.5228 20 60V20L40 10Z" stroke="var(--primary-color)" stroke-width="2" stroke-linejoin="round"/>
+                            <path d="M20 30L30 37.5L40 27.5" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3>创新精神</h3>
+                    <p>不断探索前沿技术，为客户提供创新的解决方案。</p>
+                </div>
+                <div class="advantage-item tech-card">
+                    <div class="advantage-icon tech-icon">
+                        <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M40 10L60 20V60C60 65.5228 55.5228 70 50 70H30C24.4772 70 20 65.5228 20 60V20L40 10Z" stroke="var(--primary-color)" stroke-width="2" stroke-linejoin="round"/>
+                            <path d="M15 10L30 22.5L45 10" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M15 30L30 42.5L45 30" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M15 50L30 37.5L45 50" stroke="var(--primary-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3>经验丰富</h3>
+                    <p>多年行业经验，服务过众多知名企业，积累了丰富的项目经验。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="development-history tech-bg">
+        <div class="container">
+            <div class="section-header">
+                <h2>发展历程</h2>
+                <p>见证我们的成长与发展</p>
+            </div>
+            <div class="timeline timeline-line">
+                <div class="timeline-item">
+                    <div class="timeline-content tech-card">
+                        <h3>2024年</h3>
+                        <p>公司成立，专注于为企业提供全方位科技服务，开始承接第一个大型项目。</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content tech-card">
+                        <h3>2025年</h3>
+                        <p>业务快速扩张，服务客户超过100家，团队规模扩大到50人。</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content tech-card">
+                        <h3>2026年</h3>
+                        <p>推出自主研发的SaaS产品，获得多项技术专利，成为行业领先企业。</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content tech-card">
+                        <h3>未来</h3>
+                        <p>继续深耕技术创新，拓展国际市场，成为全球领先的科技服务提供商。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="team tech-bg">
+        <div class="container">
+            <div class="section-header">
+                <h2>核心团队</h2>
+                <p>认识我们的团队成员</p>
+            </div>
+            <div class="team-list">
+                <div class="team-member tech-card">
+                    <div class="member-avatar"></div>
+                    <h3>张总</h3>
+                    <p>创始人 & CEO</p>
+                    <p>拥有15年科技行业经验，曾任职于多家知名科技公司。</p>
+                </div>
+                <div class="team-member tech-card">
+                    <div class="member-avatar"></div>
+                    <h3>李总</h3>
+                    <p>技术总监</p>
+                    <p>资深技术专家，拥有丰富的系统架构和项目管理经验。</p>
+                </div>
+                <div class="team-member tech-card">
+                    <div class="member-avatar"></div>
+                    <h3>王总</h3>
+                    <p>运营总监</p>
+                    <p>精通企业运营管理，致力于为客户提供优质服务。</p>
+                </div>
+                <div class="team-member tech-card">
+                    <div class="member-avatar"></div>
+                    <h3>赵总</h3>
+                    <p>市场总监</p>
+                    <p>资深市场营销专家，拥有丰富的品牌推广和渠道建设经验。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <script src="js/env-config.js"></script>
+    <script src="js/github-ip-switcher.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var adminLinks = document.querySelectorAll('.admin-link');
+            adminLinks.forEach(function(link) {
+                link.href = EnvConfig.getProductIntroUrl();
+            });
+            
+            // 创建粒子效果
+            createParticles();
+            
+            // 添加滚动动画
+            addScrollAnimations();
+        });
+        
+        function createParticles() {
+            var particlesContainer = document.getElementById('particles');
+            if (!particlesContainer) return;
+            
+            for (var i = 0; i < 80; i++) {
+                var particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 10 + 's';
+                particle.style.animationDuration = (Math.random() * 5 + 8) + 's';
+                
+                // 随机颜色
+                var colors = ['var(--primary-color)', 'var(--secondary-color)', 'var(--accent-color)'];
+                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+        
+        function addScrollAnimations() {
+            var elements = document.querySelectorAll('.tech-card');
+            
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            elements.forEach(function(element) {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(30px)';
+                element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(element);
+            });
+        }
+    </script>
+    <script src="js/main.js"></script>
+</body>
+</html>
