@@ -4,8 +4,8 @@
     var ENV_CONFIG = {
         local: {
             name: '本地环境',
-            baseUrl: 'http://52order.com',
-            loginUrl: 'http://52order.com/login'
+            baseUrl: 'http://127.0.0.1',
+            loginUrl: 'http://127.0.0.1/login'
         },
         production: {
             name: '生产环境',
