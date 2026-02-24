@@ -21,9 +21,9 @@
     // 当前域名
     const CURRENT_DOMAIN = window.location.hostname;
 
-    // 检测是否在 GitHub Pages 上
+    // 检测是否在 GitHub Pages 上或使用52order.icu域名
     function isOnGithubPages() {
-        return CURRENT_DOMAIN.includes('github.io') || CURRENT_DOMAIN.includes('github.com');
+        return CURRENT_DOMAIN.includes('github.io') || CURRENT_DOMAIN.includes('github.com') || CURRENT_DOMAIN.includes('52order.icu');
     }
 
     // 检测网络速度
