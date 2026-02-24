@@ -4,13 +4,13 @@
     var ENV_CONFIG = {
         local: {
             name: '本地环境',
-            baseUrl: '//52order.com',
-            loginUrl: '//52order.com/login'
+            baseUrl: 'http://52order.com',
+            loginUrl: 'http://52order.com/login'
         },
         production: {
             name: '生产环境',
-            baseUrl: '//121.5.177.201',
-            loginUrl: '//121.5.177.201/login'
+            baseUrl: 'https://52order.com',
+            loginUrl: 'https://52order.com/login'
         }
     };
 
@@ -35,33 +35,18 @@
         return ENV_CONFIG[env];
     }
 
-    function getProtocol() {
-        return window.location.protocol;
-    }
-
-    function getBaseUrlWithProtocol(baseUrl) {
-        var protocol = getProtocol();
-        if (baseUrl.startsWith('//')) {
-            return protocol + baseUrl;
-        }
-        return baseUrl;
-    }
-
     window.EnvConfig = {
         setEnvironment: setEnvironment,
         getCurrentEnv: getCurrentEnv,
         getConfig: getConfig,
         getBaseUrl: function() {
-            var baseUrl = getConfig().baseUrl;
-            return getBaseUrlWithProtocol(baseUrl);
+            return getConfig().baseUrl;
         },
         getLoginUrl: function() {
-            var loginUrl = getConfig().loginUrl;
-            return getBaseUrlWithProtocol(loginUrl);
+            return getConfig().loginUrl;
         },
         getEnvName: function() {
             return getConfig().name;
-        },
-        getProtocol: getProtocol
+        }
     };
 })();
