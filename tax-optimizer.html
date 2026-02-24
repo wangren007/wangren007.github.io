@@ -697,6 +697,13 @@
                 return;
             }
             
+            // 检查layui是否已加载
+            if (typeof layui === 'undefined') {
+                console.error('layui未加载，等待加载...');
+                resultDiv.html('<span style="color: #f56c6c;">错误：layui未加载，请刷新页面重试</span>').show();
+                return;
+            }
+            
             layui.use('layer', function(){
                 var layer = layui.layer;
                 layer.load();
