@@ -307,6 +307,12 @@
                     link.classList.add('active');
                 }
             });
+            
+            // 更新产品介绍链接
+            var adminBtns = document.querySelectorAll('.admin-btn');
+            adminBtns.forEach(function(btn) {
+                btn.href = EnvConfig.getProductIntroUrl();
+            });
         });
     </script>
 </body>

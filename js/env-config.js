@@ -5,12 +5,14 @@
         local: {
             name: '本地环境',
             baseUrl: 'http://127.0.0.1',
-            loginUrl: 'http://127.0.0.1/login'
+            loginUrl: 'http://127.0.0.1/login',
+            productIntroUrl: 'http://127.0.0.1'
         },
         production: {
             name: '生产环境',
             baseUrl: 'http://121.5.177.201',
-            loginUrl: 'http://121.5.177.201/login'
+            loginUrl: 'http://121.5.177.201/login',
+            productIntroUrl: 'http://121.5.177.201'
         }
     };
 
@@ -43,6 +45,9 @@
         },
         getLoginUrl: function() {
             return getConfig().loginUrl;
+        },
+        getProductIntroUrl: function() {
+            return getConfig().productIntroUrl;
         },
         getEnvName: function() {
             return getConfig().name;
