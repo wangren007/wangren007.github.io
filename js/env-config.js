@@ -14,7 +14,7 @@
         }
     };
 
-    var currentEnv = 'local';
+    var currentEnv = 'production';
 
     function setEnvironment(env) {
         if (ENV_CONFIG[env]) {
@@ -47,6 +47,10 @@
         },
         getEnvName: function() {
             return getConfig().name;
+        },
+        clearCache: function() {
+            localStorage.removeItem('currentEnv');
+            location.reload();
         }
     };
 })();
