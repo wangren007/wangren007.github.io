@@ -4,271 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>个税计算器 - 明润智讯</title>
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/tax-tools.css">
-    <link rel="stylesheet" href="css/forms.css">
-    <link rel="stylesheet" href="css/buttons.css">
-    <link rel="stylesheet" href="css/service-modal.css">
-    <style>
-        /* 页面特定样式 - 仅tax-calculator.html使用 */
-        
-        /* 页面主体样式 */
-        body {
-            font-family: 'Microsoft YaHei', 'PingFang SC', Arial, sans-serif;
-            background: #f0f4f8;
-            min-height: 100vh;
-            padding: 15px;
-            color: #1e293b;
-            line-height: 1.5;
-            font-size: 14px;
-        }
+    <link rel="stylesheet" href="css/global/reset.css">
+    <link rel="stylesheet" href="css/pages/tax-tools.css">
+    <link rel="stylesheet" href="css/global/forms.css">
+    <link rel="stylesheet" href="css/global/buttons.css">
+    <link rel="stylesheet" href="css/global/service-modal.css">
 
-        /* 输入区域样式 */
-        .input-section {
-            background: #f8fafc;
-            border-radius: 12px;
-            padding: 18px;
-            border: 1px solid #e2e8f0;
-        }
-
-        /* 区域标题样式 */
-        .section-title {
-            color: #4f46e5;
-            font-size: 16px;
-            font-weight: 700;
-            margin-bottom: 15px;
-            padding-bottom: 8px;
-            border-bottom: 2px solid #4f46e5;
-        }
-
-        /* 输入行样式 */
-        .input-row {
-            display: flex;
-            align-items: center;
-            margin-bottom: 12px;
-        }
-
-        /* 输入标签样式 */
-        .input-label {
-            width: 200px;
-            color: #475569;
-            font-weight: 600;
-            font-size: 13px;
-        }
-
-        /* 输入字段样式 */
-        .input-field {
-            flex: 1;
-            padding: 10px 14px;
-            border: 2px solid #cbd5e1;
-            border-radius: 8px;
-            font-size: 14px;
-            background: #fff;
-            color: #1e293b;
-            text-align: right;
-            transition: all 0.3s;
-        }
-
-        /* 输入字段聚焦样式 */
-        .input-field:focus {
-            outline: none;
-            border-color: #4f46e5;
-            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
-        }
-
-        /* 输入字段占位符样式 */
-        .input-field::placeholder {
-            color: #94a3b8;
-            font-size: 13px;
-        }
-
-        /* 输入提示样式 */
-        .input-hint {
-            font-size: 11px;
-            color: #64748b;
-            margin-top: 2px;
-        }
-
-        /* 结果区域样式 */
-        .result-section {
-            background: #f8fafc;
-            border-radius: 12px;
-            padding: 18px;
-            border: 1px solid #e2e8f0;
-        }
-
-        /* 主要结果网格布局 */
-        .result-main {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            margin-bottom: 18px;
-        }
-
-        /* 结果卡片样式 */
-        .result-card {
-            background: linear-gradient(135deg, #fff 0%, #f1f5f9 100%);
-            border: 2px solid #e2e8f0;
-            border-radius: 12px;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s;
-        }
-
-        /* 结果卡片悬停效果 */
-        .result-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        /* 成功结果卡片样式 */
-        .result-card.success {
-            border-color: #10b981;
-            background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
-        }
-
-        /* 高亮结果卡片样式 */
-        .result-card.highlight {
-            border-color: #ef4444;
-            background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
-        }
-
-        /* 结果标签样式 */
-        .result-label {
-            color: #64748b;
-            font-weight: 600;
-            font-size: 12px;
-            margin-bottom: 8px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        /* 结果数值样式 */
-        .result-value {
-            color: #4f46e5;
-            font-weight: 800;
-            font-size: 32px;
-        }
-
-        /* 高亮结果数值样式 */
-        .result-value.highlight {
-            color: #ef4444;
-            font-size: 38px;
-        }
-
-        /* 成功结果数值样式 */
-        .result-value.success {
-            color: #10b981;
-            font-size: 36px;
-        }
-
-        /* 次要结果网格布局 */
-        .result-sub {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-            margin-bottom: 18px;
-        }
-
-        /* 结果项样式 */
-        .result-item {
-            background: #fff;
-            border: 1px solid #e2e8f0;
-            border-radius: 10px;
-            padding: 14px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* 结果项标签样式 */
-        .result-item .result-label {
-            font-size: 11px;
-            margin-bottom: 6px;
-        }
-
-        /* 结果项数值样式 */
-        .result-item .result-value {
-            font-size: 22px;
-        }
-
-        /* 税务表格样式 */
-        .tax-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 12px;
-            font-size: 13px;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-        }
-
-        /* 税务表格表头样式 */
-        .tax-table th {
-            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
-            color: #fff;
-            padding: 10px 8px;
-            text-align: center;
-            font-weight: 700;
-            border: 1px solid #4338ca;
-            font-size: 12px;
-        }
-
-        /* 税务表格单元格样式 */
-        .tax-table td {
-            padding: 8px 8px;
-            text-align: center;
-            border: 1px solid #e2e8f0;
-            color: #334155;
-            font-size: 13px;
-        }
-
-        /* 税务表格偶数行样式 */
-        .tax-table tr:nth-child(even) {
-            background: #f8fafc;
-        }
-
-        /* 税务表格悬停效果 */
-        .tax-table tr:hover {
-            background: #e0e7ff;
-            transition: background 0.2s;
-        }
-
-        /* 总计行样式 */
-        .total-row {
-            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-            font-weight: 700;
-            color: #92400e;
-        }
-
-        /* 提示框样式 */
-        .note {
-            background: #fef9c3;
-            border: 1px solid #f59e0b;
-            border-radius: 8px;
-            padding: 10px;
-            margin-top: 15px;
-            font-size: 12px;
-            color: #92400e;
-            text-align: center;
-        }
-
-        /* 响应式设计 */
-        @media (max-width: 1400px) {
-            .result-main {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .result-sub {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-    </style>
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://www.layuicdn.com/layui-v2.5.6/layui.js"></script>
     <script src="js/env-config.js?v=2"></script>
@@ -387,34 +128,61 @@
                 return p.join('.') + ' 元';
             };
 
-            const calcTax = function(i, b, d, m) {
-                const annualSalary = i * 12;
-                const y = d * 12;
-                const t = 60000 + y + m;
-                const s = annualSalary - b;
-                const x = Math.max(0, s - t);
-                const c = x <= 0 ? 0 : x <= 36000 ? x * 0.03 : x <= 144000 ? x * 0.1 - 2520 : x <= 300000 ? x * 0.2 - 16920 : x <= 420000 ? x * 0.25 - 31920 : x <= 660000 ? x * 0.3 - 52920 : x <= 960000 ? x * 0.35 - 85920 : x * 0.45 - 181920;
-                const v = b <= 0 ? 0 : b / 12 <= 3000 ? b * 0.03 : b / 12 <= 12000 ? b * 0.1 - 210 : b / 12 <= 25000 ? b * 0.2 - 1410 : b / 12 <= 35000 ? b * 0.25 - 2660 : b / 12 <= 55000 ? b * 0.3 - 4410 : b / 12 <= 80000 ? b * 0.35 - 7160 : b * 0.45 - 15160;
-                const e = c + v;
-                return {
-                    annual_income: annualSalary,
-                    bonus: b,
-                    total_income: annualSalary + b,
-                    yearly_deduction: y,
-                    total_deduction: t,
-                    taxable_income: x,
-                    salary_tax: Math.round(c * 100) / 100,
-                    bonus_tax: Math.round(v * 100) / 100,
-                    tax: Math.round(e * 100) / 100,
-                    net_income: Math.round((annualSalary + b - e) * 100) / 100,
-                    tax_rate: (annualSalary + b) > 0 ? e / (annualSalary + b) * 100 : 0
-                };
-            };
-
             const C = document.getElementById('calculateBtn');
             const R = document.getElementById('resetBtn');
             const S = document.getElementById('resultSection');
             const F = document.querySelector('.input-section');
+
+            // 显示加载状态
+            const showLoading = function() {
+                // 创建加载遮罩
+                const loadingOverlay = document.createElement('div');
+                loadingOverlay.id = 'loadingOverlay';
+                loadingOverlay.style.cssText = `
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: rgba(255, 255, 255, 0.9);
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    z-index: 9999;
+                `;
+                
+                // 创建加载动画
+                const loadingSpinner = document.createElement('div');
+                loadingSpinner.style.cssText = `
+                    width: 60px;
+                    height: 60px;
+                    border: 4px solid #f3f3f3;
+                    border-top: 4px solid #3498db;
+                    border-radius: 50%;
+                    animation: spin 1s linear infinite;
+                `;
+                
+                // 添加动画样式
+                const style = document.createElement('style');
+                style.textContent = `
+                    @keyframes spin {
+                        0% { transform: rotate(0deg); }
+                        100% { transform: rotate(360deg); }
+                    }
+                `;
+                document.head.appendChild(style);
+                
+                loadingOverlay.appendChild(loadingSpinner);
+                document.body.appendChild(loadingOverlay);
+            };
+
+            // 隐藏加载状态
+            const hideLoading = function() {
+                const loadingOverlay = document.getElementById('loadingOverlay');
+                if (loadingOverlay) {
+                    loadingOverlay.remove();
+                }
+            };
 
             C.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -433,23 +201,62 @@
                     return;
                 }
 
-                const d = ce + co + hl + hr + ec + od;
-                const r = calcTax(i, b, d, mi);
+                // 显示加载状态
+                showLoading();
 
-                document.getElementById('netIncome').textContent = formatCurrency(r.net_income);
-                document.getElementById('taxAmount').textContent = formatCurrency(r.tax);
-                document.getElementById('taxRate').textContent = r.tax_rate.toFixed(2) + '%';
-                document.getElementById('taxableIncome').textContent = formatCurrency(r.taxable_income);
-                document.getElementById('annualIncome').textContent = formatCurrency(r.annual_income);
-                document.getElementById('bonus').textContent = formatCurrency(r.bonus);
-                document.getElementById('yearlyDeduction').textContent = formatCurrency(r.yearly_deduction);
-                document.getElementById('totalDeduction').textContent = formatCurrency(r.total_deduction);
-                document.getElementById('taxableIncomeDetail').textContent = formatCurrency(r.taxable_income);
-                document.getElementById('salaryTax').textContent = formatCurrency(r.salary_tax);
-                document.getElementById('bonusTax').textContent = formatCurrency(r.bonus_tax);
-                document.getElementById('tax').textContent = formatCurrency(r.tax);
-                document.getElementById('netIncomeDetail').textContent = formatCurrency(r.net_income);
-                S.style.display = 'block';
+                // 构建请求数据
+                const requestData = {
+                    monthly_income: i,
+                    bonus: b,
+                    child_education: ce,
+                    continuing_education: co,
+                    housing_loan: hl,
+                    housing_rent: hr,
+                    elderly_care: ec,
+                    major_illness: mi,
+                    other_deduction: od
+                };
+
+                // 发送API请求
+                fetch('http://localhost:8001/api/calculate_tax', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(requestData)
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP错误! 状态: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(r => {
+                    // 隐藏加载状态
+                    hideLoading();
+
+                    // 显示计算结果
+                    document.getElementById('netIncome').textContent = formatCurrency(r.net_income);
+                    document.getElementById('taxAmount').textContent = formatCurrency(r.tax);
+                    document.getElementById('taxRate').textContent = r.tax_rate.toFixed(2) + '%';
+                    document.getElementById('taxableIncome').textContent = formatCurrency(r.taxable_income);
+                    document.getElementById('annualIncome').textContent = formatCurrency(r.annual_income);
+                    document.getElementById('bonus').textContent = formatCurrency(r.bonus);
+                    document.getElementById('yearlyDeduction').textContent = formatCurrency(r.yearly_deduction);
+                    document.getElementById('totalDeduction').textContent = formatCurrency(r.total_deduction);
+                    document.getElementById('taxableIncomeDetail').textContent = formatCurrency(r.taxable_income);
+                    document.getElementById('salaryTax').textContent = formatCurrency(r.salary_tax);
+                    document.getElementById('bonusTax').textContent = formatCurrency(r.bonus_tax);
+                    document.getElementById('tax').textContent = formatCurrency(r.tax);
+                    document.getElementById('netIncomeDetail').textContent = formatCurrency(r.net_income);
+                    S.style.display = 'block';
+                })
+                .catch(error => {
+                    // 隐藏加载状态
+                    hideLoading();
+                    console.error('计算过程中出错:', error);
+                    alert('计算过程中出错，请稍后重试');
+                });
             });
 
             R.addEventListener('click', function(e) {

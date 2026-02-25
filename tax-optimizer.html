@@ -4,427 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>个人年收入优化模型（2026版）</title>
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/tax-tools.css">
-    <link rel="stylesheet" href="css/forms.css">
-    <link rel="stylesheet" href="css/buttons.css">
-    <link rel="stylesheet" href="css/service-modal.css">
-    <style>
-        /* 页面特定样式 - 仅tax-optimizer.html使用 */
-        
-        /* 页面主体样式 */
-        body {
-            font-family: 'Microsoft YaHei', 'PingFang SC', Arial, sans-serif;
-            background: #f0f4f8;
-            min-height: 100vh;
-            padding: 15px;
-            color: #1e293b;
-            line-height: 1.5;
-            font-size: 14px;
-        }
+    <link rel="stylesheet" href="css/global/reset.css">
+    <link rel="stylesheet" href="css/pages/tax-tools.css">
+    <link rel="stylesheet" href="css/global/forms.css">
+    <link rel="stylesheet" href="css/global/buttons.css">
+    <link rel="stylesheet" href="css/global/service-modal.css">
 
-        /* 价格标签样式 */
-        .price {
-            font-size: 18px;
-            font-weight: 700;
-            color: #fff;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
-        }
-
-        /* 价格描述样式 */
-        .price-desc {
-            font-size: 12px;
-            color: rgba(255,255,255,0.9);
-            margin-left: 4px;
-            font-weight: 500;
-        }
-
-        /* 头部标题行样式 */
-        .header-title-row {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 10px;
-            position: relative;
-            width: 100%;
-        }
-
-        /* 头部标题样式 */
-        .header h1 {
-            color: white;
-            font-size: 26px;
-            font-weight: 800;
-            margin: 0;
-            letter-spacing: 1px;
-            text-shadow: 0 2px 6px rgba(0,0,0,0.2);
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        /* 价格标签容器样式 */
-        .price-tag {
-            margin: 0;
-            margin-left: auto;
-            display: flex;
-            align-items: baseline;
-            justify-content: center;
-            flex-shrink: 0;
-            background: rgba(255,255,255,0.15);
-            padding: 6px 16px;
-            border-radius: 20px;
-            border: 1px solid rgba(255,255,255,0.25);
-        }
-
-        /* 输入区域样式 */
-        .input-section {
-            padding: 18px;
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
-            border-radius: 12px;
-        }
-
-        /* 输入行样式 */
-        .input-row {
-            display: flex;
-            align-items: center;
-            margin-bottom: 12px;
-        }
-
-        /* 输入标签样式 */
-        .input-label {
-            width: 200px;
-            font-weight: 600;
-            color: #475569;
-            font-size: 13px;
-        }
-
-        /* 输入字段样式 */
-        .input-field {
-            flex: 1;
-            padding: 10px 14px;
-            border: 2px solid #cbd5e1;
-            border-radius: 8px;
-            font-size: 14px;
-            background: white;
-            text-align: right;
-            transition: all 0.3s;
-        }
-
-        /* 输入字段聚焦样式 */
-        .input-field:focus {
-            outline: none;
-            border-color: #4f46e5;
-            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
-        }
-
-        /* 联系按钮样式 */
-        .contact-btn {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            padding: 10px 18px;
-            background: linear-gradient(135deg, #07c160 0%, #06ad56 100%);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 13px;
-            font-weight: 600;
-            transition: all 0.3s;
-            box-shadow: 0 2px 8px rgba(7, 193, 96, 0.3);
-        }
-
-        /* 联系按钮悬停效果 */
-        .contact-btn:hover {
-            background: linear-gradient(135deg, #06ad56 0%, #059e4c 100%);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(7, 193, 96, 0.4);
-        }
-
-        /* 联系按钮激活效果 */
-        .contact-btn:active {
-            transform: translateY(0);
-        }
-
-        /* 联系图标样式 */
-        .contact-icon {
-            font-size: 16px;
-        }
-
-        /* 联系文本样式 */
-        .contact-text {
-            font-size: 13px;
-        }
-
-        /* 验证按钮样式 */
-        .verify-btn {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            padding: 10px 18px;
-            background: linear-gradient(135deg, #1890ff 0%, #096dd9 100%);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 13px;
-            font-weight: 600;
-            transition: all 0.3s;
-            box-shadow: 0 2px 8px rgba(24, 144, 255, 0.3);
-            margin-left: 10px;
-        }
-
-        /* 验证按钮悬停效果 */
-        .verify-btn:hover {
-            background: linear-gradient(135deg, #096dd9 0%, #0050b3 100%);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(24, 144, 255, 0.4);
-        }
-
-        /* 验证按钮激活效果 */
-        .verify-btn:active {
-            transform: translateY(0);
-        }
-
-        /* 验证文本样式 */
-        .verify-text {
-            font-size: 13px;
-        }
-
-        /* 验证结果样式 */
-        .verify-result {
-            margin-left: 15px;
-            padding: 8px 12px;
-            border-radius: 6px;
-            font-size: 13px;
-            min-width: 200px;
-            display: none;
-        }
-
-        /* 验证结果成功样式 */
-        .verify-result.success {
-            display: block !important;
-            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-            border: 1px solid #0ea5e9;
-            color: #0369a1;
-        }
-
-        /* 验证结果错误样式 */
-        .verify-result.error {
-            display: block !important;
-            background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
-            border: 1px solid #ef4444;
-            color: #dc2626;
-        }
-
-        /* 结果区域样式 */
-        .result-section {
-            padding: 15px;
-        }
-
-        /* 结果网格布局 */
-        .result-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 12px;
-            margin-bottom: 15px;
-        }
-
-        /* 结果项样式 */
-        .result-item {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            border: 1px solid #e0e0e0;
-            border-radius: 10px;
-            padding: 12px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-        }
-
-        /* 结果标签样式 */
-        .result-label {
-            font-weight: bold;
-            color: #555;
-            font-size: 12px;
-            margin-bottom: 5px;
-        }
-
-        /* 结果数值样式 */
-        .result-value {
-            font-weight: bold;
-            color: #667eea;
-            font-size: 18px;
-        }
-
-        /* 税务表格样式 */
-        .tax-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 10px;
-            font-size: 11px;
-        }
-
-        /* 税务表格表头样式 */
-        .tax-table th {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 8px 4px;
-            text-align: center;
-            font-weight: bold;
-            border: 1px solid #5568d3;
-            font-size: 11px;
-        }
-
-        /* 税务表格单元格样式 */
-        .tax-table td {
-            padding: 6px 4px;
-            text-align: center;
-            border: 1px solid #e0e0e0;
-            color: #333;
-            font-size: 11px;
-        }
-
-        /* 税务表格偶数行样式 */
-        .tax-table tr:nth-child(even) {
-            background: #f8fafc;
-        }
-
-        /* 月度行样式 */
-        .monthly-row {
-            background: #f8fafc;
-        }
-
-        /* 奖金行样式 */
-        .bonus-row {
-            background: linear-gradient(135deg, #e8f4f8 0%, #d6eaf8 100%);
-            font-weight: bold;
-        }
-
-        /* 总计行样式 */
-        .total-row {
-            background: linear-gradient(135deg, #fef9e7 0%, #fdebd0 100%);
-            font-weight: bold;
-        }
-
-        /* 提示框样式 */
-        .note {
-            background: linear-gradient(135deg, #fff9c4 0%, #ffeb3b 100%);
-            border: 1px solid #ffc107;
-            border-radius: 8px;
-            padding: 10px;
-            margin-top: 12px;
-            font-size: 12px;
-            color: #f57f17;
-            text-align: center;
-        }
-
-        /* 加载遮罩样式 */
-        .loading-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.9);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-        }
-
-        /* 加载旋转器样式 */
-        .loading-spinner {
-            width: 60px;
-            height: 60px;
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid #3498db;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-
-        /* 旋转动画关键帧 */
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* 响应式设计 */
-        @media (max-width: 1024px) {
-            /* 结果网格改为单列 */
-            .result-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            /* 输入行改为垂直布局 */
-            .input-row {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 8px;
-            }
-            
-            /* 输入标签宽度100% */
-            .input-label {
-                width: 100%;
-            }
-            
-            /* 输入字段宽度100%，左对齐 */
-            .input-field {
-                width: 100%;
-                text-align: left;
-            }
-        }
-
-        /* 手机端适配 */
-        @media (max-width: 768px) {
-            /* 页面内边距减小 */
-            body {
-                padding: 10px;
-            }
-            
-            /* 头部内边距调整 */
-            .header {
-                padding: 20px;
-            }
-            
-            /* 头部标题字体减小 */
-            .header h1 {
-                font-size: 24px;
-            }
-            
-            /* 输入和结果区域内边距调整 */
-            .input-section,
-            .result-section {
-                padding: 20px;
-            }
-            
-            /* 头部按钮垂直布局 */
-            .header-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            /* 头部按钮宽度固定 */
-            .header-button {
-                width: 200px;
-                text-align: center;
-            }
-            
-            /* 税务表格字体减小 */
-            .tax-table {
-                font-size: 11px;
-            }
-            
-            /* 税务表格单元格内边距调整 */
-            .tax-table th,
-            .tax-table td {
-                padding: 8px;
-            }
-        }
-    </style>
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://www.layuicdn.com/layui-v2.5.6/layui.js"></script>
     <script src="js/env-config.js?v=2"></script>
@@ -813,77 +398,6 @@
         const formatCurrency = (num) => num.toLocaleString('zh-CN', {minimumFractionDigits: 2, maximumFractionDigits: 2});
         const formatPercent = (num) => (num * 100).toFixed(2) + '%';
         
-        // 综合所得税率表
-        function calculateComprehensiveTax(taxableIncome) {
-            if (taxableIncome <= 0) {
-                return 0;
-            }
-
-            const brackets = [
-                {limit: 36000, rate: 0.03, deduction: 0},
-                {limit: 144000, rate: 0.10, deduction: 2520},
-                {limit: 300000, rate: 0.20, deduction: 16920},
-                {limit: 420000, rate: 0.25, deduction: 31920},
-                {limit: 660000, rate: 0.30, deduction: 52920},
-                {limit: 960000, rate: 0.35, deduction: 85920},
-                {limit: Infinity, rate: 0.45, deduction: 181920},
-            ];
-
-            for (const bracket of brackets) {
-                if (taxableIncome <= bracket.limit) {
-                    return taxableIncome * bracket.rate - bracket.deduction;
-                }
-            }
-
-            return 0;
-        }
-        
-        // 计算月度税额详情
-        function calculateMonthlyTaxDetail(monthlySalary, monthlyDeduction) {
-            const monthlyResults = [];
-            let cumulativeIncome = 0;
-            let cumulativeTax = 0;
-
-            for (let month = 1; month <= 12; month++) {
-                cumulativeIncome += monthlySalary;
-                const cumulativeDeduction = (5000 + monthlyDeduction) * month;
-                const cumulativeTaxable = Math.max(0, cumulativeIncome - cumulativeDeduction);
-                const cumulativeTaxNew = calculateComprehensiveTax(cumulativeTaxable);
-
-                const currentTax = Math.max(0, cumulativeTaxNew - cumulativeTax);
-                cumulativeTax = cumulativeTaxNew;
-
-                let taxRate = 0;
-                let quickDeduction = 0;
-                const brackets = [
-                    {limit: 36000, rate: 0.03, quick_deduction: 0},
-                    {limit: 144000, rate: 0.10, quick_deduction: 2520},
-                    {limit: 300000, rate: 0.20, quick_deduction: 16920},
-                    {limit: 420000, rate: 0.25, quick_deduction: 31920},
-                    {limit: 660000, rate: 0.30, quick_deduction: 52920},
-                    {limit: 960000, rate: 0.35, quick_deduction: 85920},
-                    {limit: Infinity, rate: 0.45, quick_deduction: 181920}
-                ];
-
-                for (const bracket of brackets) {
-                    if (cumulativeTaxable <= bracket.limit) {
-                        taxRate = bracket.rate;
-                        quickDeduction = bracket.quick_deduction;
-                        break;
-                    }
-                }
-
-                monthlyResults.push({
-                    month: month,
-                    tax: currentTax,
-                    rate: taxRate,
-                    quick_deduction: quickDeduction
-                });
-            }
-
-            return monthlyResults;
-        }
-        
         // 更新结果显示的函数
         function updateResults(resultData, monthlyDeduction) {
             // 更新结果
@@ -892,8 +406,22 @@
             $('#netIncome').text(formatCurrency(resultData.net_income));
             $('#optimalTaxRate').text(resultData.tax_rate.toFixed(2) + '%');
             
+            // 生成月度税额详情（模拟数据，实际计算在服务器端）
+            function generateMonthlyTaxDetail(monthlySalary, monthlyDeduction) {
+                const monthlyResults = [];
+                for (let month = 1; month <= 12; month++) {
+                    monthlyResults.push({
+                        month: month,
+                        tax: 0,
+                        rate: 0,
+                        quick_deduction: 0
+                    });
+                }
+                return monthlyResults;
+            }
+            
             // 计算月度税额详情
-            var monthlyDetails = calculateMonthlyTaxDetail(resultData.monthly_salary, monthlyDeduction);
+            var monthlyDetails = generateMonthlyTaxDetail(resultData.monthly_salary, monthlyDeduction);
             
             // 缓存常用值
             var monthlySalaryStr = formatCurrency(resultData.monthly_salary);
@@ -950,91 +478,6 @@
             console.log('计算按钮是否存在:', $('#calculateBtn').length);
             console.log('清除按钮是否存在:', $('#clearBtn').length);
             
-            // 年终奖税率表
-            function calculateBonusTax(bonusAmount) {
-                if (bonusAmount <= 0) {
-                    return 0;
-                }
-
-                const monthlyBonus = bonusAmount / 12;
-
-                const brackets = [
-                    {limit: 3000, rate: 0.03, deduction: 0},
-                    {limit: 12000, rate: 0.10, deduction: 210},
-                    {limit: 25000, rate: 0.20, deduction: 1410},
-                    {limit: 35000, rate: 0.25, deduction: 2660},
-                    {limit: 55000, rate: 0.30, deduction: 4410},
-                    {limit: 80000, rate: 0.35, deduction: 7160},
-                    {limit: Infinity, rate: 0.45, deduction: 15160},
-                ];
-
-                for (const bracket of brackets) {
-                    if (monthlyBonus <= bracket.limit) {
-                        return bonusAmount * bracket.rate - bracket.deduction;
-                    }
-                }
-
-                return 0;
-            }
-
-            // 计算最优分配
-            function calculateOptimalDistribution(annualIncome, monthlyDeduction) {
-                const yearlyDeduction = monthlyDeduction * 12;
-                const totalDeduction = 60000 + yearlyDeduction;
-
-                let bestResult = null;
-                let minTotalTax = Infinity;
-
-                // 优化步长策略，减少计算次数
-                const step = annualIncome > 1000000 ? 500 : (annualIncome > 500000 ? 100 : (annualIncome > 100000 ? 50 : (annualIncome > 50000 ? 10 : 1)));
-                
-                // 使用for循环代替while，性能更好
-                for (let bonus = 0; bonus <= annualIncome; bonus += step) {
-                    const salaryTotal = annualIncome - bonus;
-
-                    if (salaryTotal < 0) {
-                        continue;
-                    }
-
-                    const monthlySalary = salaryTotal / 12;
-                    const taxableIncome = Math.max(0, salaryTotal - totalDeduction);
-                    const salaryTax = calculateComprehensiveTax(taxableIncome);
-                    const bonusTax = calculateBonusTax(bonus);
-                    const totalTax = salaryTax + bonusTax;
-                    const totalTaxRounded = Math.round(totalTax * 100) / 100;
-
-                    if (totalTaxRounded < minTotalTax || (totalTaxRounded === minTotalTax && bestResult && bonus < bestResult.bonus)) {
-                        minTotalTax = totalTaxRounded;
-                        bestResult = {
-                            monthly_salary: monthlySalary,
-                            bonus: bonus,
-                            salary_tax: Math.round(salaryTax * 100) / 100,
-                            bonus_tax: Math.round(bonusTax * 100) / 100,
-                            total_tax: totalTaxRounded,
-                            net_income: Math.round((annualIncome - totalTaxRounded) * 100) / 100,
-                            tax_rate: annualIncome > 0 ? (totalTaxRounded / annualIncome) * 100 : 0
-                        };
-                    }
-                }
-
-                if (bestResult === null) {
-                    const monthlySalary = annualIncome / 12;
-                    const taxableIncome = Math.max(0, annualIncome - totalDeduction);
-                    const salaryTax = calculateComprehensiveTax(taxableIncome);
-                    bestResult = {
-                        monthly_salary: monthlySalary,
-                        bonus: 0,
-                        salary_tax: salaryTax,
-                        bonus_tax: 0,
-                        total_tax: salaryTax,
-                        net_income: annualIncome - salaryTax,
-                        tax_rate: annualIncome > 0 ? (salaryTax / annualIncome) * 100 : 0
-                    };
-                }
-
-                return bestResult;
-            }
-            
             layui.use(['layer'], function(){
                 var layer = layui.layer;
 
@@ -1083,21 +526,38 @@
                         layer.load();
 
                         requestAnimationFrame(function(){
-                            try {
-                                var annualIncome = parseFloat($('#annualIncome').val());
-                                var monthlyDeduction = parseFloat($('#monthlyDeduction').val()) || 0;
-                                
-                                resultData = calculateOptimalDistribution(annualIncome, monthlyDeduction);
-                                
-                                updateResults(resultData, monthlyDeduction);
-                                
-                                layer.msg('优化计算成功', {icon: 1});
-                            } catch (error) {
-                                layer.msg('计算错误: ' + error.message, {icon: 2});
-                            } finally {
-                                layer.closeAll('loading');
-                            }
-                        });
+                                try {
+                                    var annualIncome = parseFloat($('#annualIncome').val());
+                                    var monthlyDeduction = parseFloat($('#monthlyDeduction').val()) || 0;
+                                    
+                                    // 构建请求数据
+                                    var requestData = {
+                                        annual_income: annualIncome,
+                                        monthly_deduction: monthlyDeduction
+                                    };
+                                    
+                                    // 发送API请求
+                                    $.ajax({
+                                        url: 'http://localhost:8001/api/optimize_tax',
+                                        type: 'POST',
+                                        contentType: 'application/json',
+                                        data: JSON.stringify(requestData),
+                                        success: function(resultData) {
+                                            updateResults(resultData, monthlyDeduction);
+                                            layer.msg('优化计算成功', {icon: 1});
+                                        },
+                                        error: function(xhr, status, error) {
+                                            layer.msg('计算错误: ' + (xhr.responseText || error), {icon: 2});
+                                        },
+                                        complete: function() {
+                                            layer.closeAll('loading');
+                                        }
+                                    });
+                                } catch (error) {
+                                    layer.msg('计算错误: ' + error.message, {icon: 2});
+                                    layer.closeAll('loading');
+                                }
+                            });
                     } else {
                         // 未验证、验证码错误或无剩余时间，显示付费提示，但本次只显示模拟数据
                         layer.confirm('使用个人年收入优化模型（2026版）需要付费 ¥99.00/次，本次只显示模拟数据，是否继续？', {
