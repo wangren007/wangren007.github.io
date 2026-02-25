@@ -4,16 +4,70 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>首页 - 明润智讯</title>
+    
+    <!-- 引入外部样式表 -->
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/service-modal.css">
+    
+    <style>
+        /* 微信客服按钮样式 */
+        .wechat-service-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #07c160 0%, #06ad56 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(7, 193, 96, 0.3);
+            cursor: pointer;
+        }
+
+        /* 微信客服按钮悬停效果 */
+        .wechat-service-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(7, 193, 96, 0.4);
+        }
+
+        /* 微信按钮内SVG图标样式 */
+        .wechat-service-btn svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* 响应式设计 - 平板和手机端适配 */
+        @media (max-width: 768px) {
+            /* 调整悬浮按钮位置和大小 */
+            .floating-service-btn {
+                right: 20px;
+                bottom: 20px;
+                width: 50px;
+                height: 50px;
+            }
+
+            /* 调整悬浮按钮图标大小 */
+            .floating-service-btn svg {
+                width: 26px;
+                height: 26px;
+            }
+        }
+    </style>
 </head>
 <body>
+    <!-- 导航栏区域 -->
     <nav class="navbar">
         <div class="container">
+            <!-- 公司Logo -->
             <div class="logo">
                 <img src="images/logo.png" alt="公司Logo">
             </div>
+            <!-- 导航菜单 -->
             <ul class="nav-menu">
                 <li><a href="index.html" class="active">首页</a></li>
                 <li><a href="products.html">产品展示</a></li>
@@ -24,27 +78,37 @@
         </div>
     </nav>
 
+    <!-- Banner横幅区域 -->
     <section class="banner">
         <div class="container">
             <div class="banner-content">
+                <!-- 主标题 -->
                 <h1>明润智讯</h1>
+                <!-- 副标题/标语 -->
                 <p>专注于为企业提供全方位科技服务</p>
+                <!-- 按钮组 -->
                 <div class="banner-buttons">
+                    <!-- 我们的服务按钮 -->
                     <a href="services.html" class="btn btn-primary">我们的服务</a>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- 服务展示区域 -->
     <section class="services">
         <div class="container">
+            <!-- 区域标题 -->
             <div class="section-header">
                 <h2>我们的服务</h2>
                 <p>为企业提供全方位的科技服务解决方案</p>
             </div>
+            <!-- 服务列表 -->
             <div class="service-list">
+                <!-- 服务项目1：软件开发 -->
                 <div class="service-item">
                     <div class="service-icon">
+                        <!-- 软件开发图标SVG -->
                         <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M32 8L48 16V48C48 52.4183 43.732 56 39 56H25C20.268 56 16 52.4183 16 48V16L32 8Z" stroke="#00d4ff" stroke-width="2" stroke-linejoin="round"/>
                             <path d="M24 24H40" stroke="#00d4ff" stroke-width="2" stroke-linecap="round"/>
@@ -56,8 +120,10 @@
                     <p>定制化软件开发解决方案，满足企业特定业务需求，提高运营效率。</p>
                     <a href="services.html#software" class="service-link">了解更多</a>
                 </div>
+                <!-- 服务项目2：系统集成 -->
                 <div class="service-item">
                     <div class="service-icon">
+                        <!-- 系统集成图标SVG -->
                         <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <rect x="12" y="16" width="40" height="32" rx="4" stroke="#00d4ff" stroke-width="2"/>
                             <rect x="20" y="24" width="24" height="8" rx="2" stroke="#00d4ff" stroke-width="2"/>
@@ -70,8 +136,10 @@
                     <p>企业级系统集成服务，实现不同系统间的无缝对接，优化业务流程。</p>
                     <a href="services.html#integration" class="service-link">了解更多</a>
                 </div>
+                <!-- 服务项目3：技术咨询 -->
                 <div class="service-item">
                     <div class="service-icon">
+                        <!-- 技术咨询图标SVG -->
                         <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M32 8L48 16V48C48 52.4183 43.732 56 39 56H25C20.268 56 16 52.4183 16 48V16L32 8Z" stroke="#00d4ff" stroke-width="2" stroke-linejoin="round"/>
                             <path d="M24 24H40" stroke="#00d4ff" stroke-width="2" stroke-linecap="round"/>
@@ -83,8 +151,10 @@
                     <p>专业的技术咨询服务，为企业提供战略规划和技术路线图。</p>
                     <a href="services.html#consulting" class="service-link">了解更多</a>
                 </div>
+                <!-- 服务项目4：运维支持 -->
                 <div class="service-item">
                     <div class="service-icon">
+                        <!-- 运维支持图标SVG -->
                         <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M32 8L48 16V48C48 52.4183 43.732 56 39 56H25C20.268 56 16 52.4183 16 48V16L32 8Z" stroke="#00d4ff" stroke-width="2" stroke-linejoin="round"/>
                             <path d="M32 24L32 40" stroke="#00d4ff" stroke-width="2" stroke-linecap="round"/>
@@ -99,13 +169,17 @@
         </div>
     </section>
 
+    <!-- 客户评价区域 -->
     <section class="testimonials">
         <div class="container">
+            <!-- 区域标题 -->
             <div class="section-header">
                 <h2>客户评价</h2>
                 <p>听听我们的客户怎么说</p>
             </div>
+            <!-- 评价列表 -->
             <div class="testimonial-list">
+                <!-- 客户评价1 -->
                 <div class="testimonial-item">
                     <div class="testimonial-content">
                         <p>"明润智讯为我们提供的软件开发服务非常专业，团队响应迅速，解决方案符合我们的业务需求，帮助我们提高了运营效率。"</p>
@@ -118,6 +192,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- 客户评价2 -->
                 <div class="testimonial-item">
                     <div class="testimonial-content">
                         <p>"系统集成项目完成得非常出色，明润智讯的团队技术实力强，服务态度好，项目交付及时，我们非常满意。"</p>
@@ -134,25 +209,31 @@
         </div>
     </section>
 
+    <!-- 行动号召区域 -->
     <section class="cta">
         <div class="container">
             <h2>期待与您合作</h2>
             <p>立即联系我们，开启数字化转型之旅</p>
+            <!-- 按钮组 -->
             <div class="cta-buttons">
                 <a href="contact.html" class="btn btn-primary">联系我们</a>
             </div>
         </div>
     </section>
 
+    <!-- 页脚区域 -->
     <footer class="footer">
         <div class="container">
+            <!-- 页脚内容 -->
             <div class="footer-content">
+                <!-- 公司简介 -->
                 <div class="footer-section">
                     <div class="footer-logo">
                         <img src="images/logo.png" alt="公司Logo">
                     </div>
                     <p>明润智讯是一家专注于为企业提供全方位科技服务的公司，致力于通过技术创新和优质服务，帮助客户实现数字化转型。</p>
                 </div>
+                <!-- 快速链接 -->
                 <div class="footer-section">
                     <h3>快速链接</h3>
                     <ul class="footer-links">
@@ -162,6 +243,7 @@
                         <li><a href="contact.html">联系我们</a></li>
                     </ul>
                 </div>
+                <!-- 联系方式 -->
                 <div class="footer-section">
                     <h3>联系方式</h3>
                     <ul class="contact-info">
@@ -171,22 +253,78 @@
                     </ul>
                 </div>
             </div>
+            <!-- 版权信息 -->
             <div class="footer-bottom">
                 <p>&copy; 2024 明润智讯. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
+    <!-- 引入外部JavaScript文件 -->
     <script src="js/env-config.js"></script>
     <script src="js/github-ip-switcher.js"></script>
+    
+    <!-- 页面交互脚本 -->
     <script>
+        // DOM加载完成后执行初始化
         document.addEventListener('DOMContentLoaded', function() {
+            // 获取所有管理后台链接
             var adminLinks = document.querySelectorAll('.admin-link');
+            // 遍历并更新链接地址
             adminLinks.forEach(function(link) {
                 link.href = EnvConfig.getProductIntroUrl();
             });
+
+            // 获取客服弹窗元素
+            var modal = document.getElementById('serviceModal');
+            // 如果弹窗存在，添加点击遮罩关闭事件
+            if (modal) {
+                modal.addEventListener('click', function(e) {
+                    // 点击遮罩层时关闭弹窗
+                    if (e.target === modal) {
+                        closeServiceModal();
+                    }
+                });
+            }
         });
     </script>
+    
+    <!-- 引入客服弹窗JavaScript文件 -->
+    <script src="js/service-modal.js"></script>
+    
+    <!-- 引入主JavaScript文件 -->
     <script src="js/main.js"></script>
+
+    <!-- 客服弹窗HTML结构 - 根据是否有上传图片自动调整显示方式 -->
+    <div id="serviceModal" class="service-modal">
+        <div class="service-modal-content">
+            <!-- 关闭按钮 - 有上传图片时隐藏 -->
+            <button class="service-modal-close" onclick="closeServiceModal()">&times;</button>
+            <!-- 弹窗标题 - 有上传图片时隐藏 -->
+            <h3 class="service-modal-title">联系客服</h3>
+            <!-- 二维码显示区域 -->
+            <div class="service-modal-qr">
+                <!-- 企业微信客服二维码图片 - 优先使用本地图片，如果不存在则使用在线二维码API -->
+                <img src="images/service_qrcode.jpg" alt="企业微信客服二维码" onerror="this.src='https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://work.weixin.qq.com/kfid/kfcb780561e4efc1826'">
+            </div>
+            <!-- 提示文字 - 有上传图片时隐藏 -->
+            <p class="service-modal-text">扫描上方二维码，或点击下方按钮直接联系客服</p>
+            <!-- 操作按钮 - 有上传图片时隐藏 -->
+            <div class="service-modal-actions">
+                <!-- 打开微信客服按钮 -->
+                <a href="https://work.weixin.qq.com/kfid/kfcb780561e4efc1826" target="_blank" class="service-modal-btn primary">打开微信客服</a>
+                <!-- 关闭按钮 -->
+                <button class="service-modal-btn secondary" onclick="closeServiceModal()">关闭</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 悬浮客服按钮 - 固定在右下角 -->
+    <a href="javascript:void(0)" onclick="openServiceModal()" class="floating-service-btn" title="联系客服">
+        <!-- 微信图标SVG -->
+        <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 01.213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 00.167-.054l1.903-1.114a.864.864 0 01.717-.098 10.16 10.16 0 002.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348zM5.785 5.991c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 01-1.162 1.178A1.17 1.17 0 014.623 7.17c0-.651.52-1.18 1.162-1.18zm5.813 0c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 01-1.162 1.178 1.17 1.17 0 01-1.162-1.178c0-.651.52-1.18 1.162-1.18zm5.34 2.867c-1.797-.052-3.746.512-5.28 1.786-1.72 1.428-2.687 3.72-1.78 6.22.942 2.453 3.666 4.229 6.884 4.229.826 0 1.622-.12 2.361-.336a.722.722 0 01.598.082l1.584.926a.272.272 0 00.14.045c.134 0 .24-.111.24-.247 0-.06-.023-.12-.038-.177l-.327-1.233a.582.582 0 01-.023-.156.49.49 0 01.201-.398C23.024 18.48 24 16.82 24 14.98c0-3.21-2.931-5.837-6.656-6.088V8.89c-.135-.01-.269-.03-.407-.032zm-2.53 3.274c.535 0 .969.44.969.982a.976.976 0 01-.969.983.976.976 0 01-.969-.983c0-.542.434-.982.97-.982zm4.844 0c.535 0 .969.44.969.982a.976.976 0 01-.969.983.976.976 0 01-.969-.983c0-.542.434-.982.969-.982z"/>
+        </svg>
+    </a>
 </body>
 </html>

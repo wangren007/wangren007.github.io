@@ -1,52 +1,72 @@
+/**
+ * 响应式设计样式
+ * 定义不同屏幕尺寸的适配规则
+ * @version 1.0.0
+ * @date 2026-02-25
+ */
+
+/* 移动端适配 (最大宽度 768px) */
 @media (max-width: 768px) {
+    /* 容器样式 */
     .container {
         padding: 0 15px;
     }
 
+    /* 导航栏样式 */
     .navbar .container {
         flex-direction: column;
         gap: 15px;
     }
 
+    /* 导航菜单 */
     .nav-menu {
         flex-wrap: wrap;
         justify-content: center;
         gap: 10px;
     }
 
+    /* 导航菜单项 */
     .nav-menu li {
         margin: 0;
     }
 
+    /* 导航菜单链接 */
     .nav-menu a {
         font-size: 14px;
         padding: 5px 10px;
     }
 
+    /* 横幅样式 */
     .banner {
         padding: 100px 0 60px;
     }
 
+    /* 横幅标题 */
     .banner h1 {
         font-size: 28px;
     }
 
+    /* 横幅描述 */
     .banner p {
         font-size: 16px;
     }
 
+    /* 章节样式 */
     section {
         padding: 50px 0;
     }
 
+    /* 服务列表 */
     .service-list {
         grid-template-columns: 1fr;
     }
 
+    /* 行动召唤标题 */
     .cta h2 {
         font-size: 28px;
     }
 
+    /* 行动召唤描述 */
     .cta p {
         font-size: 16px;
     }

@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>个人年收入优化模型（2026版）</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/tax-tools.css">
+    <link rel="stylesheet" href="css/forms.css">
+    <link rel="stylesheet" href="css/buttons.css">
+    <link rel="stylesheet" href="css/service-modal.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        /* 页面特定样式 - 仅tax-optimizer.html使用 */
         
+        /* 页面主体样式 */
         body {
             font-family: 'Microsoft YaHei', 'PingFang SC', Arial, sans-serif;
             background: #f0f4f8;
@@ -20,36 +22,24 @@
             line-height: 1.5;
             font-size: 14px;
         }
-        
-        .container {
-            max-width: 1800px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 16px;
-            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
-            overflow: hidden;
-        }
-        
-        .header {
-            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
-            padding: 20px;
-            text-align: center;
-        }
-        
+
+        /* 价格标签样式 */
         .price {
             font-size: 18px;
             font-weight: 700;
             color: #fff;
             text-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
-        
+
+        /* 价格描述样式 */
         .price-desc {
             font-size: 12px;
             color: rgba(255,255,255,0.9);
             margin-left: 4px;
             font-weight: 500;
         }
-        
+
+        /* 头部标题行样式 */
         .header-title-row {
             display: flex;
             align-items: center;
@@ -59,7 +49,8 @@
             position: relative;
             width: 100%;
         }
-        
+
+        /* 头部标题样式 */
         .header h1 {
             color: white;
             font-size: 26px;
@@ -71,7 +62,8 @@
             left: 50%;
             transform: translateX(-50%);
         }
-        
+
+        /* 价格标签容器样式 */
         .price-tag {
             margin: 0;
             margin-left: auto;
@@ -84,78 +76,31 @@
             border-radius: 20px;
             border: 1px solid rgba(255,255,255,0.25);
         }
-        
-        .header p {
-            color: rgba(255,255,255,0.9);
-            font-size: 13px;
-            margin: 0 0 12px 0;
-            font-weight: 400;
-            text-align: center;
-        }
-        
-        .header-back {
-            margin-top: 10px;
-            text-align: center;
-        }
-        
-        .header-back a {
-            color: rgba(255,255,255,0.9);
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 600;
-            transition: all 0.3s;
-        }
-        
-        .header-back a:hover {
-            color: #fff;
-            text-decoration: underline;
-        }
-        
-        .header-buttons {
-            margin-top: 15px;
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-        }
-        
-        .header-button {
-            padding: 10px 28px;
-            background: rgba(255,255,255,0.15);
-            color: white;
-            border: 2px solid rgba(255,255,255,0.3);
-            border-radius: 25px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 14px;
-            transition: all 0.3s;
-        }
-        
-        .header-button:hover {
-            background: rgba(255,255,255,0.25);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
-        }
-        
+
+        /* 输入区域样式 */
         .input-section {
             padding: 18px;
             background: #f8fafc;
             border: 1px solid #e2e8f0;
             border-radius: 12px;
         }
-        
+
+        /* 输入行样式 */
         .input-row {
             display: flex;
             align-items: center;
             margin-bottom: 12px;
         }
-        
+
+        /* 输入标签样式 */
         .input-label {
             width: 200px;
             font-weight: 600;
             color: #475569;
             font-size: 13px;
         }
-        
+
+        /* 输入字段样式 */
         .input-field {
             flex: 1;
             padding: 10px 14px;
@@ -166,13 +111,15 @@
             text-align: right;
             transition: all 0.3s;
         }
-        
+
+        /* 输入字段聚焦样式 */
         .input-field:focus {
             outline: none;
             border-color: #4f46e5;
             box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
         }
-        
+
+        /* 联系按钮样式 */
         .contact-btn {
             display: flex;
             align-items: center;
@@ -188,25 +135,30 @@
             transition: all 0.3s;
             box-shadow: 0 2px 8px rgba(7, 193, 96, 0.3);
         }
-        
+
+        /* 联系按钮悬停效果 */
         .contact-btn:hover {
             background: linear-gradient(135deg, #06ad56 0%, #059e4c 100%);
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(7, 193, 96, 0.4);
         }
-        
+
+        /* 联系按钮激活效果 */
         .contact-btn:active {
             transform: translateY(0);
         }
-        
+
+        /* 联系图标样式 */
         .contact-icon {
             font-size: 16px;
         }
-        
+
+        /* 联系文本样式 */
         .contact-text {
             font-size: 13px;
         }
-        
+
+        /* 验证按钮样式 */
         .verify-btn {
             display: flex;
             align-items: center;
@@ -223,21 +175,25 @@
             box-shadow: 0 2px 8px rgba(24, 144, 255, 0.3);
             margin-left: 10px;
         }
-        
+
+        /* 验证按钮悬停效果 */
         .verify-btn:hover {
             background: linear-gradient(135deg, #096dd9 0%, #0050b3 100%);
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(24, 144, 255, 0.4);
         }
-        
+
+        /* 验证按钮激活效果 */
         .verify-btn:active {
             transform: translateY(0);
         }
-        
+
+        /* 验证文本样式 */
         .verify-text {
             font-size: 13px;
         }
-        
+
+        /* 验证结果样式 */
         .verify-result {
             margin-left: 15px;
             padding: 8px 12px;
@@ -246,32 +202,37 @@
             min-width: 200px;
             display: none;
         }
-        
+
+        /* 验证结果成功样式 */
         .verify-result.success {
             display: block !important;
             background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
             border: 1px solid #0ea5e9;
             color: #0369a1;
         }
-        
+
+        /* 验证结果错误样式 */
         .verify-result.error {
             display: block !important;
             background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
             border: 1px solid #ef4444;
             color: #dc2626;
         }
-        
+
+        /* 结果区域样式 */
         .result-section {
             padding: 15px;
         }
-        
+
+        /* 结果网格布局 */
         .result-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 12px;
             margin-bottom: 15px;
         }
-        
+
+        /* 结果项样式 */
         .result-item {
             background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
             border: 1px solid #e0e0e0;
@@ -283,27 +244,31 @@
             justify-content: center;
             box-shadow: 0 2px 8px rgba(0,0,0,0.08);
         }
-        
+
+        /* 结果标签样式 */
         .result-label {
             font-weight: bold;
             color: #555;
             font-size: 12px;
             margin-bottom: 5px;
         }
-        
+
+        /* 结果数值样式 */
         .result-value {
             font-weight: bold;
             color: #667eea;
             font-size: 18px;
         }
-        
+
+        /* 税务表格样式 */
         .tax-table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 10px;
             font-size: 11px;
         }
-        
+
+        /* 税务表格表头样式 */
         .tax-table th {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
@@ -313,7 +278,8 @@
             border: 1px solid #5568d3;
             font-size: 11px;
         }
-        
+
+        /* 税务表格单元格样式 */
         .tax-table td {
             padding: 6px 4px;
             text-align: center;
@@ -321,25 +287,30 @@
             color: #333;
             font-size: 11px;
         }
-        
+
+        /* 税务表格偶数行样式 */
         .tax-table tr:nth-child(even) {
-            background: #f8f9fa;
+            background: #f8fafc;
         }
-        
+
+        /* 月度行样式 */
         .monthly-row {
-            background: #f8f9fa;
+            background: #f8fafc;
         }
-        
+
+        /* 奖金行样式 */
         .bonus-row {
             background: linear-gradient(135deg, #e8f4f8 0%, #d6eaf8 100%);
             font-weight: bold;
         }
-        
+
+        /* 总计行样式 */
         .total-row {
             background: linear-gradient(135deg, #fef9e7 0%, #fdebd0 100%);
             font-weight: bold;
         }
-        
+
+        /* 提示框样式 */
         .note {
             background: linear-gradient(135deg, #fff9c4 0%, #ffeb3b 100%);
             border: 1px solid #ffc107;
@@ -350,7 +321,8 @@
             color: #f57f17;
             text-align: center;
         }
-        
+
+        /* 加载遮罩样式 */
         .loading-overlay {
             position: fixed;
             top: 0;
@@ -363,7 +335,8 @@
             align-items: center;
             z-index: 9999;
         }
-        
+
+        /* 加载旋转器样式 */
         .loading-spinner {
             width: 60px;
             height: 60px;
@@ -372,65 +345,80 @@
             border-radius: 50%;
             animation: spin 1s linear infinite;
         }
-        
+
+        /* 旋转动画关键帧 */
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-        
+
+        /* 响应式设计 */
         @media (max-width: 1024px) {
+            /* 结果网格改为单列 */
             .result-grid {
                 grid-template-columns: 1fr;
             }
             
+            /* 输入行改为垂直布局 */
             .input-row {
                 flex-direction: column;
                 align-items: flex-start;
                 gap: 8px;
             }
             
+            /* 输入标签宽度100% */
             .input-label {
                 width: 100%;
             }
             
+            /* 输入字段宽度100%，左对齐 */
             .input-field {
                 width: 100%;
                 text-align: left;
             }
         }
-        
+
+        /* 手机端适配 */
         @media (max-width: 768px) {
+            /* 页面内边距减小 */
             body {
                 padding: 10px;
             }
             
+            /* 头部内边距调整 */
             .header {
                 padding: 20px;
             }
             
+            /* 头部标题字体减小 */
             .header h1 {
                 font-size: 24px;
             }
             
+            /* 输入和结果区域内边距调整 */
             .input-section,
             .result-section {
                 padding: 20px;
             }
             
+            /* 头部按钮垂直布局 */
             .header-buttons {
                 flex-direction: column;
                 align-items: center;
             }
             
+            /* 头部按钮宽度固定 */
             .header-button {
                 width: 200px;
                 text-align: center;
             }
             
+            /* 税务表格字体减小 */
             .tax-table {
                 font-size: 11px;
             }
             
+            /* 税务表格单元格内边距调整 */
             .tax-table th,
             .tax-table td {
                 padding: 8px;
@@ -1162,5 +1150,39 @@
         });
     </script>
     <script src="js/github-ip-switcher.js"></script>
+
+    <!-- 客服弹窗HTML结构 - 根据是否有上传图片自动调整显示方式 -->
+    <div id="serviceModal" class="service-modal">
+        <div class="service-modal-content">
+            <!-- 关闭按钮 - 有上传图片时隐藏 -->
+            <button class="service-modal-close" onclick="closeServiceModal()">&times;</button>
+            <!-- 弹窗标题 - 有上传图片时隐藏 -->
+            <h3 class="service-modal-title">联系客服</h3>
+            <!-- 二维码显示区域 -->
+            <div class="service-modal-qr">
+                <!-- 企业微信客服二维码图片 - 优先使用本地图片，如果不存在则使用在线二维码API -->
+                <img src="images/service_qrcode.jpg" alt="企业微信客服二维码" onerror="this.src='https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://work.weixin.qq.com/kfid/kfcb780561e4efc1826'">
+            </div>
+            <!-- 提示文字 - 有上传图片时隐藏 -->
+            <p class="service-modal-text">扫描上方二维码，或点击下方按钮直接联系客服</p>
+            <!-- 操作按钮 - 有上传图片时隐藏 -->
+            <div class="service-modal-actions">
+                <!-- 打开微信客服按钮 -->
+                <a href="https://work.weixin.qq.com/kfid/kfcb780561e4efc1826" target="_blank" class="service-modal-btn primary">打开微信客服</a>
+                <!-- 关闭按钮 -->
+                <button class="service-modal-btn secondary" onclick="closeServiceModal()">关闭</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 悬浮客服按钮 - 固定在右下角 -->
+    <a href="javascript:void(0)" onclick="openServiceModal()" class="floating-service-btn" title="联系客服">
+        <!-- 微信图标SVG -->
+        <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 01.213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 00.167-.054l1.903-1.114a.864.864 0 01.717-.098 10.16 10.16 0 002.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348zM5.785 5.991c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 01-1.162 1.178A1.17 1.17 0 014.623 7.17c0-.651.52-1.18 1.162-1.18zm5.813 0c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 01-1.162 1.178 1.17 1.17 0 01-1.162-1.178c0-.651.52-1.18 1.162-1.18zm5.34 2.867c-1.797-.052-3.746.512-5.28 1.786-1.72 1.428-2.687 3.72-1.78 6.22.942 2.453 3.666 4.229 6.884 4.229.826 0 1.622-.12 2.361-.336a.722.722 0 01.598.082l1.584.926a.272.272 0 00.14.045c.134 0 .24-.111.24-.247 0-.06-.023-.12-.038-.177l-.327-1.233a.582.582 0 01-.023-.156.49.49 0 01.201-.398C23.024 18.48 24 16.82 24 14.98c0-3.21-2.931-5.837-6.656-6.088V8.89c-.135-.01-.269-.03-.407-.032zm-2.53 3.274c.535 0 .969.44.969.982a.976.976 0 01-.969.983.976.976 0 01-.969-.983c0-.542.434-.982.97-.982zm4.844 0c.535 0 .969.44.969.982a.976.976 0 01-.969.983.976.976 0 01-.969-.983c0-.542.434-.982.969-.982z"/>
+        </svg>
+    </a>
+
+    <script src="js/service-modal.js"></script>
 </body>
 </html>
