@@ -1,0 +1,1141 @@
+/**
+ * 税务工具通用样式
+ * 定义税务计算器和税务优化器页面的布局和样式
+ * @version 1.0.0
+ * @date 2026-02-25
+ * @description 包含页面容器、头部区域、按钮、表单、内容区域等样式
+ * @适用页面：tax-calculator.html, tax-optimizer.html
+ * 
+ * 使用方法：
+ * 1. 在HTML中引入此CSS文件：<link rel="stylesheet" href="css/tax-tools.css">
+ * 2. 确保已引入 reset.css
+ */
+
+/* ==================== 基础布局样式 ==================== */
+
+/* 页面容器样式 - 最大宽度1800px，居中显示 */
+.container {
+    /* 最大宽度：1800px，限制页面最大宽度 */
+    max-width: 1800px;
+    /* 外边距：上下0，左右自动，居中显示 */
+    margin: 0 auto;
+    /* 背景：白色 */
+    background: white;
+    /* 边框圆角：16px，创建圆角容器 */
+    border-radius: 16px;
+    /* 阴影：0 4px 24px的黑色阴影，透明度0.08 */
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    /* 溢出：隐藏，确保内容不超出边界 */
+    overflow: hidden;
+    /* 适用页面：tax-calculator.html, tax-optimizer.html */
+}
+
+/* ==================== 头部区域样式 ==================== */
+
+/* 头部容器样式 - 紫色渐变背景 */
+.header {
+    /* 背景：从蓝色到紫色的线性渐变 */
+    background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+    /* 内边距：20px，为头部内容创建内边距 */
+    padding: 20px;
+    /* 文本对齐：居中 */
+    text-align: center;
+    /* 适用页面：tax-calculator.html, tax-optimizer.html */
+}
+
+/* 头部标题样式 */
+.header h1 {
+    /* 文本颜色：白色 */
+    color: white;
+    /* 字体大小：26px */
+    font-size: 26px;
+    /* 字体粗细：800，粗体 */
+    font-weight: 800;
+    /* 外边距：0，移除默认外边距 */
+    margin: 0;
+    /* 字母间距：1px，增加字母间距 */
+    letter-spacing: 1px;
+    /* 文本阴影：0 2px 6px的黑色阴影，透明度0.2 */
+    text-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    /* 适用页面：tax-calculator.html, tax-optimizer.html */
+}
+
+/* 头部副标题样式 */
+.header p {
+    /* 文本颜色：白色，透明度0.9 */
+    color: rgba(255,255,255,0.9);
+    /* 字体大小：13px */
+    font-size: 13px;
+    /* 外边距：上下8px，左右0 */
+    margin: 8px 0;
+    /* 字体粗细：400，常规粗细 */
+    font-weight: 400;
+    /* 文本对齐：居中 */
+    text-align: center;
+    /* 适用页面：tax-calculator.html, tax-optimizer.html */
+}
+
+/* 返回链接容器样式 */
+.header-back {
+    /* 外边距：顶部10px，其他0，与上部分内容保持间距 */
+    margin-top: 10px;
+    /* 文本对齐：居中 */
+    text-align: center;
+    /* 适用页面：tax-calculator.html, tax-optimizer.html */
+}
+
+/* 返回链接样式 */
+.header-back a {
+    /* 文本颜色：白色，透明度0.9 */
+    color: rgba(255,255,255,0.9);
+    /* 文本装饰：无，移除默认下划线 */
+    text-decoration: none;
+    /* 字体大小：14px */
+    font-size: 14px;
+    /* 字体粗细：600，半粗体 */
+    font-weight: 600;
+    /* 过渡效果：所有属性0.3秒过渡 */
+    transition: all 0.3s;
+    /* 适用页面：tax-calculator.html, tax-optimizer.html */
+}
+
+/* 返回链接悬停效果 */
+.header-back a:hover {
+    /* 文本颜色：白色 */
+    color: #fff;
+    /* 文本装饰：下划线，添加下划线效果 */
+    text-decoration: underline;
+    /* 适用页面：tax-calculator.html, tax-optimizer.html */
+}
+
+/* 头部按钮容器样式 */
+.header-buttons {
+    /* 外边距：顶部15px，其他0，与上部分内容保持间距 */
+    margin-top: 15px;
+    /* 显示：弹性布局 */
+    display: flex;
+    /* 水平对齐：居中 */
+    justify-content: center;
+    /* 间距：10px，按钮之间的间距 */
+    gap: 10px;
+    /* 适用页面：tax-calculator.html, tax-optimizer.html */
+}
+
+/* ==================== 按钮样式 ==================== */
+
+/* 头部按钮基础样式 */
+.header-button {
+    /* 内边距：上下10px，左右28px，创建舒适的点击区域 */
+    padding: 10px 28px;
+    /* 背景：白色，透明度0.15 */
+    background: rgba(255, 255, 255, 0.15);
+    /* 文本颜色：白色 */
+    color: #fff;
+    /* 边框：2px实线，白色，透明度0.3 */
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    /* 边框圆角：25px，创建圆角按钮 */
+    border-radius: 25px;
+    /* 光标：指针，表明按钮可点击 */
+    cursor: pointer;
+    /* 字体粗细：600，半粗体 */
+    font-weight: 600;
+    /* 字体大小：14px */
+    font-size: 14px;
+    /* 过渡效果：所有属性0.3秒过渡 */
+    transition: all 0.3s;
+    /* 适用页面：tax-calculator.html, tax-optimizer.html */
+}
+
+/* 头部按钮悬停效果 */
+.header-button:hover {
+    /* 背景：白色，透明度0.25 */
+    background: rgba(255, 255, 255, 0.25);
+    /* 变换：向上移动2px，创建悬浮效果 */
+    transform: translateY(-2px);
+    /* 阴影：0 6px 20px的黑色阴影，透明度0.2 */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    /* 适用页面：tax-calculator.html, tax-optimizer.html */
+}
+
+/* ==================== 表单样式 ==================== */
+
+/* 表单组容器样式 */
+.form-group {
+    /* 外边距：底部20px，其他0，与下一个表单组保持间距 */
+    margin-bottom: 20px;
+    /* 适用页面：tax-calculator.html, tax-optimizer.html */
+}
+
+/* 表单标签样式 */
+.form-group label {
+    /* 显示：块级元素，独占一行 */
+    display: block;
+    /* 外边距：底部8px，其他0，与输入框保持间距 */
+    margin-bottom: 8px;
+    /* 字体粗细：600，半粗体 */
+    font-weight: 600;
+    /* 文本颜色：深灰色 */
+    color: #1e293b;
+    /* 字体大小：14px */
+    font-size: 14px;
+    /* 适用页面：tax-calculator.html, tax-optimizer.html */
+}
+
+/* 表单输入框基础样式 */
+.form-group input {
+    /* 宽度：100%，填满表单组宽度 */
+    width: 100%;
+    /* 内边距：上下12px，左右16px，创建舒适的输入区域 */
+    padding: 12px 16px;
+    /* 边框：2px实线，浅灰色 */
+    border: 2px solid #e2e8f0;
+    /* 边框圆角：10px，创建圆角输入框 */
+    border-radius: 10px;
+    /* 字体大小：14px */
+    font-size: 14px;
+    /* 过渡效果：所有属性0.3秒过渡 */
+    transition: all 0.3s;
+    /* 字体族：继承父元素字体，确保字体一致性 */
+    font-family: inherit;
+    /* 适用页面：tax-calculator.html, tax-optimizer.html */
+}
+
+/* 表单输入框聚焦样式 */
+.form-group input:focus {
+    /* 轮廓：无，移除默认轮廓 */
+    outline: none;
+    /* 边框颜色：蓝色 */
+    border-color: #4f46e5;
+    /* 阴影：0 0 0 3px的蓝色阴影，透明度0.1，增强聚焦效果 */
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+    /* 适用页面：tax-calculator.html, tax-optimizer.html */
+}
+
+/* 表单选择框样式 */
+.form-group select {
+    /* 宽度：100%，填满表单组宽度 */
+    width: 100%;
+    /* 内边距：上下12px，左右16px，创建舒适的选择区域 */
+    padding: 12px 16px;
+    /* 边框：2px实线，浅灰色 */
+    border: 2px solid #e2e8f0;
+    /* 边框圆角：10px，创建圆角选择框 */
+    border-radius: 10px;
+    /* 字体大小：14px */
+    font-size: 14px;
+    /* 过渡效果：所有属性0.3秒过渡 */
+    transition: all 0.3s;
+    /* 字体族：继承父元素字体，确保字体一致性 */
+    font-family: inherit;
+    /* 背景：白色 */
+    background: white;
+    /* 光标：指针，表明选择框可点击 */
+    cursor: pointer;
+    /* 适用页面：tax-calculator.html, tax-optimizer.html */
+}
+
+/* 表单选择框聚焦样式 */
+.form-group select:focus {
+    /* 轮廓：无，移除默认轮廓 */
+    outline: none;
+    /* 边框颜色：蓝色 */
+    border-color: #4f46e5;
+    /* 阴影：0 0 0 3px的蓝色阴影，透明度0.1，增强聚焦效果 */
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+    /* 适用页面：tax-calculator.html, tax-optimizer.html */
+}
+
+/* ==================== 内容区域样式 ==================== */
+
+/* 内容包装器样式 - 双列布局 */
+.content-wrapper {
+    /* 显示：网格布局 */
+    display: grid;
+    /* 网格列：380px 1fr，左侧固定宽度，右侧自适应 */
+    grid-template-columns: 380px 1fr;
+    /* 间距：20px，两列之间的间距 */
+    gap: 20px;
+    /* 内边距：20px，为内容创建内边距 */
+    padding: 20px;
+    /* 适用页面：tax-calculator.html, tax-optimizer.html */
+}
+
+/* ==================== 响应式设计 ==================== */
+
+/* 平板和手机端适配 - 单列布局 */
+@media (max-width: 1400px) {
+    /* 内容包装器改为单列 */
+    .content-wrapper {
+        /* 网格列：1fr，改为单列布局 */
+        grid-template-columns: 1fr;
+        /* 适用页面：tax-calculator.html, tax-optimizer.html，平板和手机端 */
+    }
+}
+
+/* 手机端适配 */
+@media (max-width: 768px) {
+    /* 头部标题字体减小 */
+    .header h1 {
+        /* 字体大小：22px，减小字体大小以适应小屏幕 */
+        font-size: 22px;
+        /* 适用页面：tax-calculator.html, tax-optimizer.html，手机端 */
+    }
+    
+    /* 头部副标题字体减小 */
+    .header p {
+        /* 字体大小：12px，减小字体大小以适应小屏幕 */
+        font-size: 12px;
+        /* 适用页面：tax-calculator.html, tax-optimizer.html，手机端 */
+    }
+    
+    /* 头部按钮字体减小 */
+    .header-button {
+        /* 内边距：上下8px，左右20px，减少内边距以适应小屏幕 */
+        padding: 8px 20px;
+        /* 字体大小：13px，减小字体大小以适应小屏幕 */
+        font-size: 13px;
+        /* 适用页面：tax-calculator.html, tax-optimizer.html，手机端 */
+    }
+}
+
+/* ==================== 税务计算器页面特定样式 ==================== */
+
+/* 输入区域样式 */
+.input-section {
+    /* 背景：浅灰色 */
+    background: #f8fafc;
+    /* 边框圆角：12px，创建圆角区域 */
+    border-radius: 12px;
+    /* 内边距：18px，为输入区域创建内边距 */
+    padding: 18px;
+    /* 边框：1px实线，浅灰色 */
+    border: 1px solid #e2e8f0;
+    /* 适用页面：tax-calculator.html */
+}
+
+/* 区域标题样式 */
+.section-title {
+    /* 文本颜色：蓝色 */
+    color: #4f46e5;
+    /* 字体大小：16px */
+    font-size: 16px;
+    /* 字体粗细：700，粗体 */
+    font-weight: 700;
+    /* 外边距：底部15px，其他0，与输入行保持间距 */
+    margin-bottom: 15px;
+    /* 内边距：底部8px，其他0，为下划线创建空间 */
+    padding-bottom: 8px;
+    /* 边框：底部2px实线，蓝色 */
+    border-bottom: 2px solid #4f46e5;
+    /* 适用页面：tax-calculator.html */
+}
+
+/* 输入行样式 */
+.input-row {
+    /* 显示：弹性布局 */
+    display: flex;
+    /* 对齐项目：居中 */
+    align-items: center;
+    /* 外边距：底部12px，其他0，与下一个输入行保持间距 */
+    margin-bottom: 12px;
+    /* 适用页面：tax-calculator.html */
+}
+
+/* 输入标签样式 */
+.input-label {
+    /* 宽度：200px，固定标签宽度 */
+    width: 200px;
+    /* 文本颜色：中灰色 */
+    color: #475569;
+    /* 字体粗细：600，半粗体 */
+    font-weight: 600;
+    /* 字体大小：13px */
+    font-size: 13px;
+    /* 适用页面：tax-calculator.html */
+}
+
+/* 输入字段样式 */
+.input-field {
+    /* 弹性：1，占据剩余空间 */
+    flex: 1;
+    /* 内边距：上下10px，左右14px，创建舒适的输入区域 */
+    padding: 10px 14px;
+    /* 边框：2px实线，浅灰色 */
+    border: 2px solid #cbd5e1;
+    /* 边框圆角：8px，创建圆角输入框 */
+    border-radius: 8px;
+    /* 字体大小：14px */
+    font-size: 14px;
+    /* 背景：白色 */
+    background: #fff;
+    /* 文本颜色：深灰色 */
+    color: #1e293b;
+    /* 文本对齐：右对齐 */
+    text-align: right;
+    /* 过渡效果：所有属性0.3秒过渡 */
+    transition: all 0.3s;
+    /* 适用页面：tax-calculator.html */
+}
+
+/* 输入字段聚焦样式 */
+.input-field:focus {
+    /* 轮廓：无，移除默认轮廓 */
+    outline: none;
+    /* 边框颜色：蓝色 */
+    border-color: #4f46e5;
+    /* 阴影：0 0 0 3px的蓝色阴影，透明度0.1，增强聚焦效果 */
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+    /* 适用页面：tax-calculator.html */
+}
+
+/* 输入字段占位符样式 */
+.input-field::placeholder {
+    /* 文本颜色：浅灰色 */
+    color: #94a3b8;
+    /* 字体大小：13px */
+    font-size: 13px;
+    /* 适用页面：tax-calculator.html */
+}
+
+/* 输入提示样式 */
+.input-hint {
+    /* 字体大小：11px */
+    font-size: 11px;
+    /* 文本颜色：中灰色 */
+    color: #64748b;
+    /* 外边距：顶部2px，其他0，与输入字段保持间距 */
+    margin-top: 2px;
+    /* 适用页面：tax-calculator.html */
+}
+
+/* 结果区域样式 */
+.result-section {
+    /* 背景：浅灰色 */
+    background: #f8fafc;
+    /* 边框圆角：12px，创建圆角区域 */
+    border-radius: 12px;
+    /* 内边距：18px，为结果区域创建内边距 */
+    padding: 18px;
+    /* 边框：1px实线，浅灰色 */
+    border: 1px solid #e2e8f0;
+    /* 适用页面：tax-calculator.html */
+}
+
+/* 主要结果网格布局 */
+.result-main {
+    /* 显示：网格布局 */
+    display: grid;
+    /* 网格列：2列，平均分配 */
+    grid-template-columns: repeat(2, 1fr);
+    /* 间距：15px，结果卡片之间的间距 */
+    gap: 15px;
+    /* 外边距：底部18px，其他0，与次要结果保持间距 */
+    margin-bottom: 18px;
+    /* 适用页面：tax-calculator.html */
+}
+
+/* 结果卡片样式 */
+.result-card {
+    /* 背景：从白色到浅灰色的线性渐变 */
+    background: linear-gradient(135deg, #fff 0%, #f1f5f9 100%);
+    /* 边框：2px实线，浅灰色 */
+    border: 2px solid #e2e8f0;
+    /* 边框圆角：12px，创建圆角卡片 */
+    border-radius: 12px;
+    /* 内边距：20px，为卡片内容创建内边距 */
+    padding: 20px;
+    /* 显示：弹性布局 */
+    display: flex;
+    /* 方向：垂直 */
+    flex-direction: column;
+    /* 对齐项目：居中 */
+    align-items: center;
+    /* 水平对齐：居中 */
+    justify-content: center;
+    /* 阴影：0 2px 12px的黑色阴影，透明度0.05 */
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+    /* 过渡效果：所有属性0.3秒过渡 */
+    transition: all 0.3s;
+    /* 适用页面：tax-calculator.html */
+}
+
+/* 结果卡片悬停效果 */
+.result-card:hover {
+    /* 变换：向上移动3px，创建悬浮效果 */
+    transform: translateY(-3px);
+    /* 阴影：0 6px 20px的黑色阴影，透明度0.1 */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    /* 适用页面：tax-calculator.html */
+}
+
+/* 成功结果卡片样式 */
+.result-card.success {
+    /* 边框颜色：绿色 */
+    border-color: #10b981;
+    /* 背景：从浅绿色到浅绿色的线性渐变 */
+    background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+    /* 适用页面：tax-calculator.html */
+}
+
+/* 高亮结果卡片样式 */
+.result-card.highlight {
+    /* 边框颜色：红色 */
+    border-color: #ef4444;
+    /* 背景：从浅红色到浅红色的线性渐变 */
+    background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+    /* 适用页面：tax-calculator.html */
+}
+
+/* 结果标签样式 */
+.result-label {
+    /* 文本颜色：中灰色 */
+    color: #64748b;
+    /* 字体粗细：600，半粗体 */
+    font-weight: 600;
+    /* 字体大小：12px */
+    font-size: 12px;
+    /* 外边距：底部8px，其他0，与结果数值保持间距 */
+    margin-bottom: 8px;
+    /* 文本转换：大写 */
+    text-transform: uppercase;
+    /* 字母间距：0.5px，增加字母间距 */
+    letter-spacing: 0.5px;
+    /* 适用页面：tax-calculator.html */
+}
+
+/* 结果数值样式 */
+.result-value {
+    /* 文本颜色：蓝色 */
+    color: #4f46e5;
+    /* 字体粗细：800，粗体 */
+    font-weight: 800;
+    /* 字体大小：32px */
+    font-size: 32px;
+    /* 适用页面：tax-calculator.html */
+}
+
+/* 高亮结果数值样式 */
+.result-value.highlight {
+    /* 文本颜色：红色 */
+    color: #ef4444;
+    /* 字体大小：38px */
+    font-size: 38px;
+    /* 适用页面：tax-calculator.html */
+}
+
+/* 成功结果数值样式 */
+.result-value.success {
+    /* 文本颜色：绿色 */
+    color: #10b981;
+    /* 字体大小：36px */
+    font-size: 36px;
+    /* 适用页面：tax-calculator.html */
+}
+
+/* 次要结果网格布局 */
+.result-sub {
+    /* 显示：网格布局 */
+    display: grid;
+    /* 网格列：2列，平均分配 */
+    grid-template-columns: repeat(2, 1fr);
+    /* 间距：12px，结果项之间的间距 */
+    gap: 12px;
+    /* 外边距：底部18px，其他0，与税务表格保持间距 */
+    margin-bottom: 18px;
+    /* 适用页面：tax-calculator.html */
+}
+
+/* 结果项样式 */
+.result-item {
+    /* 背景：白色 */
+    background: #fff;
+    /* 边框：1px实线，浅灰色 */
+    border: 1px solid #e2e8f0;
+    /* 边框圆角：10px，创建圆角结果项 */
+    border-radius: 10px;
+    /* 内边距：14px，为结果项内容创建内边距 */
+    padding: 14px;
+    /* 显示：弹性布局 */
+    display: flex;
+    /* 方向：垂直 */
+    flex-direction: column;
+    /* 对齐项目：居中 */
+    align-items: center;
+    /* 水平对齐：居中 */
+    justify-content: center;
+    /* 适用页面：tax-calculator.html */
+}
+
+/* 结果项标签样式 */
+.result-item .result-label {
+    /* 字体大小：11px */
+    font-size: 11px;
+    /* 外边距：底部6px，其他0，与结果数值保持间距 */
+    margin-bottom: 6px;
+    /* 适用页面：tax-calculator.html */
+}
+
+/* 结果项数值样式 */
+.result-item .result-value {
+    /* 字体大小：22px */
+    font-size: 22px;
+    /* 适用页面：tax-calculator.html */
+}
+
+/* 税务表格样式 */
+.tax-table {
+    /* 宽度：100%，填满结果区域宽度 */
+    width: 100%;
+    /* 边框合并：合并相邻边框 */
+    border-collapse: collapse;
+    /* 外边距：顶部12px，其他0，与次要结果保持间距 */
+    margin-top: 12px;
+    /* 字体大小：13px */
+    font-size: 13px;
+    /* 边框圆角：10px，创建圆角表格 */
+    border-radius: 10px;
+    /* 溢出：隐藏，确保表格内容不超出边界 */
+    overflow: hidden;
+    /* 阴影：0 2px 10px的黑色阴影，透明度0.05 */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    /* 适用页面：tax-calculator.html */
+}
+
+/* 税务表格表头样式 */
+.tax-table th {
+    /* 背景：从蓝色到紫色的线性渐变 */
+    background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+    /* 文本颜色：白色 */
+    color: #fff;
+    /* 内边距：上下10px，左右8px，为表头内容创建内边距 */
+    padding: 10px 8px;
+    /* 文本对齐：居中 */
+    text-align: center;
+    /* 字体粗细：700，粗体 */
+    font-weight: 700;
+    /* 边框：1px实线，深蓝色 */
+    border: 1px solid #4338ca;
+    /* 字体大小：12px */
+    font-size: 12px;
+    /* 适用页面：tax-calculator.html */
+}
+
+/* 税务表格单元格样式 */
+.tax-table td {
+    /* 内边距：上下8px，左右8px，为单元格内容创建内边距 */
+    padding: 8px 8px;
+    /* 文本对齐：居中 */
+    text-align: center;
+    /* 边框：1px实线，浅灰色 */
+    border: 1px solid #e2e8f0;
+    /* 文本颜色：深灰色 */
+    color: #334155;
+    /* 字体大小：13px */
+    font-size: 13px;
+    /* 适用页面：tax-calculator.html */
+}
+
+/* 税务表格偶数行样式 */
+.tax-table tr:nth-child(even) {
+    /* 背景：浅灰色 */
+    background: #f8fafc;
+    /* 适用页面：tax-calculator.html */
+}
+
+/* 税务表格悬停效果 */
+.tax-table tr:hover {
+    /* 背景：浅蓝色 */
+    background: #e0e7ff;
+    /* 过渡效果：背景0.2秒过渡 */
+    transition: background 0.2s;
+    /* 适用页面：tax-calculator.html */
+}
+
+/* 总计行样式 */
+.total-row {
+    /* 背景：从浅黄色到黄色的线性渐变 */
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    /* 字体粗细：700，粗体 */
+    font-weight: 700;
+    /* 文本颜色：棕色 */
+    color: #92400e;
+    /* 适用页面：tax-calculator.html */
+}
+
+/* 提示框样式 */
+.note {
+    /* 背景：浅黄色 */
+    background: #fef9c3;
+    /* 边框：1px实线，黄色 */
+    border: 1px solid #f59e0b;
+    /* 边框圆角：8px，创建圆角提示框 */
+    border-radius: 8px;
+    /* 内边距：10px，为提示框内容创建内边距 */
+    padding: 10px;
+    /* 外边距：顶部15px，其他0，与税务表格保持间距 */
+    margin-top: 15px;
+    /* 字体大小：12px */
+    font-size: 12px;
+    /* 文本颜色：棕色 */
+    color: #92400e;
+    /* 文本对齐：居中 */
+    text-align: center;
+    /* 适用页面：tax-calculator.html */
+}
+
+/* 税务计算器响应式设计 */
+@media (max-width: 1400px) {
+    /* 主要结果网格布局：调整为2列 */
+    .result-main {
+        /* 网格列：2列，平均分配 */
+        grid-template-columns: repeat(2, 1fr);
+        /* 适用页面：tax-calculator.html，平板和手机端 */
+    }
+
+    /* 次要结果网格布局：调整为2列 */
+    .result-sub {
+        /* 网格列：2列，平均分配 */
+        grid-template-columns: repeat(2, 1fr);
+        /* 适用页面：tax-calculator.html，平板和手机端 */
+    }
+}
+
+/* ==================== 税务优化器页面特定样式 ==================== */
+
+/* 价格标签样式 */
+.price {
+    /* 字体大小：18px */
+    font-size: 18px;
+    /* 字体粗细：700，粗体 */
+    font-weight: 700;
+    /* 文本颜色：白色 */
+    color: #fff;
+    /* 文本阴影：0 2px 4px的黑色阴影，透明度0.2 */
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    /* 适用页面：tax-optimizer.html */
+}
+
+/* 价格描述样式 */
+.price-desc {
+    /* 字体大小：12px */
+    font-size: 12px;
+    /* 文本颜色：白色，透明度0.9 */
+    color: rgba(255,255,255,0.9);
+    /* 外边距：左侧4px，其他0 */
+    margin-left: 4px;
+    /* 字体粗细：500，中等粗细 */
+    font-weight: 500;
+    /* 适用页面：tax-optimizer.html */
+}
+
+/* 头部标题行样式 */
+.header-title-row {
+    /* 显示：弹性布局 */
+    display: flex;
+    /* 对齐项目：居中 */
+    align-items: center;
+    /* 水平对齐：居中 */
+    justify-content: center;
+    /* 间距：15px，标题和价格标签之间的间距 */
+    gap: 15px;
+    /* 外边距：底部10px，其他0，与副标题保持间距 */
+    margin-bottom: 10px;
+    /* 定位：相对定位 */
+    position: relative;
+    /* 宽度：100% */
+    width: 100%;
+    /* 适用页面：tax-optimizer.html */
+}
+
+/* 价格标签容器样式 */
+.price-tag {
+    /* 外边距：0，左侧自动，将价格标签推到右侧 */
+    margin: 0;
+    margin-left: auto;
+    /* 显示：弹性布局 */
+    display: flex;
+    /* 对齐项目：基线对齐 */
+    align-items: baseline;
+    /* 水平对齐：居中 */
+    justify-content: center;
+    /* 弹性收缩：0，防止价格标签被压缩 */
+    flex-shrink: 0;
+    /* 背景：白色，透明度0.15 */
+    background: rgba(255,255,255,0.15);
+    /* 内边距：上下6px，左右16px */
+    padding: 6px 16px;
+    /* 边框圆角：20px，创建圆角价格标签 */
+    border-radius: 20px;
+    /* 边框：1px实线，白色，透明度0.25 */
+    border: 1px solid rgba(255,255,255,0.25);
+    /* 适用页面：tax-optimizer.html */
+}
+
+/* 联系按钮样式 */
+.contact-btn {
+    /* 显示：弹性布局 */
+    display: flex;
+    /* 对齐项目：中心 */
+    align-items: center;
+    /* 间距：6px，图标和文本之间的间距 */
+    gap: 6px;
+    /* 内边距：上下10px，左右18px */
+    padding: 10px 18px;
+    /* 背景：从绿色到深绿色的线性渐变 */
+    background: linear-gradient(135deg, #07c160 0%, #06ad56 100%);
+    /* 文本颜色：白色 */
+    color: white;
+    /* 边框：无，移除默认边框 */
+    border: none;
+    /* 边框圆角：8px，创建圆角按钮 */
+    border-radius: 8px;
+    /* 光标：指针，表明按钮可点击 */
+    cursor: pointer;
+    /* 字体大小：13px */
+    font-size: 13px;
+    /* 字体粗细：600，半粗体 */
+    font-weight: 600;
+    /* 过渡效果：所有属性0.3秒过渡 */
+    transition: all 0.3s;
+    /* 阴影：0 2px 8px的绿色阴影，透明度0.3 */
+    box-shadow: 0 2px 8px rgba(7, 193, 96, 0.3);
+    /* 适用页面：tax-optimizer.html */
+}
+
+/* 联系按钮悬停效果 */
+.contact-btn:hover {
+    /* 背景：从深绿色到更深绿色的线性渐变 */
+    background: linear-gradient(135deg, #06ad56 0%, #059e4c 100%);
+    /* 变换：向上移动2px，创建悬浮效果 */
+    transform: translateY(-2px);
+    /* 阴影：0 4px 12px的绿色阴影，透明度0.4 */
+    box-shadow: 0 4px 12px rgba(7, 193, 96, 0.4);
+    /* 适用页面：tax-optimizer.html */
+}
+
+/* 联系按钮激活效果 */
+.contact-btn:active {
+    /* 变换：恢复原位 */
+    transform: translateY(0);
+    /* 适用页面：tax-optimizer.html */
+}
+
+/* 联系图标样式 */
+.contact-icon {
+    /* 字体大小：16px */
+    font-size: 16px;
+    /* 适用页面：tax-optimizer.html */
+}
+
+/* 联系文本样式 */
+.contact-text {
+    /* 字体大小：13px */
+    font-size: 13px;
+    /* 适用页面：tax-optimizer.html */
+}
+
+/* 验证按钮样式 */
+.verify-btn {
+    /* 显示：弹性布局 */
+    display: flex;
+    /* 对齐项目：中心 */
+    align-items: center;
+    /* 间距：6px，图标和文本之间的间距 */
+    gap: 6px;
+    /* 内边距：上下10px，左右18px */
+    padding: 10px 18px;
+    /* 背景：从蓝色到深蓝色的线性渐变 */
+    background: linear-gradient(135deg, #1890ff 0%, #096dd9 100%);
+    /* 文本颜色：白色 */
+    color: white;
+    /* 边框：无，移除默认边框 */
+    border: none;
+    /* 边框圆角：8px，创建圆角按钮 */
+    border-radius: 8px;
+    /* 光标：指针，表明按钮可点击 */
+    cursor: pointer;
+    /* 字体大小：13px */
+    font-size: 13px;
+    /* 字体粗细：600，半粗体 */
+    font-weight: 600;
+    /* 过渡效果：所有属性0.3秒过渡 */
+    transition: all 0.3s;
+    /* 阴影：0 2px 8px的蓝色阴影，透明度0.3 */
+    box-shadow: 0 2px 8px rgba(24, 144, 255, 0.3);
+    /* 外边距：左侧10px，其他0，与输入字段保持间距 */
+    margin-left: 10px;
+    /* 适用页面：tax-optimizer.html */
+}
+
+/* 验证按钮悬停效果 */
+.verify-btn:hover {
+    /* 背景：从深蓝色到更深蓝色的线性渐变 */
+    background: linear-gradient(135deg, #096dd9 0%, #0050b3 100%);
+    /* 变换：向上移动2px，创建悬浮效果 */
+    transform: translateY(-2px);
+    /* 阴影：0 4px 12px的蓝色阴影，透明度0.4 */
+    box-shadow: 0 4px 12px rgba(24, 144, 255, 0.4);
+    /* 适用页面：tax-optimizer.html */
+}
+
+/* 验证按钮激活效果 */
+.verify-btn:active {
+    /* 变换：恢复原位 */
+    transform: translateY(0);
+    /* 适用页面：tax-optimizer.html */
+}
+
+/* 验证文本样式 */
+.verify-text {
+    /* 字体大小：13px */
+    font-size: 13px;
+    /* 适用页面：tax-optimizer.html */
+}
+
+/* 验证结果样式 */
+.verify-result {
+    /* 外边距：左侧15px，其他0，与验证按钮保持间距 */
+    margin-left: 15px;
+    /* 内边距：上下8px，左右12px */
+    padding: 8px 12px;
+    /* 边框圆角：6px，创建圆角验证结果 */
+    border-radius: 6px;
+    /* 字体大小：13px */
+    font-size: 13px;
+    /* 最小宽度：200px */
+    min-width: 200px;
+    /* 显示：无，默认隐藏 */
+    display: none;
+    /* 适用页面：tax-optimizer.html */
+}
+
+/* 验证结果成功样式 */
+.verify-result.success {
+    /* 显示：块级元素，覆盖默认隐藏 */
+    display: block !important;
+    /* 背景：从浅蓝色到更浅蓝色的线性渐变 */
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    /* 边框：1px实线，天蓝色 */
+    border: 1px solid #0ea5e9;
+    /* 文本颜色：深蓝色 */
+    color: #0369a1;
+    /* 适用页面：tax-optimizer.html */
+}
+
+/* 验证结果错误样式 */
+.verify-result.error {
+    /* 显示：块级元素，覆盖默认隐藏 */
+    display: block !important;
+    /* 背景：从浅红色到更浅红色的线性渐变 */
+    background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+    /* 边框：1px实线，红色 */
+    border: 1px solid #ef4444;
+    /* 文本颜色：深红色 */
+    color: #dc2626;
+    /* 适用页面：tax-optimizer.html */
+}
+
+/* 结果网格布局 */
+.result-grid {
+    /* 显示：网格布局 */
+    display: grid;
+    /* 网格列：4列，平均分配 */
+    grid-template-columns: repeat(4, 1fr);
+    /* 间距：12px，结果项之间的间距 */
+    gap: 12px;
+    /* 外边距：底部15px，其他0，与税务表格保持间距 */
+    margin-bottom: 15px;
+    /* 适用页面：tax-optimizer.html */
+}
+
+/* 结果项样式 */
+.result-item {
+    /* 背景：从浅灰色到深灰色的线性渐变 */
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    /* 边框：1px实线，浅灰色 */
+    border: 1px solid #e0e0e0;
+    /* 边框圆角：10px，创建圆角结果项 */
+    border-radius: 10px;
+    /* 内边距：12px，为结果项内容创建内边距 */
+    padding: 12px;
+    /* 显示：弹性布局 */
+    display: flex;
+    /* 方向：垂直 */
+    flex-direction: column;
+    /* 对齐项目：中心 */
+    align-items: center;
+    /* 水平对齐：中心 */
+    justify-content: center;
+    /* 阴影：0 2px 8px的黑色阴影，透明度0.08 */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    /* 适用页面：tax-optimizer.html */
+}
+
+/* 月度行样式 */
+.monthly-row {
+    /* 背景：浅灰色 */
+    background: #f8fafc;
+    /* 适用页面：tax-optimizer.html */
+}
+
+/* 奖金行样式 */
+.bonus-row {
+    /* 背景：从浅蓝色到更浅蓝色的线性渐变 */
+    background: linear-gradient(135deg, #e8f4f8 0%, #d6eaf8 100%);
+    /* 字体粗细：粗体 */
+    font-weight: bold;
+    /* 适用页面：tax-optimizer.html */
+}
+
+/* 加载遮罩样式 */
+.loading-overlay {
+    /* 定位：固定定位 */
+    position: fixed;
+    /* 位置：顶部0，左侧0 */
+    top: 0;
+    left: 0;
+    /* 宽度：100% */
+    width: 100%;
+    /* 高度：100% */
+    height: 100%;
+    /* 背景：白色，透明度0.9 */
+    background: rgba(255, 255, 255, 0.9);
+    /* 显示：弹性布局 */
+    display: flex;
+    /* 水平对齐：中心 */
+    justify-content: center;
+    /* 对齐项目：中心 */
+    align-items: center;
+    /* 层级：9999，确保在其他元素之上 */
+    z-index: 9999;
+    /* 适用页面：tax-optimizer.html */
+}
+
+/* 加载旋转器样式 */
+.loading-spinner {
+    /* 宽度：60px */
+    width: 60px;
+    /* 高度：60px */
+    height: 60px;
+    /* 边框：4px实线，浅灰色 */
+    border: 4px solid #f3f3f3;
+    /* 上边框：4px实线，蓝色 */
+    border-top: 4px solid #3498db;
+    /* 边框圆角：50%，创建圆形旋转器 */
+    border-radius: 50%;
+    /* 动画：spin动画，1秒线性无限循环 */
+    animation: spin 1s linear infinite;
+    /* 适用页面：tax-optimizer.html */
+}
+
+/* 旋转动画关键帧 */
+@keyframes spin {
+    /* 开始状态：旋转0度 */
+    0% { transform: rotate(0deg); }
+    /* 结束状态：旋转360度 */
+    100% { transform: rotate(360deg); }
+}
+
+/* ==================== 税务优化器响应式设计 ==================== */
+
+/* 平板端适配 */
+@media (max-width: 1024px) {
+    /* 结果网格改为单列 */
+    .result-grid {
+        /* 网格列：1列 */
+        grid-template-columns: 1fr;
+        /* 适用页面：tax-optimizer.html，平板端 */
+    }
+    
+    /* 输入行改为垂直布局 */
+    .input-row {
+        /* 方向：垂直 */
+        flex-direction: column;
+        /* 对齐项目：左对齐 */
+        align-items: flex-start;
+        /* 间距：8px，输入标签和输入字段之间的间距 */
+        gap: 8px;
+        /* 适用页面：tax-optimizer.html，平板端 */
+    }
+    
+    /* 输入标签宽度100% */
+    .input-label {
+        /* 宽度：100% */
+        width: 100%;
+        /* 适用页面：tax-optimizer.html，平板端 */
+    }
+    
+    /* 输入字段宽度100%，左对齐 */
+    .input-field {
+        /* 宽度：100% */
+        width: 100%;
+        /* 文本对齐：左对齐 */
+        text-align: left;
+        /* 适用页面：tax-optimizer.html，平板端 */
+    }
+}
+
+/* 手机端适配 */
+@media (max-width: 768px) {
+    /* 页面内边距减小 */
+    body {
+        /* 内边距：10px，减小页面内边距以适应小屏幕 */
+        padding: 10px;
+        /* 适用页面：tax-optimizer.html，手机端 */
+    }
+    
+    /* 头部内边距调整 */
+    .header {
+        /* 内边距：20px，调整头部内边距以适应小屏幕 */
+        padding: 20px;
+        /* 适用页面：tax-optimizer.html，手机端 */
+    }
+    
+    /* 头部标题字体减小 */
+    .header h1 {
+        /* 字体大小：24px，减小字体大小以适应小屏幕 */
+        font-size: 24px;
+        /* 适用页面：tax-optimizer.html，手机端 */
+    }
+    
+    /* 输入和结果区域内边距调整 */
+    .input-section,
+    .result-section {
+        /* 内边距：20px，调整内边距以适应小屏幕 */
+        padding: 20px;
+        /* 适用页面：tax-optimizer.html，手机端 */
+    }
+    
+    /* 头部按钮垂直布局 */
+    .header-buttons {
+        /* 方向：垂直 */
+        flex-direction: column;
+        /* 对齐项目：中心 */
+        align-items: center;
+        /* 适用页面：tax-optimizer.html，手机端 */
+    }
+    
+    /* 头部按钮宽度固定 */
+    .header-button {
+        /* 宽度：200px，固定按钮宽度以适应小屏幕 */
+        width: 200px;
+        /* 文本对齐：中心 */
+        text-align: center;
+        /* 适用页面：tax-optimizer.html，手机端 */
+    }
+    
+    /* 税务表格字体减小 */
+    .tax-table {
+        /* 字体大小：11px，减小字体大小以适应小屏幕 */
+        font-size: 11px;
+        /* 适用页面：tax-optimizer.html，手机端 */
+    }
+    
+    /* 税务表格单元格内边距调整 */
+    .tax-table th,
+    .tax-table td {
+        /* 内边距：8px，调整单元格内边距以适应小屏幕 */
+        padding: 8px;
+        /* 适用页面：tax-optimizer.html，手机端 */
+    }
+}

@@ -1,0 +1,286 @@
+/**
+ * 联系我们页面样式
+ * 定义联系页面的布局和表单样式，包括联系信息、表单、消息提示等
+ * @version 1.0.0
+ * @date 2026-02-25
+ * @description 包含联系区域、联系内容包装器、联系信息、联系表单、消息提示、管理链接等样式
+ * @适用页面：联系我们页面
+ */
+
+/* 联系区域 */
+.contact-section {
+    /* 内边距：上下60px，左右0，为联系区域创建垂直空间 */
+    padding: 60px 0;
+    /* 背景：浅灰色 */
+    background: #f9f9f9;
+    /* 适用页面：联系我们页面 */
+}
+
+/* 联系内容包装器 */
+.contact-wrapper {
+    /* 显示：网格布局 */
+    display: grid;
+    /* 网格列：1fr 1fr，两列相等宽度 */
+    grid-template-columns: 1fr 1fr;
+    /* 间距：40px，两列之间的间距 */
+    gap: 40px;
+    /* 背景：白色 */
+    background: #fff;
+    /* 内边距：40px，为内容创建内边距 */
+    padding: 40px;
+    /* 边框圆角：8px，创建圆角效果 */
+    border-radius: 8px;
+    /* 阴影：0 2px 8px的黑色阴影，透明度0.1 */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    /* 适用页面：联系我们页面 */
+}
+
+/* 联系标题 */
+.contact-info h2,
+.contact-form h2 {
+    /* 字体大小：24px */
+    font-size: 24px;
+    /* 文本颜色：深灰色 */
+    color: #333;
+    /* 外边距：底部20px，其他0，与内容保持间距 */
+    margin-bottom: 20px;
+    /* 适用页面：联系我们页面 */
+}
+
+/* 联系信息项 */
+.info-item {
+    /* 外边距：底部20px，其他0，与下一个信息项保持间距 */
+    margin-bottom: 20px;
+    /* 字体大小：16px */
+    font-size: 16px;
+    /* 文本颜色：中灰色 */
+    color: #666;
+    /* 适用页面：联系我们页面 */
+}
+
+/* 联系信息标签 */
+.info-item strong {
+    /* 显示：行内块级元素 */
+    display: inline-block;
+    /* 宽度：100px，固定标签宽度 */
+    width: 100px;
+    /* 文本颜色：深灰色 */
+    color: #333;
+    /* 适用页面：联系我们页面 */
+}
+
+/* 表单组 */
+.form-group {
+    /* 外边距：底部20px，其他0，与下一个表单组保持间距 */
+    margin-bottom: 20px;
+    /* 适用页面：联系我们页面 */
+}
+
+/* 表单标签 */
+.form-group label {
+    /* 显示：块级元素，独占一行 */
+    display: block;
+    /* 外边距：底部8px，其他0，与输入框保持间距 */
+    margin-bottom: 8px;
+    /* 字体大小：14px */
+    font-size: 14px;
+    /* 文本颜色：深灰色 */
+    color: #333;
+    /* 字体粗细：500，半粗体 */
+    font-weight: 500;
+    /* 适用页面：联系我们页面 */
+}
+
+/* 表单输入框 */
+.form-group input,
+.form-group textarea {
+    /* 宽度：100%，填满表单组宽度 */
+    width: 100%;
+    /* 内边距：12px，为输入内容创建内边距 */
+    padding: 12px;
+    /* 边框：1px实线，浅灰色 */
+    border: 1px solid #ddd;
+    /* 边框圆角：4px，创建圆角效果 */
+    border-radius: 4px;
+    /* 字体大小：14px */
+    font-size: 14px;
+    /* 过渡效果：边框颜色0.3秒过渡 */
+    transition: border-color 0.3s;
+    /* 适用页面：联系我们页面 */
+}
+
+/* 表单输入框聚焦效果 */
+.form-group input:focus,
+.form-group textarea:focus {
+    /* 轮廓：无，移除默认轮廓 */
+    outline: none;
+    /* 边框颜色：蓝色 */
+    border-color: #3498db;
+    /* 适用页面：联系我们页面 */
+}
+
+/* 文本域 */
+.form-group textarea {
+    /* 调整大小：垂直方向，只允许用户垂直调整文本域大小 */
+    resize: vertical;
+    /* 适用页面：联系我们页面 */
+}
+
+/* 提交按钮 */
+.submit-btn {
+    /* 宽度：100%，填满表单宽度 */
+    width: 100%;
+    /* 内边距：上下12px，左右24px，创建舒适的点击区域 */
+    padding: 12px 24px;
+    /* 背景：蓝色 */
+    background: #3498db;
+    /* 文本颜色：白色 */
+    color: #fff;
+    /* 边框：无，移除默认边框 */
+    border: none;
+    /* 边框圆角：4px，创建圆角按钮效果 */
+    border-radius: 4px;
+    /* 字体大小：16px */
+    font-size: 16px;
+    /* 光标：指针，表明按钮可点击 */
+    cursor: pointer;
+    /* 过渡效果：背景0.3秒过渡 */
+    transition: background 0.3s;
+    /* 适用页面：联系我们页面 */
+}
+
+/* 提交按钮悬停效果 */
+.submit-btn:hover {
+    /* 背景：稍深的蓝色 */
+    background: #2980b9;
+    /* 适用页面：联系我们页面 */
+}
+
+/* 表单消息 */
+.form-message {
+    /* 外边距：顶部20px，其他0，与表单保持间距 */
+    margin-top: 20px;
+    /* 内边距：12px，为消息内容创建内边距 */
+    padding: 12px;
+    /* 边框圆角：4px，创建圆角消息效果 */
+    border-radius: 4px;
+    /* 字体大小：14px */
+    font-size: 14px;
+    /* 适用页面：联系我们页面 */
+}
+
+/* 成功消息 */
+.form-message.success {
+    /* 背景：浅绿色 */
+    background: #d4edda;
+    /* 文本颜色：深绿色 */
+    color: #155724;
+    /* 边框：1px实线，浅绿色 */
+    border: 1px solid #c3e6cb;
+    /* 适用页面：联系我们页面 */
+}
+
+/* 错误消息 */
+.form-message.error {
+    /* 背景：浅红色 */
+    background: #f8d7da;
+    /* 文本颜色：深红色 */
+    color: #721c24;
+    /* 边框：1px实线，浅红色 */
+    border: 1px solid #f5c6cb;
+    /* 适用页面：联系我们页面 */
+}
+
+/* 信息消息 */
+.form-message.info {
+    /* 背景：浅蓝色 */
+    background: #d1ecf1;
+    /* 文本颜色：深蓝色 */
+    color: #0c5460;
+    /* 边框：1px实线，浅蓝色 */
+    border: 1px solid #bee5eb;
+    /* 适用页面：联系我们页面 */
+}
+
+/* 管理链接 */
+.admin-link {
+    /* 背景：红色 */
+    background: #e74c3c;
+    /* 文本颜色：白色 */
+    color: #fff;
+    /* 内边距：上下8px，左右16px，创建舒适的点击区域 */
+    padding: 8px 16px;
+    /* 边框圆角：4px，创建圆角链接效果 */
+    border-radius: 4px;
+    /* 过渡效果：背景0.3秒过渡 */
+    transition: background 0.3s;
+    /* 适用页面：联系我们页面 */
+}
+
+/* 管理链接悬停效果 */
+.admin-link:hover {
+    /* 背景：稍深的红色 */
+    background: #c0392b;
+    /* 适用页面：联系我们页面 */
+}
+
+/* 管理链接盒子 */
+.admin-link-box {
+    /* 外边距：顶部30px，其他0，与上部分内容保持间距 */
+    margin-top: 30px;
+    /* 内边距：顶部20px，其他0，为内容创建内边距 */
+    padding-top: 20px;
+    /* 上边框：1px实线，浅灰色，创建分隔线 */
+    border-top: 1px solid #eee;
+    /* 适用页面：联系我们页面 */
+}
+
+/* 管理按钮 */
+.admin-btn {
+    /* 显示：行内块级元素 */
+    display: inline-block;
+    /* 宽度：100%，填满容器宽度 */
+    width: 100%;
+    /* 内边距：上下12px，左右24px，创建舒适的点击区域 */
+    padding: 12px 24px;
+    /* 背景：红色 */
+    background: #e74c3c;
+    /* 文本颜色：白色 */
+    color: #fff;
+    /* 文本对齐：居中 */
+    text-align: center;
+    /* 文本装饰：无，移除默认下划线 */
+    text-decoration: none;
+    /* 边框圆角：4px，创建圆角按钮效果 */
+    border-radius: 4px;
+    /* 字体大小：16px */
+    font-size: 16px;
+    /* 过渡效果：背景0.3秒过渡 */
+    transition: background 0.3s;
+    /* 适用页面：联系我们页面 */
+}
+
+/* 管理按钮悬停效果 */
+.admin-btn:hover {
+    /* 背景：稍深的红色 */
+    background: #c0392b;
+    /* 适用页面：联系我们页面 */
+}
+
+/* 管理按钮文本 */
+.admin-btn span {
+    /* 字体粗细：500，半粗体 */
+    font-weight: 500;
+    /* 适用页面：联系我们页面 */
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .contact-wrapper {
+        /* 网格列：1fr，改为单列布局 */
+        grid-template-columns: 1fr;
+        /* 内边距：20px，减少内边距以适应小屏幕 */
+        padding: 20px;
+        /* 适用页面：联系我们页面，平板和手机端 */
+    }
+}

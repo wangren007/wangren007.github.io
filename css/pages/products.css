@@ -1,0 +1,497 @@
+/**
+ * 产品列表样式
+ * 定义产品展示页面的布局和样式，包括产品卡片、网格布局等
+ * @version 1.0.0
+ * @date 2026-02-25
+ * @description 包含产品列表区域、产品网格、产品卡片、产品图片、产品信息等样式
+ * @适用页面：产品展示页面
+ */
+
+/* 产品列表区域 */
+.products-section {
+    /* 内边距：上下60px，左右0，为产品区域创建垂直空间 */
+    padding: 60px 0;
+    /* 背景：浅灰色 */
+    background: #f9f9f9;
+    /* 适用页面：产品展示页面 */
+}
+
+/* 产品网格布局 */
+.products-grid {
+    /* 显示：网格布局 */
+    display: grid;
+    /* 网格列：自动填充，最小宽度280px，最大宽度1fr */
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    /* 间距：30px，产品卡片之间的间距 */
+    gap: 30px;
+    /* 外边距：顶部30px，其他0，与上部分内容保持间距 */
+    margin-top: 30px;
+    /* 适用页面：产品展示页面 */
+}
+
+/* 产品卡片 */
+.product-card {
+    /* 背景：白色 */
+    background: #fff;
+    /* 边框圆角：8px，创建圆角卡片效果 */
+    border-radius: 8px;
+    /* 溢出：隐藏，确保卡片内容不超出边界 */
+    overflow: hidden;
+    /* 阴影：0 2px 8px的黑色阴影，透明度0.1 */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    /* 过渡效果：变换和阴影0.3秒过渡 */
+    transition: transform 0.3s, box-shadow 0.3s;
+    /* 适用页面：产品展示页面 */
+}
+
+/* 产品卡片悬停效果 */
+.product-card:hover {
+    /* 变换：向上移动5px，创建悬浮效果 */
+    transform: translateY(-5px);
+    /* 阴影：0 4px 16px的黑色阴影，透明度0.15 */
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    /* 适用页面：产品展示页面 */
+}
+
+/* 产品图片容器 */
+.product-image {
+    /* 宽度：100%，填满卡片宽度 */
+    width: 100%;
+    /* 高度：200px，固定图片容器高度 */
+    height: 200px;
+    /* 溢出：隐藏，确保图片不超出容器 */
+    overflow: hidden;
+    /* 背景：浅灰色，作为图片加载前的占位色 */
+    background: #f0f0f0;
+    /* 适用页面：产品展示页面 */
+}
+
+/* 产品图片 */
+.product-image img {
+    /* 宽度：100%，填满容器宽度 */
+    width: 100%;
+    /* 高度：100%，填满容器高度 */
+    height: 100%;
+    /* 对象适应：覆盖，确保图片覆盖整个容器并保持比例 */
+    object-fit: cover;
+    /* 适用页面：产品展示页面 */
+}
+
+/* 产品信息区域 */
+.product-info {
+    /* 内边距：20px，为产品信息创建内边距 */
+    padding: 20px;
+    /* 适用页面：产品展示页面 */
+}
+
+/* 产品标题 */
+.product-info h3 {
+    /* 字体大小：18px */
+    font-size: 18px;
+    /* 文本颜色：深灰色 */
+    color: #333;
+    /* 外边距：底部10px，其他0，与描述保持间距 */
+    margin-bottom: 10px;
+    /* 适用页面：产品展示页面 */
+}
+
+/* 产品描述 */
+.product-desc {
+    /* 字体大小：14px */
+    font-size: 14px;
+    /* 文本颜色：中灰色 */
+    color: #666;
+    /* 行高：1.6倍，提高文本可读性 */
+    line-height: 1.6;
+    /* 外边距：底部15px，其他0，与价格保持间距 */
+    margin-bottom: 15px;
+    /* 最小高度：48px，确保描述区域高度一致 */
+    min-height: 48px;
+    /* 适用页面：产品展示页面 */
+}
+
+/* 产品价格 */
+.product-price {
+    /* 字体大小：20px */
+    font-size: 20px;
+    /* 文本颜色：红色 */
+    color: #e74c3c;
+    /* 字体粗细：粗体 */
+    font-weight: bold;
+    /* 适用页面：产品展示页面 */
+}
+
+/* 加载状态 */
+.loading,
+.error-message {
+    /* 文本对齐：居中 */
+    text-align: center;
+    /* 内边距：40px，创建加载/错误消息的空间 */
+    padding: 40px;
+    /* 文本颜色：中灰色 */
+    color: #666;
+    /* 适用页面：产品展示页面 */
+}
+
+/* 错误消息 */
+.error-message {
+    /* 文本颜色：红色 */
+    color: #e74c3c;
+    /* 适用页面：产品展示页面 */
+}
+
+/* ==================== 财务工具专题样式 ==================== */
+
+/* 财务工具专题区域样式 */
+.finance-section {
+    /* 背景：从蓝色到紫色的线性渐变 */
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    /* 文本颜色：白色 */
+    color: white;
+    /* 内边距：上下60px，左右0 */
+    padding: 60px 0;
+    /* 外边距：底部40px，其他0 */
+    margin-bottom: 40px;
+    /* 适用页面：产品展示页面 */
+}
+
+/* 财务工具专题容器样式 */
+.finance-section .container {
+    /* 文本对齐：居中 */
+    text-align: center;
+    /* 适用页面：产品展示页面 */
+}
+
+/* 财务工具专题标题样式 */
+.finance-section h2 {
+    /* 字体大小：36px */
+    font-size: 36px;
+    /* 外边距：底部20px，其他0 */
+    margin-bottom: 20px;
+    /* 字体粗细：800，粗体 */
+    font-weight: 800;
+    /* 文本阴影：0 2px 4px的黑色阴影，透明度0.3 */
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    /* 适用页面：产品展示页面 */
+}
+
+/* 财务工具专题描述样式 */
+.finance-section p {
+    /* 字体大小：18px */
+    font-size: 18px;
+    /* 外边距：底部30px，其他0 */
+    margin-bottom: 30px;
+    /* 透明度：0.9，稍微透明 */
+    opacity: 0.9;
+    /* 适用页面：产品展示页面 */
+}
+
+/* 工具网格布局 */
+.tools-grid {
+    /* 显示：网格布局 */
+    display: grid;
+    /* 网格列：自动填充，最小宽度350px，最大宽度1fr */
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    /* 间距：30px，工具卡片之间的间距 */
+    gap: 30px;
+    /* 外边距：顶部40px，其他0 */
+    margin-top: 40px;
+    /* 适用页面：产品展示页面 */
+}
+
+/* 工具卡片样式 */
+.tool-card {
+    /* 背景：白色 */
+    background: white;
+    /* 边框圆角：16px，创建圆角卡片 */
+    border-radius: 16px;
+    /* 溢出：隐藏，确保内容不超出边界 */
+    overflow: hidden;
+    /* 阴影：0 10px 30px的黑色阴影，透明度0.1 */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    /* 过渡效果：变换和阴影0.3秒过渡 */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* 适用页面：产品展示页面 */
+}
+
+/* 工具卡片悬停效果 */
+.tool-card:hover {
+    /* 变换：向上移动10px，创建悬浮效果 */
+    transform: translateY(-10px);
+    /* 阴影：0 15px 40px的黑色阴影，透明度0.15 */
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    /* 适用页面：产品展示页面 */
+}
+
+/* 工具卡片头部样式 */
+.tool-header {
+    /* 内边距：30px */
+    padding: 30px;
+    /* 文本对齐：居中 */
+    text-align: center;
+    /* 背景：从蓝色到青色的线性渐变 */
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    /* 文本颜色：白色 */
+    color: white;
+    /* 适用页面：产品展示页面 */
+}
+
+/* 工具卡片头部标题样式 */
+.tool-header h3 {
+    /* 字体大小：24px */
+    font-size: 24px;
+    /* 外边距：底部10px，其他0 */
+    margin-bottom: 10px;
+    /* 字体粗细：700，粗体 */
+    font-weight: 700;
+    /* 适用页面：产品展示页面 */
+}
+
+/* 工具卡片头部描述样式 */
+.tool-header p {
+    /* 字体大小：14px */
+    font-size: 14px;
+    /* 透明度：0.9，稍微透明 */
+    opacity: 0.9;
+    /* 外边距：0，移除默认外边距 */
+    margin: 0;
+    /* 适用页面：产品展示页面 */
+}
+
+/* 工具卡片主体样式 */
+.tool-body {
+    /* 内边距：30px */
+    padding: 30px;
+    /* 适用页面：产品展示页面 */
+}
+
+/* 工具特性列表样式 */
+.tool-features {
+    /* 外边距：底部25px，其他0 */
+    margin-bottom: 25px;
+    /* 适用页面：产品展示页面 */
+}
+
+/* 工具特性项样式 */
+.tool-feature {
+    /* 显示：弹性布局 */
+    display: flex;
+    /* 对齐项目：居中 */
+    align-items: center;
+    /* 外边距：底部12px，其他0 */
+    margin-bottom: 12px;
+    /* 字体大小：14px */
+    font-size: 14px;
+    /* 文本颜色：深灰色 */
+    color: #333;
+    /* 适用页面：产品展示页面 */
+}
+
+/* 工具特性项前面的对勾标记 */
+.tool-feature::before {
+    /* 内容：对勾符号 */
+    content: '✓';
+    /* 文本颜色：绿色 */
+    color: #28a745;
+    /* 字体粗细：粗体 */
+    font-weight: bold;
+    /* 外边距：右侧10px，其他0 */
+    margin-right: 10px;
+    /* 适用页面：产品展示页面 */
+}
+
+/* 工具操作区域样式 */
+.tool-actions {
+    /* 文本对齐：居中 */
+    text-align: center;
+    /* 适用页面：产品展示页面 */
+}
+
+/* 工具按钮样式 */
+.tool-btn {
+    /* 显示：内联块 */
+    display: inline-block;
+    /* 内边距：上下12px，左右30px */
+    padding: 12px 30px;
+    /* 背景：从蓝色到紫色的线性渐变 */
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    /* 文本颜色：白色 */
+    color: white;
+    /* 文本装饰：无，移除下划线 */
+    text-decoration: none;
+    /* 边框圆角：25px，创建圆角按钮 */
+    border-radius: 25px;
+    /* 字体粗细：600，半粗体 */
+    font-weight: 600;
+    /* 过渡效果：所有属性0.3秒过渡 */
+    transition: all 0.3s ease;
+    /* 边框：无，移除默认边框 */
+    border: none;
+    /* 光标：指针，表明按钮可点击 */
+    cursor: pointer;
+    /* 字体大小：14px */
+    font-size: 14px;
+    /* 适用页面：产品展示页面 */
+}
+
+/* 工具按钮悬停效果 */
+.tool-btn:hover {
+    /* 变换：向上移动2px，创建悬浮效果 */
+    transform: translateY(-2px);
+    /* 阴影：0 5px 15px的蓝色阴影，透明度0.4 */
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+    /* 适用页面：产品展示页面 */
+}
+
+/* 次要工具按钮样式 */
+.tool-btn.secondary {
+    /* 背景：灰色 */
+    background: #6c757d;
+    /* 外边距：左侧10px，其他0 */
+    margin-left: 10px;
+    /* 适用页面：产品展示页面 */
+}
+
+/* 次要工具按钮悬停效果 */
+.tool-btn.secondary:hover {
+    /* 阴影：0 5px 15px的灰色阴影，透明度0.4 */
+    box-shadow: 0 5px 15px rgba(108, 117, 125, 0.4);
+    /* 适用页面：产品展示页面 */
+}
+
+/* 产品介绍区域样式 */
+.product-intro {
+    /* 背景：浅灰色 */
+    background: #f8f9fa;
+    /* 内边距：上下60px，左右0 */
+    padding: 60px 0;
+    /* 外边距：顶部40px，其他0 */
+    margin-top: 40px;
+    /* 适用页面：产品展示页面 */
+}
+
+/* 产品介绍容器样式 */
+.product-intro .container {
+    /* 文本对齐：居中 */
+    text-align: center;
+    /* 适用页面：产品展示页面 */
+}
+
+/* 产品介绍标题样式 */
+.product-intro h2 {
+    /* 字体大小：30px */
+    font-size: 30px;
+    /* 外边距：底部20px，其他0 */
+    margin-bottom: 20px;
+    /* 文本颜色：深灰色 */
+    color: #333;
+    /* 适用页面：产品展示页面 */
+}
+
+/* 产品介绍描述样式 */
+.product-intro p {
+    /* 字体大小：16px */
+    font-size: 16px;
+    /* 文本颜色：中灰色 */
+    color: #666;
+    /* 最大宽度：800px */
+    max-width: 800px;
+    /* 外边距：0 自动 30px，水平居中，底部留出间距 */
+    margin: 0 auto 30px;
+    /* 适用页面：产品展示页面 */
+}
+
+/* 管理员链接区域样式 */
+.admin-link-box {
+    /* 外边距：顶部30px，其他0 */
+    margin-top: 30px;
+    /* 适用页面：产品展示页面 */
+}
+
+/* 管理员按钮样式 */
+.admin-btn {
+    /* 显示：内联块 */
+    display: inline-block;
+    /* 内边距：上下15px，左右40px */
+    padding: 15px 40px;
+    /* 背景：从绿色到青绿色的线性渐变 */
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+    /* 文本颜色：白色 */
+    color: white;
+    /* 文本装饰：无，移除下划线 */
+    text-decoration: none;
+    /* 边框圆角：25px，创建圆角按钮 */
+    border-radius: 25px;
+    /* 字体粗细：700，粗体 */
+    font-weight: 700;
+    /* 字体大小：16px */
+    font-size: 16px;
+    /* 过渡效果：所有属性0.3秒过渡 */
+    transition: all 0.3s ease;
+    /* 适用页面：产品展示页面 */
+}
+
+/* 管理员按钮悬停效果 */
+.admin-btn:hover {
+    /* 变换：向上移动2px，创建悬浮效果 */
+    transform: translateY(-2px);
+    /* 阴影：0 5px 15px的绿色阴影，透明度0.4 */
+    box-shadow: 0 5px 15px rgba(40, 167, 69, 0.4);
+    /* 适用页面：产品展示页面 */
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    /* 产品网格布局：调整为更小的最小宽度 */
+    .products-grid {
+        /* 网格列：自动填充，最小宽度250px，最大宽度1fr */
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        /* 间距：20px，产品卡片之间的间距 */
+        gap: 20px;
+        /* 适用页面：产品展示页面，平板和手机端 */
+    }
+
+    /* 财务工具专题：调整标题大小 */
+    .finance-section h2 {
+        /* 字体大小：28px，减小字体大小以适应小屏幕 */
+        font-size: 28px;
+        /* 适用页面：产品展示页面，平板和手机端 */
+    }
+
+    /* 工具网格布局：改为单列 */
+    .tools-grid {
+        /* 网格列：1fr，改为单列布局 */
+        grid-template-columns: 1fr;
+        /* 间距：20px，工具卡片之间的间距 */
+        gap: 20px;
+        /* 适用页面：产品展示页面，平板和手机端 */
+    }
+
+    /* 工具卡片头部：减少内边距 */
+    .tool-header {
+        /* 内边距：20px，减少内边距以适应小屏幕 */
+        padding: 20px;
+        /* 适用页面：产品展示页面，平板和手机端 */
+    }
+
+    /* 工具卡片主体：减少内边距 */
+    .tool-body {
+        /* 内边距：20px，减少内边距以适应小屏幕 */
+        padding: 20px;
+        /* 适用页面：产品展示页面，平板和手机端 */
+    }
+
+    /* 工具按钮：改为块级元素，宽度100% */
+    .tool-btn {
+        /* 显示：块级元素 */
+        display: block;
+        /* 宽度：100%，填满容器宽度 */
+        width: 100%;
+        /* 外边距：底部10px，左侧0，其他0 */
+        margin-bottom: 10px;
+        margin-left: 0;
+        /* 文本对齐：居中 */
+        text-align: center;
+        /* 适用页面：产品展示页面，平板和手机端 */
+    }
+}

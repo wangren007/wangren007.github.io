@@ -1,0 +1,443 @@
+/**
+ * 客服弹窗和悬浮按钮样式
+ * 定义客服弹窗和悬浮按钮的布局和样式，包括微信二维码展示
+ * @version 1.0.0
+ * @date 2026-02-25
+ * @description 包含悬浮客服按钮、客服弹窗、二维码展示、动画效果等样式
+ * @适用页面：所有页面
+ * 
+ * 使用方法：
+ * 1. 在HTML中引入此CSS文件：<link rel="stylesheet" href="css/service-modal.css">
+ * 2. 在HTML中引入JavaScript文件：<script src="js/service-modal.js"></script>
+ * 3. 在页面底部添加客服弹窗HTML结构（参考index.html）
+ * 4. 在页面底部添加悬浮客服按钮HTML（参考index.html）
+ */
+
+/* ==================== 悬浮客服按钮样式 ==================== */
+
+/* 微信客服按钮样式 */
+.wechat-service-btn {
+    /* 显示：内联弹性布局 */
+    display: inline-flex;
+    /* 垂直对齐：居中 */
+    align-items: center;
+    /* 间距：8px，按钮内部元素之间的间距 */
+    gap: 8px;
+    /* 内边距：上下10px，左右20px */
+    padding: 10px 20px;
+    /* 背景：从绿色到深绿色的线性渐变 */
+    background: linear-gradient(135deg, #07c160 0%, #06ad56 100%);
+    /* 文本颜色：白色 */
+    color: white;
+    /* 文本装饰：无，移除下划线 */
+    text-decoration: none;
+    /* 边框圆角：25px，创建圆角按钮 */
+    border-radius: 25px;
+    /* 字体粗细：600，半粗体 */
+    font-weight: 600;
+    /* 字体大小：14px */
+    font-size: 14px;
+    /* 过渡效果：所有属性0.3秒过渡 */
+    transition: all 0.3s ease;
+    /* 阴影：0 2px 8px的绿色阴影，透明度0.3 */
+    box-shadow: 0 2px 8px rgba(7, 193, 96, 0.3);
+    /* 光标：指针，表明按钮可点击 */
+    cursor: pointer;
+    /* 适用页面：所有页面 */
+}
+
+/* 微信客服按钮悬停效果 */
+.wechat-service-btn:hover {
+    /* 变换：向上移动2px，创建悬浮效果 */
+    transform: translateY(-2px);
+    /* 阴影：0 4px 12px的绿色阴影，透明度0.4 */
+    box-shadow: 0 4px 12px rgba(7, 193, 96, 0.4);
+    /* 适用页面：所有页面 */
+}
+
+/* 微信按钮内SVG图标样式 */
+.wechat-service-btn svg {
+    /* 宽度：20px */
+    width: 20px;
+    /* 高度：20px */
+    height: 20px;
+    /* 适用页面：所有页面 */
+}
+
+/* 悬浮客服按钮样式 - 固定在右下角 */
+.floating-service-btn {
+    /* 定位：固定定位 */
+    position: fixed;
+    /* 位置：右侧30px，底部30px */
+    right: 30px;
+    bottom: 30px;
+    /* 宽度：60px */
+    width: 60px;
+    /* 高度：60px */
+    height: 60px;
+    /* 背景：从绿色到深绿色的线性渐变 */
+    background: linear-gradient(135deg, #07c160 0%, #06ad56 100%);
+    /* 边框圆角：50%，创建圆形按钮 */
+    border-radius: 50%;
+    /* 显示：弹性布局 */
+    display: flex;
+    /* 垂直对齐：居中 */
+    align-items: center;
+    /* 水平对齐：居中 */
+    justify-content: center;
+    /* 阴影：0 4px 20px的绿色阴影，透明度0.4 */
+    box-shadow: 0 4px 20px rgba(7, 193, 96, 0.4);
+    /* 光标：指针，表明按钮可点击 */
+    cursor: pointer;
+    /* 过渡效果：所有属性0.3秒过渡 */
+    transition: all 0.3s ease;
+    /* 层级：1000，确保在其他元素之上 */
+    z-index: 1000;
+    /* 动画：pulse动画，2秒无限循环 */
+    animation: pulse 2s infinite;
+    /* 适用页面：所有页面 */
+}
+
+/* 悬浮客服按钮悬停效果 - 放大并增强阴影 */
+.floating-service-btn:hover {
+    /* 变换：放大1.1倍 */
+    transform: scale(1.1);
+    /* 阴影：0 6px 30px的绿色阴影，透明度0.5 */
+    box-shadow: 0 6px 30px rgba(7, 193, 96, 0.5);
+    /* 适用页面：所有页面 */
+}
+
+/* 悬浮按钮内SVG图标样式 - 设置图标大小和颜色 */
+.floating-service-btn svg {
+    /* 宽度：32px */
+    width: 32px;
+    /* 高度：32px */
+    height: 32px;
+    /* 填充：白色 */
+    fill: white;
+    /* 适用页面：所有页面 */
+}
+
+/* 脉冲动画关键帧 - 用于悬浮按钮的呼吸效果 */
+@keyframes pulse {
+    0%, 100% {
+        /* 阴影：0 4px 20px的绿色阴影，透明度0.4 */
+        box-shadow: 0 4px 20px rgba(7, 193, 96, 0.4);
+    }
+    50% {
+        /* 阴影：0 4px 30px的绿色阴影，透明度0.6 */
+        box-shadow: 0 4px 30px rgba(7, 193, 96, 0.6);
+    }
+}
+
+/* ==================== 客服弹窗样式 ==================== */
+
+/* 客服弹窗遮罩层样式 - 点击关闭 */
+.service-modal {
+    /* 显示：无，默认隐藏 */
+    display: none;
+    /* 定位：固定定位 */
+    position: fixed;
+    /* 位置：顶部0，左侧0 */
+    top: 0;
+    left: 0;
+    /* 宽度：100% */
+    width: 100%;
+    /* 高度：100% */
+    height: 100%;
+    /* 背景：黑色，透明度0.85 */
+    background: rgba(0, 0, 0, 0.85);
+    /* 层级：2000，确保在其他元素之上 */
+    z-index: 2000;
+    /* 垂直对齐：居中 */
+    align-items: center;
+    /* 水平对齐：居中 */
+    justify-content: center;
+    /* 动画：fadeIn动画，0.3秒过渡 */
+    animation: fadeIn 0.3s ease;
+    /* 光标：指针，表明遮罩层可点击关闭 */
+    cursor: pointer;
+    /* 适用页面：所有页面 */
+}
+
+/* 激活状态的弹窗 - 使用flex布局显示 */
+.service-modal.active {
+    /* 显示：弹性布局 */
+    display: flex;
+    /* 适用页面：所有页面 */
+}
+
+/* 客服弹窗内容容器样式 - 根据是否有上传图片自动调整 */
+.service-modal-content {
+    /* 背景：白色 */
+    background: white;
+    /* 边框圆角：16px，创建圆角弹窗效果 */
+    border-radius: 16px;
+    /* 内边距：40px，为弹窗内容创建内边距 */
+    padding: 40px;
+    /* 最大宽度：400px */
+    max-width: 400px;
+    /* 宽度：90% */
+    width: 90%;
+    /* 文本对齐：居中 */
+    text-align: center;
+    /* 定位：相对定位 */
+    position: relative;
+    /* 动画：slideUp动画，0.3秒过渡 */
+    animation: slideUp 0.3s ease;
+    /* 适用页面：所有页面 */
+}
+
+/* 有上传图片时的弹窗样式 - 只显示图片，无边框无背景 */
+.service-modal-content.has-custom-qr {
+    /* 背景：透明 */
+    background: transparent;
+    /* 边框圆角：0 */
+    border-radius: 0;
+    /* 内边距：0 */
+    padding: 0;
+    /* 最大宽度：90% */
+    max-width: 90%;
+    /* 最大高度：90% */
+    max-height: 90%;
+    /* 宽度：自动 */
+    width: auto;
+    /* 高度：自动 */
+    height: auto;
+    /* 适用页面：所有页面 */
+}
+
+/* 弹窗标题样式 - 有上传图片时隐藏 */
+.service-modal-title {
+    /* 字体大小：24px */
+    font-size: 24px;
+    /* 字体粗细：700，粗体 */
+    font-weight: 700;
+    /* 文本颜色：深灰色 */
+    color: #333;
+    /* 外边距：底部20px，其他0，与二维码保持间距 */
+    margin-bottom: 20px;
+    /* 适用页面：所有页面 */
+}
+
+/* 二维码容器样式 */
+.service-modal-qr {
+    /* 宽度：250px */
+    width: 250px;
+    /* 高度：250px */
+    height: 250px;
+    /* 外边距：上下0，左右自动，底部20px，居中显示 */
+    margin: 0 auto 20px;
+    /* 边框：2px实线，绿色 */
+    border: 2px solid #07c160;
+    /* 边框圆角：12px，创建圆角二维码容器 */
+    border-radius: 12px;
+    /* 内边距：10px，为二维码创建内边距 */
+    padding: 10px;
+    /* 背景：浅灰色 */
+    background: #f8f9fa;
+    /* 适用页面：所有页面 */
+}
+
+/* 有上传图片时的二维码样式 - 无边框无背景 */
+.service-modal-content.has-custom-qr .service-modal-qr {
+    /* 宽度：70% */
+    width: 70%;
+    /* 高度：70% */
+    height: 70%;
+    /* 外边距：0 */
+    margin: 0;
+    /* 边框：无 */
+    border: none;
+    /* 边框圆角：0 */
+    border-radius: 0;
+    /* 内边距：0 */
+    padding: 0;
+    /* 背景：透明 */
+    background: transparent;
+    /* 适用页面：所有页面 */
+}
+
+/* 二维码图片样式 - 固定大小 */
+.service-modal-qr img {
+    /* 宽度：100% */
+    width: 100%;
+    /* 高度：100% */
+    height: 100%;
+    /* 显示：块级元素 */
+    display: block;
+    /* 对象适应：包含，确保图片完整显示 */
+    object-fit: contain;
+    /* 适用页面：所有页面 */
+}
+
+/* 有上传图片时的图片样式 - 自适应大小 */
+.service-modal-content.has-custom-qr .service-modal-qr img {
+    /* 最大宽度：100% */
+    max-width: 100%;
+    /* 最大高度：90vh */
+    max-height: 90vh;
+    /* 宽度：自动 */
+    width: auto;
+    /* 高度：自动 */
+    height: auto;
+    /* 边框圆角：8px，创建圆角图片效果 */
+    border-radius: 8px;
+    /* 阴影：0 8px 32px的黑色阴影，透明度0.5 */
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    /* 适用页面：所有页面 */
+}
+
+/* 弹窗说明文字样式 - 有上传图片时隐藏 */
+.service-modal-text {
+    /* 字体大小：14px */
+    font-size: 14px;
+    /* 文本颜色：中灰色 */
+    color: #666;
+    /* 外边距：底部20px，其他0，与按钮保持间距 */
+    margin-bottom: 20px;
+    /* 行高：1.6倍，提高文本可读性 */
+    line-height: 1.6;
+    /* 适用页面：所有页面 */
+}
+
+/* 弹窗关闭按钮样式 - 有上传图片时隐藏 */
+.service-modal-close {
+    /* 定位：绝对定位 */
+    position: absolute;
+    /* 位置：顶部15px，右侧15px */
+    top: 15px;
+    right: 15px;
+    /* 宽度：30px */
+    width: 30px;
+    /* 高度：30px */
+    height: 30px;
+    /* 边框：无 */
+    border: none;
+    /* 背景：浅灰色 */
+    background: #f0f0f0;
+    /* 边框圆角：50%，创建圆形关闭按钮 */
+    border-radius: 50%;
+    /* 光标：指针，表明按钮可点击 */
+    cursor: pointer;
+    /* 字体大小：20px */
+    font-size: 20px;
+    /* 文本颜色：中灰色 */
+    color: #666;
+    /* 显示：弹性布局 */
+    display: flex;
+    /* 垂直对齐：居中 */
+    align-items: center;
+    /* 水平对齐：居中 */
+    justify-content: center;
+    /* 过渡效果：所有属性0.3秒过渡 */
+    transition: all 0.3s ease;
+    /* 适用页面：所有页面 */
+}
+
+/* 关闭按钮悬停效果 */
+.service-modal-close:hover {
+    /* 背景：稍深的灰色 */
+    background: #e0e0e0;
+    /* 文本颜色：深灰色 */
+    color: #333;
+    /* 适用页面：所有页面 */
+}
+
+/* 弹窗操作按钮容器样式 - 有上传图片时隐藏 */
+.service-modal-actions {
+    /* 显示：弹性布局 */
+    display: flex;
+    /* 间距：10px，按钮之间的间距 */
+    gap: 10px;
+    /* 水平对齐：居中 */
+    justify-content: center;
+    /* 换行：自动换行 */
+    flex-wrap: wrap;
+    /* 适用页面：所有页面 */
+}
+
+/* 弹窗按钮基础样式 */
+.service-modal-btn {
+    /* 内边距：上下12px，左右24px，创建舒适的点击区域 */
+    padding: 12px 24px;
+    /* 边框：无 */
+    border: none;
+    /* 边框圆角：25px，创建圆角按钮效果 */
+    border-radius: 25px;
+    /* 字体大小：14px */
+    font-size: 14px;
+    /* 字体粗细：600，半粗体 */
+    font-weight: 600;
+    /* 光标：指针，表明按钮可点击 */
+    cursor: pointer;
+    /* 过渡效果：所有属性0.3秒过渡 */
+    transition: all 0.3s ease;
+    /* 文本装饰：无，移除默认下划线 */
+    text-decoration: none;
+    /* 适用页面：所有页面 */
+}
+
+/* 主要按钮样式 - 微信绿色 */
+.service-modal-btn.primary {
+    /* 背景：从绿色到深绿色的线性渐变 */
+    background: linear-gradient(135deg, #07c160 0%, #06ad56 100%);
+    /* 文本颜色：白色 */
+    color: white;
+    /* 适用页面：所有页面 */
+}
+
+/* 主要按钮悬停效果 */
+.service-modal-btn.primary:hover {
+    /* 变换：向上移动2px，创建悬浮效果 */
+    transform: translateY(-2px);
+    /* 阴影：0 4px 12px的绿色阴影，透明度0.4 */
+    box-shadow: 0 4px 12px rgba(7, 193, 96, 0.4);
+    /* 适用页面：所有页面 */
+}
+
+/* 次要按钮样式 - 灰色 */
+.service-modal-btn.secondary {
+    /* 背景：浅灰色 */
+    background: #f0f0f0;
+    /* 文本颜色：深灰色 */
+    color: #333;
+    /* 适用页面：所有页面 */
+}
+
+/* 次要按钮悬停效果 */
+.service-modal-btn.secondary:hover {
+    /* 背景：稍深的灰色 */
+    background: #e0e0e0;
+    /* 适用页面：所有页面 */
+}
+
+/* ==================== 动画关键帧 ==================== */
+
+/* 淡入动画关键帧 */
+@keyframes fadeIn {
+    from {
+        /* 透明度：0，初始状态完全透明 */
+        opacity: 0;
+    }
+    to {
+        /* 透明度：1，最终状态完全不透明 */
+        opacity: 1;
+    }
+}
+
+/* 上滑动画关键帧 */
+@keyframes slideUp {
+    from {
+        /* 变换：向下移动30px */
+        transform: translateY(30px);
+        /* 透明度：0，初始状态完全透明 */
+        opacity: 0;
+    }
+    to {
+        /* 变换：不移动 */
+        transform: translateY(0);
+        /* 透明度：1，最终状态完全不透明 */
+        opacity: 1;
+    }
+}

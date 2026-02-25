@@ -1,0 +1,459 @@
+/**
+ * 表单通用样式
+ * 统一所有页面的表单元素样式，包括输入框、选择框、复选框、单选框等
+ * @version 1.0.0
+ * @date 2026-02-25
+ * @description 包含表单容器、表单组、输入框、选择框、复选框、单选框、文本域等样式
+ * @适用页面：所有页面，所有表单
+ * 
+ * 使用方法：
+ * 1. 在HTML中引入此CSS文件：<link rel="stylesheet" href="css/forms.css">
+ * 2. 确保已引入 reset.css
+ */
+
+/* ==================== 表单容器样式 ==================== */
+
+/* 表单容器 - 垂直间距 */
+.form {
+    /* 显示：弹性布局 */
+    display: flex;
+    /* 方向：垂直布局 */
+    flex-direction: column;
+    /* 间距：20px，表单元素之间的垂直间距 */
+    gap: 20px;
+    /* 适用页面：所有页面，所有表单 */
+}
+
+/* 表单行容器 - 水平布局 */
+.form-row {
+    /* 显示：弹性布局 */
+    display: flex;
+    /* 间距：20px，表单元素之间的水平间距 */
+    gap: 20px;
+    /* 换行：自动换行，在空间不足时元素会自动换行 */
+    flex-wrap: wrap;
+    /* 适用页面：所有页面，需要水平布局的表单行 */
+}
+
+/* 表单列 - 灵活宽度 */
+.form-col {
+    /* 弹性：1，自动填充剩余空间 */
+    flex: 1;
+    /* 最小宽度：200px，确保在小屏幕上也能正常显示 */
+    min-width: 200px;
+    /* 适用页面：所有页面，需要灵活宽度的表单列 */
+}
+
+/* ==================== 表单组样式 ==================== */
+
+/* 表单组容器 - 垂直间距 */
+.form-group {
+    /* 外边距：底部20px，其他0，与下一个表单组保持间距 */
+    margin-bottom: 20px;
+    /* 适用页面：所有页面，所有表单组 */
+}
+
+/* 表单组标签样式 */
+.form-group label {
+    /* 显示：块级元素，独占一行 */
+    display: block;
+    /* 外边距：底部8px，其他0，与输入框保持间距 */
+    margin-bottom: 8px;
+    /* 字体粗细：600，半粗体 */
+    font-weight: 600;
+    /* 文本颜色：深灰色 */
+    color: #1e293b;
+    /* 字体大小：14px */
+    font-size: 14px;
+    /* 适用页面：所有页面，所有表单标签 */
+}
+
+/* 表单组帮助文本样式 */
+.form-group .help-text {
+    /* 显示：块级元素，独占一行 */
+    display: block;
+    /* 外边距：顶部5px，其他0，与输入框保持间距 */
+    margin-top: 5px;
+    /* 字体大小：12px */
+    font-size: 12px;
+    /* 文本颜色：中灰色 */
+    color: #64748b;
+    /* 适用页面：所有页面，表单帮助文本 */
+}
+
+/* 表单组错误提示样式 */
+.form-group .error-text {
+    /* 显示：块级元素，独占一行 */
+    display: block;
+    /* 外边距：顶部5px，其他0，与输入框保持间距 */
+    margin-top: 5px;
+    /* 字体大小：12px */
+    font-size: 12px;
+    /* 文本颜色：红色 */
+    color: #ef4444;
+    /* 适用页面：所有页面，表单错误提示 */
+}
+
+/* ==================== 输入框样式 ==================== */
+
+/* 输入框基础样式 */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="tel"],
+input[type="url"],
+input[type="date"],
+input[type="datetime-local"],
+input[type="month"],
+input[type="week"],
+input[type="time"],
+input[type="search"],
+textarea {
+    /* 宽度：100%，填满父容器 */
+    width: 100%;
+    /* 内边距：上下12px，左右16px，创建舒适的输入区域 */
+    padding: 12px 16px;
+    /* 边框：2px实线，浅灰色 */
+    border: 2px solid #e2e8f0;
+    /* 边框圆角：10px，创建圆角效果 */
+    border-radius: 10px;
+    /* 字体大小：14px */
+    font-size: 14px;
+    /* 过渡效果：所有属性0.3秒过渡 */
+    transition: all 0.3s;
+    /* 字体族：继承父元素字体，确保字体一致性 */
+    font-family: inherit;
+    /* 背景：白色 */
+    background: white;
+    /* 文本颜色：深灰色 */
+    color: #1e293b;
+    /* 适用页面：所有页面，所有输入框 */
+}
+
+/* 输入框聚焦样式 */
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="number"]:focus,
+input[type="tel"]:focus,
+input[type="url"]:focus,
+input[type="date"]:focus,
+input[type="datetime-local"]:focus,
+input[type="month"]:focus,
+input[type="week"]:focus,
+input[type="time"]:focus,
+input[type="search"]:focus,
+textarea:focus {
+    /* 轮廓：无，移除默认轮廓 */
+    outline: none;
+    /* 边框颜色：蓝色 */
+    border-color: #4f46e5;
+    /* 阴影：0 0 0 3px的蓝色阴影，透明度0.1，增强聚焦效果 */
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+    /* 适用页面：所有页面，所有输入框的聚焦状态 */
+}
+
+/* 输入框禁用状态 */
+input:disabled,
+textarea:disabled {
+    /* 背景：浅灰色 */
+    background: #f1f5f9;
+    /* 光标：禁止符号，表明输入框不可编辑 */
+    cursor: not-allowed;
+    /* 透明度：0.6，使输入框看起来半透明 */
+    opacity: 0.6;
+    /* 适用页面：所有页面，所有禁用的输入框 */
+}
+
+/* 输入框只读状态 */
+input[readonly],
+textarea[readonly] {
+    /* 背景：极浅灰色 */
+    background: #f8fafc;
+    /* 光标：默认，表明输入框不可编辑但可选择 */
+    cursor: default;
+    /* 适用页面：所有页面，所有只读的输入框 */
+}
+
+/* 输入框错误状态 */
+input.error,
+textarea.error {
+    /* 边框颜色：红色 */
+    border-color: #ef4444;
+    /* 阴影：0 0 0 3px的红色阴影，透明度0.1 */
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+    /* 适用页面：所有页面，所有错误状态的输入框 */
+}
+
+/* 输入框成功状态 */
+input.success,
+textarea.success {
+    /* 边框颜色：绿色 */
+    border-color: #10b981;
+    /* 阴影：0 0 0 3px的绿色阴影，透明度0.1 */
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+    /* 适用页面：所有页面，所有成功状态的输入框 */
+}
+
+/* ==================== 选择框样式 ==================== */
+
+/* 选择框基础样式 */
+select {
+    /* 宽度：100%，填满父容器 */
+    width: 100%;
+    /* 内边距：上下12px，左右16px，创建舒适的选择区域 */
+    padding: 12px 16px;
+    /* 边框：2px实线，浅灰色 */
+    border: 2px solid #e2e8f0;
+    /* 边框圆角：10px，创建圆角效果 */
+    border-radius: 10px;
+    /* 字体大小：14px */
+    font-size: 14px;
+    /* 过渡效果：所有属性0.3秒过渡 */
+    transition: all 0.3s;
+    /* 字体族：继承父元素字体，确保字体一致性 */
+    font-family: inherit;
+    /* 背景：白色 */
+    background: white;
+    /* 光标：指针，表明选择框可点击 */
+    cursor: pointer;
+    /* 文本颜色：深灰色 */
+    color: #1e293b;
+    /* 外观：无，移除默认下拉箭头 */
+    appearance: none;
+    /* 背景图片：自定义下拉箭头SVG */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2364748b' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    /* 背景重复：不重复 */
+    background-repeat: no-repeat;
+    /* 背景位置：右侧16px，垂直居中 */
+    background-position: right 16px center;
+    /* 内边距：右侧40px，为下拉箭头留出空间 */
+    padding-right: 40px;
+    /* 适用页面：所有页面，所有选择框 */
+}
+
+/* 选择框聚焦样式 */
+select:focus {
+    /* 轮廓：无，移除默认轮廓 */
+    outline: none;
+    /* 边框颜色：蓝色 */
+    border-color: #4f46e5;
+    /* 阴影：0 0 0 3px的蓝色阴影，透明度0.1，增强聚焦效果 */
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+    /* 适用页面：所有页面，所有选择框的聚焦状态 */
+}
+
+/* 选择框禁用状态 */
+select:disabled {
+    /* 背景：浅灰色 */
+    background: #f1f5f9;
+    /* 光标：禁止符号，表明选择框不可编辑 */
+    cursor: not-allowed;
+    /* 透明度：0.6，使选择框看起来半透明 */
+    opacity: 0.6;
+    /* 适用页面：所有页面，所有禁用的选择框 */
+}
+
+/* ==================== 复选框和单选框样式 ==================== */
+
+/* 复选框和单选框容器 */
+.checkbox-group,
+.radio-group {
+    /* 显示：弹性布局 */
+    display: flex;
+    /* 方向：垂直布局 */
+    flex-direction: column;
+    /* 间距：10px，复选框/单选框之间的垂直间距 */
+    gap: 10px;
+    /* 适用页面：所有页面，所有复选框和单选框组 */
+}
+
+/* 复选框和单选框项 */
+.checkbox-item,
+.radio-item {
+    /* 显示：弹性布局 */
+    display: flex;
+    /* 垂直对齐：居中对齐 */
+    align-items: center;
+    /* 间距：8px，复选框/单选框与标签之间的水平间距 */
+    gap: 8px;
+    /* 光标：指针，表明元素可点击 */
+    cursor: pointer;
+    /* 适用页面：所有页面，所有复选框和单选框项 */
+}
+
+/* 复选框和单选框输入框 */
+input[type="checkbox"],
+input[type="radio"] {
+    /* 宽度：18px */
+    width: 18px;
+    /* 高度：18px */
+    height: 18px;
+    /* 光标：指针，表明元素可点击 */
+    cursor: pointer;
+    /* 强调色：蓝色，用于自定义复选框和单选框的颜色 */
+    accent-color: #4f46e5;
+    /* 适用页面：所有页面，所有复选框和单选框输入框 */
+}
+
+/* 复选框和单选框标签 */
+.checkbox-item label,
+.radio-item label {
+    /* 外边距：0，移除默认外边距 */
+    margin: 0;
+    /* 光标：指针，表明标签可点击 */
+    cursor: pointer;
+    /* 字体粗细：400，常规粗细 */
+    font-weight: 400;
+    /* 适用页面：所有页面，所有复选框和单选框标签 */
+}
+
+/* ==================== 文本域样式 ==================== */
+
+/* 文本域基础样式 */
+textarea {
+    /* 最小高度：100px，确保文本域有足够的初始高度 */
+    min-height: 100px;
+    /* 调整大小：垂直方向，只允许用户垂直调整文本域大小 */
+    resize: vertical;
+    /* 行高：1.6倍，提高文本可读性 */
+    line-height: 1.6;
+    /* 适用页面：所有页面，所有文本域 */
+}
+
+/* ==================== 表单按钮样式 ==================== */
+
+/* 表单按钮容器 */
+.form-actions {
+    /* 显示：弹性布局 */
+    display: flex;
+    /* 间距：10px，按钮之间的间距 */
+    gap: 10px;
+    /* 外边距：顶部20px，其他0，与表单内容保持间距 */
+    margin-top: 20px;
+    /* 换行：自动换行，在空间不足时按钮会自动换行 */
+    flex-wrap: wrap;
+    /* 适用页面：所有页面，所有表单按钮容器 */
+}
+
+/* 表单按钮基础样式 */
+.form-btn {
+    /* 内边距：上下12px，左右28px，创建舒适的点击区域 */
+    padding: 12px 28px;
+    /* 边框：无，移除默认边框 */
+    border: none;
+    /* 边框圆角：10px，创建圆角按钮效果 */
+    border-radius: 10px;
+    /* 字体大小：14px */
+    font-size: 14px;
+    /* 字体粗细：600，半粗体 */
+    font-weight: 600;
+    /* 光标：指针，表明按钮可点击 */
+    cursor: pointer;
+    /* 过渡效果：所有属性0.3s过渡 */
+    transition: all 0.3s;
+    /* 字体族：继承父元素字体，确保字体一致性 */
+    font-family: inherit;
+    /* 适用页面：所有页面，所有表单按钮 */
+}
+
+/* 表单主要按钮 */
+.form-btn.primary {
+    /* 背景：从蓝色到紫色的线性渐变 */
+    background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+    /* 文本颜色：白色 */
+    color: white;
+    /* 适用页面：所有页面，表单主要按钮 */
+}
+
+/* 表单主要按钮悬停效果 */
+.form-btn.primary:hover {
+    /* 变换：向上移动2px，创建悬浮效果 */
+    transform: translateY(-2px);
+    /* 阴影：0 6px 20px的蓝色阴影，透明度0.3，增强悬停效果 */
+    box-shadow: 0 6px 20px rgba(79, 70, 229, 0.3);
+    /* 适用页面：所有页面，表单主要按钮的悬停效果 */
+}
+
+/* 表单次要按钮 */
+.form-btn.secondary {
+    /* 背景：浅灰色 */
+    background: #e2e8f0;
+    /* 文本颜色：深灰色 */
+    color: #1e293b;
+    /* 适用页面：所有页面，表单次要按钮 */
+}
+
+/* 表单次要按钮悬停效果 */
+.form-btn.secondary:hover {
+    /* 背景：稍深的灰色 */
+    background: #cbd5e1;
+    /* 适用页面：所有页面，表单次要按钮的悬停效果 */
+}
+
+/* 表单危险按钮 */
+.form-btn.danger {
+    /* 背景：红色 */
+    background: #ef4444;
+    /* 文本颜色：白色 */
+    color: white;
+    /* 适用页面：所有页面，表单危险按钮 */
+}
+
+/* 表单危险按钮悬停效果 */
+.form-btn.danger:hover {
+    /* 背景：稍深的红色 */
+    background: #dc2626;
+    /* 变换：向上移动2px，创建悬浮效果 */
+    transform: translateY(-2px);
+    /* 阴影：0 6px 20px的红色阴影，透明度0.3，增强悬停效果 */
+    box-shadow: 0 6px 20px rgba(239, 68, 68, 0.3);
+    /* 适用页面：所有页面，表单危险按钮的悬停效果 */
+}
+
+/* 表单按钮禁用状态 */
+.form-btn:disabled {
+    /* 透明度：0.5，使按钮看起来半透明 */
+    opacity: 0.5;
+    /* 光标：禁止符号，表明按钮不可点击 */
+    cursor: not-allowed;
+    /* 变换：无，覆盖任何变换效果 */
+    transform: none !important;
+    /* 适用页面：所有页面，所有禁用的表单按钮 */
+}
+
+/* ==================== 响应式设计 ==================== */
+
+/* 平板和手机端适配 */
+@media (max-width: 768px) {
+    /* 表单行改为垂直布局 */
+    .form-row {
+        /* 方向：垂直布局 */
+        flex-direction: column;
+        /* 间距：15px，表单元素之间的垂直间距 */
+        gap: 15px;
+        /* 适用页面：平板和手机端，所有表单行 */
+    }
+    
+    /* 表单列宽度100% */
+    .form-col {
+        /* 最小宽度：100%，确保在小屏幕上填满宽度 */
+        min-width: 100%;
+        /* 适用页面：平板和手机端，所有表单列 */
+    }
+    
+    /* 表单按钮容器改为垂直布局 */
+    .form-actions {
+        /* 方向：垂直布局 */
+        flex-direction: column;
+        /* 适用页面：平板和手机端，所有表单按钮容器 */
+    }
+    
+    /* 表单按钮宽度100% */
+    .form-btn {
+        /* 宽度：100%，确保在小屏幕上填满宽度 */
+        width: 100%;
+        /* 适用页面：平板和手机端，所有表单按钮 */
+    }
+}
